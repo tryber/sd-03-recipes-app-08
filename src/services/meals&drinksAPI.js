@@ -142,3 +142,23 @@ export const getDrinkByID = async (id) => {
     : Promise.reject(json));
   return data;
 };
+
+export const getRandomFood = async () => {
+  const randomFoods = 'https://www.themealdb.com/api/json/v1/1/random.php';
+  const response = await fetch(randomFoods);
+  const json = await response.json();
+  const data = await (response.ok
+    ? Promise.resolve(json)
+    : Promise.reject(json));
+  return data;
+};
+
+export const getRandomDrink = async () => {
+  const randomDrinks = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+  const response = await fetch(randomDrinks);
+  const json = await response.json();
+  const data = await (response.ok
+    ? Promise.resolve(json)
+    : Promise.reject(json));
+  return data;
+};
