@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styles/Header.css';
 
-const HeaderPrincipal = ({ iconProfile, iconSearch, title, onClick }) => (
+const Header = ({
+  iconProfile, iconSearch, title, onClick,
+}) => (
   <header className="recipes-header">
     {iconProfile && (
       <Link to="/perfil" data-testid="profile-top-btn">
@@ -28,17 +30,17 @@ const HeaderPrincipal = ({ iconProfile, iconSearch, title, onClick }) => (
     )}
   </header>
 );
-HeaderPrincipal.defaultProps = {
+Header.defaultProps = {
   iconProfile: null,
   iconSearch: null,
   onClick: undefined,
 };
 
-HeaderPrincipal.propTypes = {
+Header.propTypes = {
   iconProfile: PropTypes.node,
   iconSearch: PropTypes.node,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
-export default HeaderPrincipal;
+export default Header;
