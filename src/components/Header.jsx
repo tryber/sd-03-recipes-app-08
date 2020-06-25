@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styles/Header.css';
 
-const Header = ({
-  iconProfile, iconSearch, title, onClick,
-}) => (
+const Header = ({ iconProfile, iconSearch, title, onClick }) => (
   <header className="recipes-header">
     {iconProfile && (
       <Link to="/perfil" data-testid="profile-top-btn">
@@ -20,13 +18,14 @@ const Header = ({
       {title}
     </h1>
     {iconSearch && (
-      <button type="button" onClick={onClick} data-testid="search-top-btn">
-        <img
-          src={iconSearch}
-          alt="ícone da barra de busca"
-          className="search-link"
-        />
-      </button>
+      <input
+        type="image"
+        src={iconSearch}
+        alt="ícone da barra de busca"
+        className="search-link"
+        onClick={onClick}
+        data-testid="search-top-btn"
+      />
     )}
   </header>
 );
