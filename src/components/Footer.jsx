@@ -3,28 +3,29 @@ import { Link } from 'react-router-dom';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
+import '../styles/Footer.css';
 
 const Footer = () => (
-  <footer data-testid="footer">
-    <Link to="/bebidas">
+  <footer data-testid="footer" className="recipes-footer">
+    <Link to="/bebidas" data-testid="drinks-bottom-btn">
       <img
         src={drinkIcon}
         alt="link para lista de bebidas"
-        data-testid="drinks-bottom-btn"
+        className="drinks-icon"
       />
     </Link>
-    <Link to="/explorar">
-      <img
-        src={exploreIcon}
-        alt="link para página de exploração"
-        data-testid="explore-bottom-btn"
-      />
+    <Link
+      to="/explorar"
+      data-testid="explore-bottom-btn"
+      className="explore-icon"
+    >
+      <img src={exploreIcon} alt="link para página de exploração" />
     </Link>
-    <Link to="/comidas">
+    <Link to="/comidas" data-testid="food-bottom-btn">
       <img
         src={mealIcon}
         alt="link para lista de comidas"
-        data-testid="food-bottom-btn"
+        className="food-icon"
       />
     </Link>
   </footer>
