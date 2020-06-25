@@ -1,11 +1,11 @@
 import React from 'react';
 import { cleanup } from '@testing-library/react';
 import renderWithRouter from './helper';
-import Header from '../components/headers/Header';
+import Header from '../components/Header';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 
-describe('Testes do componente header da paǵina principal de comida e bebidas', () => {
+describe('Testes do componente header do aplicativo', () => {
   beforeEach(cleanup);
 
   test('Na tela principal de comida/bebida o header possui os ícones de profile e search ', () => {
