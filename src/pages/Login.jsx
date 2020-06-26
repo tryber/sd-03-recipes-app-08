@@ -49,17 +49,17 @@ class Login extends React.Component {
     );
   }
 
-  clickToStartGame() {
+  clickToEnter() {
     const { email } = this.state;
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('email', JSON.stringify({ email: [email] }));
+    localStorage.setItem('user', JSON.stringify({ email }));
   }
 
   isDisabled() {
     const { password, email } = this.state;
     const emailTest = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[A-Za-z]+$/;
-    if (password.length > 7 && email.match(emailTest)) return false;
+    if (password.length > 6 && email.match(emailTest)) return false;
     return true;
   }
 
@@ -70,7 +70,7 @@ class Login extends React.Component {
           type="button"
           className="button-enter"
           data-testid="login-submit-btn"
-          onClick={() => this.clickToStartGame()}
+          onClick={() => this.clickToEnter()}
           disabled={this.isDisabled()}
         >
           Entrar
