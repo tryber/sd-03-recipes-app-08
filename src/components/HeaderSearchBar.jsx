@@ -17,12 +17,10 @@ const HeaderSearchBar = () => (
         data-testid="ingredient-search-radio"
       />
       Ingrediente
-      <span className="checkmark" />
     </label>
     <label htmlFor="name" className="name-search-label">
       <input type="radio" id="name" data-testid="name-search-radio" />
       Nome
-      <span className="checkmark" />
     </label>
     <label htmlFor="first-letter" className="first-letter-search-label">
       <input
@@ -31,7 +29,6 @@ const HeaderSearchBar = () => (
         data-testid="first-letter-search-radio"
       />
       Primeira letra
-      <span className="checkmark" />
     </label>
     <button
       type="button"
