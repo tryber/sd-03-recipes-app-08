@@ -12,16 +12,13 @@ class Login extends React.Component {
     };
   }
 
-  componentDidMount() {
-    if (memoryEmail) this.setState({ email: memoryEmail });
-  }
-
   handleChange(e) {
     this.setState({ [e.target.id]: e.target.value });
   }
 
   emailInput() {
     const { email } = this.state;
+    if (memoryEmail) this.setState({ email: memoryEmail });
     return (
       <div>
         <input
