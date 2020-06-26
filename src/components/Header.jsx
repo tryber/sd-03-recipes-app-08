@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styles/Header.css';
 
-const Header = ({ iconProfile, iconSearch, title, onClick }) => (
+const Header = ({
+  iconProfile, iconSearch, title, onClick,
+}) => (
   <header className="recipes-header">
     {iconProfile && (
       <Link to="/perfil" data-testid="profile-top-btn">
@@ -33,12 +35,13 @@ Header.defaultProps = {
   iconProfile: null,
   iconSearch: null,
   onClick: undefined,
+  title: '',
 };
 
 Header.propTypes = {
   iconProfile: PropTypes.node,
   iconSearch: PropTypes.node,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   onClick: PropTypes.func,
 };
 

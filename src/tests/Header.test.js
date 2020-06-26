@@ -19,7 +19,7 @@ describe('Testes do componente header do aplicativo', () => {
     const requiredsearchIcon = queryByTestId('search-top-btn');
 
     expect(requiredLinks.length).toBe(1);
-    expect(requiredIcons.length).toBe(2);
+    expect(requiredIcons.length).toBe(1);
     expect(requiredButtons.length).toBe(1);
     expect(requiredprofileIcon).toBeInTheDocument();
     expect(requiredsearchIcon).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('Testes do componente header do aplicativo', () => {
     const requiredsearchIcon = queryByTestId('search-top-btn');
 
     expect(requiredLinks.length).toBe(1);
-    expect(requiredIcons.length).toBe(2);
+    expect(requiredIcons.length).toBe(1);
     expect(requiredButtons.length).toBe(1);
     expect(requiredTitle).toBeInTheDocument();
     expect(requiredTitleTestId).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe('Testes do componente header do aplicativo', () => {
     const requiredsearchIcon = queryByTestId('search-top-btn');
 
     expect(requiredLinks.length).toBe(1);
-    expect(requiredIcons.length).toBe(2);
+    expect(requiredIcons.length).toBe(1);
     expect(requiredButtons.length).toBe(1);
     expect(requiredTitle).toBeInTheDocument();
     const requiredTitleTestId = queryByTestId('page-title');
