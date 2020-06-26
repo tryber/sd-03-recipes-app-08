@@ -8,7 +8,7 @@
 }
 
 .search-container {
-  background: #fff;
+  background: white;
   box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
   height: 105px;
   position: absolute;
@@ -52,7 +52,7 @@
   bottom: 36.54%;
   color: black;
   display: flex;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 100;
