@@ -31,7 +31,7 @@ const Header = ({ iconProfile, iconSearch, title }) => {
           data-testid="search-top-btn"
         />
       )}
-      {show && <HeaderSearchBar />}
+      <div>{show && <HeaderSearchBar />}</div>
     </header>
   );
 };
