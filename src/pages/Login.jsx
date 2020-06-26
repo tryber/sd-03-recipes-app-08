@@ -51,9 +51,9 @@ class Login extends React.Component {
 
   clickToStartGame() {
     const { email } = this.state;
-    localStorage.setItem('mealsToken', JSON.stringify(1));
-    localStorage.setItem('cocktailsToken', JSON.stringify(1));
-    localStorage.setItem('email', JSON.stringify(email));
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('email', JSON.stringify({ email: [email] }));
   }
 
   isDisabled() {
