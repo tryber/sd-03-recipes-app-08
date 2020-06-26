@@ -14,12 +14,12 @@ const Footer = () => (
         className="drinks-icon"
       />
     </Link>
-    <Link
-      to="/explorar"
-      data-testid="explore-bottom-btn"
-      className="explore-icon"
-    >
-      <img src={exploreIcon} alt="link para página de exploração" />
+    <Link to="/explorar" data-testid="explore-bottom-btn">
+      <img
+        src={exploreIcon}
+        alt="link para página de exploração"
+        className="explore-icon"
+      />
     </Link>
     <Link to="/comidas" data-testid="food-bottom-btn">
       <img
