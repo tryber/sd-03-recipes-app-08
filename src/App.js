@@ -10,9 +10,9 @@ function App() {
     <div id="meals">
       <Router>
         <Switch>
-          <Route to="/">{Login}</Route>
-          <Route to="/comidas">{MainFoodPagePV}</Route>
-          <Route to="/bebidas">{}</Route>
+          <Route exact path to="/" component={Login} />
+          <Route path to="/comidas" component={MainFoodPagePV} />
+          {/* <Route to="/bebidas">{}</Route>
           <Route to="/comidas/:id">{}</Route>
           <Route to="/bebidas/:id">{}</Route>
           <Route to="/comidas/:id/in-progress">{}</Route>
@@ -26,7 +26,7 @@ function App() {
           <Route to="/perfil">{}</Route>
           <Route to="/receitas-feitas">{}</Route>
           <Route to="/receitas-favoritas">{}</Route>
-          <Route to="*">{}</Route>
+          <Route to="*">{}</Route> */}
         </Switch>
       </Router>
     </div>
