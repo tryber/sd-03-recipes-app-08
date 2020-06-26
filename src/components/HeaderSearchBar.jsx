@@ -5,28 +5,25 @@ const HeaderSearchBar = () => {
     <div>
       <input
         type="text"
-        name=""
-        id=""
+        id="search-input"
         placeholder="Buscar Receita"
         data-testid="search-input"
       />
       <label htmlFor="ingredient">
         <input
           type="radio"
-          name=""
           id="ingredient"
           data-testid="ingredient-search-radio"
         />
         Ingrediente
       </label>
       <label htmlFor="name">
-        <input type="radio" name="" id="name" data-testid="name-search-radio" />
+        <input type="radio" id="name" data-testid="name-search-radio" />
         Nome
       </label>
       <label htmlFor="first-letter">
         <input
           type="radio"
-          name=""
           id="first-letter"
           data-testid="first-letter-search-radio"
         />
