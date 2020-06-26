@@ -1,14 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import Login from './pages/Login';
+import MainFoodPagePV from './pages/MainFoodPagePV';
+
 
 function App() {
   return (
     <div id="meals">
       <Router>
         <Switch>
-          <Route to="/">{}</Route>
-          <Route to="/comidas">{}</Route>
+          <Route to="/">{Login}</Route>
+          <Route to="/comidas">{MainFoodPagePV}</Route>
           <Route to="/bebidas">{}</Route>
           <Route to="/comidas/:id">{}</Route>
           <Route to="/bebidas/:id">{}</Route>
