@@ -8,9 +8,11 @@ function App() {
     <div id="meals" className="meals">
       <Router>
         <Switch>
-          <Route to="/">{}</Route>
+          <Route to="/">
+            <DrinksGrid />
+          </Route>
           <Route to="/comidas">{}</Route>
-          <Route to="/bebidas">{DrinksGrid}</Route>
+          <Route to="/bebidas">{}</Route>
           <Route to="/comidas/:id">{}</Route>
           <Route to="/bebidas/:id">{}</Route>
           <Route to="/comidas/:id/in-progress">{}</Route>
