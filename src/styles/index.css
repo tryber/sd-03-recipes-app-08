@@ -1,8 +1,5 @@
 body {
-  font-family: BlinkMacSystemFont, Cantarell, Droid Sans, Fira Sans,
-    Helvetica Neue, Oxygen, Roboto, Segoe UI, Ubuntu, sans-serif, -apple-system;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
 }
 
