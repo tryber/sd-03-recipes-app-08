@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
   const [cocktailsToken, setCocktailsToken] = useState(1);
+  const [searchFilters, setSearchFilters] = useState({ value: '', filter: '' });
 
   const context = {
     mealsToken,
     cocktailsToken,
     setMealsToken,
     setCocktailsToken,
+    searchFilters,
+    setSearchFilters,
   };
 
   return (
