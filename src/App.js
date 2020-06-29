@@ -4,7 +4,7 @@ import './styles/App.css';
 
 function App() {
   return (
-    <div id="meals">
+    <div id="meals" className="meals">
       <Router>
         <Switch>
           <Route to="/">{}</Route>
