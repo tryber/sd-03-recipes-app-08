@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import DrinksGrid from './pages/DrinksGrid';
+import DrinksPrincipalPage from './pages/DrinksPrincipalPage';
 import './styles/App.css';
 
 function App() {
@@ -8,11 +8,11 @@ function App() {
     <div id="meals" className="meals">
       <Router>
         <Switch>
-          <Route to="/">
-            <DrinksGrid />
-          </Route>
+          <Route to="/">{}</Route>
           <Route to="/comidas">{}</Route>
-          <Route to="/bebidas">{}</Route>
+          <Route to="/bebidas">
+            <DrinksPrincipalPage />
+          </Route>
           <Route to="/comidas/:id">{}</Route>
           <Route to="/bebidas/:id">{}</Route>
           <Route to="/comidas/:id/in-progress">{}</Route>
