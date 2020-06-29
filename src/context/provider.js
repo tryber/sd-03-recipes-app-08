@@ -10,9 +10,10 @@ const RecipeAppProvider = ({ children }) => {
   const [searchFilters, setSearchFilters] = useState({ value: '', filter: '' });
   const [drinksData, setDrinksData] = useState([]);
   const [error, setError] = useState('');
+  const [categoriesError, setCategoriesError] = useState('');
+  const [categories, setCategories] = useState([]);
 
   const fetchDrinks = () => {
-    setLoading(true);
     requestFunctions.getDrinkList().then(
       (response) => {
         setDrinksData(response.drinks);
@@ -20,6 +21,19 @@ const RecipeAppProvider = ({ children }) => {
       },
       (response) => {
         setError(response.message);
+        setLoading(false);
+      },
+    );
+  };
+
+  const fetchDrinksCategories = () => {
+    requestFunctions.getDrinksCategoriesList().then(
+      (response) => {
+        setCategories(response.drinks);
+        setLoading(false);
+      },
+      (response) => {
+        setCategoriesError(response.message);
         setLoading(false);
       },
     );
@@ -39,6 +53,11 @@ const RecipeAppProvider = ({ children }) => {
     searchFilters,
     setSearchFilters,
     fetchDrinks,
+    categories,
+    setCategories,
+    categoriesError,
+    setCategoriesError,
+    fetchDrinksCategories,
   };
 
   return (

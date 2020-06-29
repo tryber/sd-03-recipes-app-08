@@ -5,10 +5,12 @@ import Footer from '../components/Footer';
 import DrinksCard from '../components/DrinkCard';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import CategoriesButtonsGrid from '../components/CategoriesButtonsGrid';
 
 const maximumDrinkGrid = (data) => data.slice(0, 12);
+const maximumCategoriesGrid = (data) => data.slice(0, 5);
 
-function DrinksGrid() {
+const DrinksGrid = () => {
   const {
     drinksData,
     setDrinksData,
@@ -17,14 +19,23 @@ function DrinksGrid() {
     loading,
     setLoading,
     fetchDrinks,
+    categories,
+    setCategories,
+    categoriesError,
+    setCategoriesError,
+    fetchDrinksCategories,
   } = useContext(RecipeAppContext);
 
   useEffect(() => {
+    setLoading(true);
+    fetchDrinksCategories();
     fetchDrinks();
     return () => {
       setLoading(false);
+      setCategories([]);
       setDrinksData([]);
       setError('');
+      setCategoriesError('');
     };
   }, []);
   return (
@@ -38,6 +49,11 @@ function DrinksGrid() {
             iconSearch={searchIcon}
             title="Bebidas"
           />
+          {!loading && categoriesError ? (
+            <h4>{categoriesError}</h4>
+          ) : (
+            <CategoriesButtonsGrid data={maximumCategoriesGrid(categories)} />
+          )}
           {maximumDrinkGrid(drinksData).map(
             ({ idDrink, strDrink, strDrinkThumb }, index) => (
               <DrinksCard
@@ -53,6 +69,6 @@ function DrinksGrid() {
       )}
     </main>
   );
-}
+};
 
 export default DrinksGrid;
