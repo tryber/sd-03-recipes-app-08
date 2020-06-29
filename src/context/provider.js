@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import RecipeAppContext from './context';
 
 const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
@@ -16,9 +17,9 @@ const RecipeAppProvider = ({ children }) => {
   };
 
   return (
-    <RecipeAppProvider.Provider value={context}>
+    <RecipeAppContext.Provider value={context}>
       {children}
-    </RecipeAppProvider.Provider>
+    </RecipeAppContext.Provider>
   );
 };
 

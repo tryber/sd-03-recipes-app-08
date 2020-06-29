@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { recipeAppContext } from '../context';
+import { RecipeAppContext } from '../context';
 import '../styles/HeaderSearchBar.css';
 
 const HeaderSearchBar = () => {
-  const { setSearchFilters } = useContext(recipeAppContext);
+  const { setSearchFilters } = useContext(RecipeAppContext);
   const [filters, setFilters] = useState({ value: '', filter: '' });
   return (
     <div className="search-container">
@@ -13,6 +13,7 @@ const HeaderSearchBar = () => {
         placeholder="Buscar Receita"
         data-testid="search-input"
         className="search-input"
+        value={filters.value}
         onChange={(event) => setFilters({ ...filters, value: event.target.value })}
       />
       <label htmlFor="ingredient" className="ingredient-search-label">
@@ -54,8 +55,8 @@ const HeaderSearchBar = () => {
         data-testid="exec-search-btn"
         className="search-button"
         onClick={
-          (() => setSearchFilters({ ...filters }),
-          setFilters({ value: '', filter: '' }))
+          () => ((setSearchFilters({ ...filters }),
+          setFilters({ value: '', filter: '' })))
         }
       >
         Buscar

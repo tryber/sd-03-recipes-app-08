@@ -1,5 +1,6 @@
 import React from 'react';
 import { cleanup, fireEvent } from '@testing-library/react';
+import { RecipeAppProvider as Provider } from '../context';
 import renderWithRouter from './helper';
 import Header from '../components/Header';
 import profileIcon from '../images/profileIcon.svg';
@@ -10,11 +11,13 @@ describe('Testes do componente header do aplicativo', () => {
 
   test('Na tela principal de comida/bebida o header possui os ícones de profile e search, é possível abrir a barra de busca clicando no ícone de search', () => {
     const { queryAllByRole, queryByTestId } = renderWithRouter(
-      <Header
-        iconProfile={profileIcon}
-        iconSearch={searchIcon}
-        title="Comidas"
-      />,
+      <Provider>
+        <Header
+          iconProfile={profileIcon}
+          iconSearch={searchIcon}
+          title="Comidas"
+        />
+      </Provider>,
     );
     const requiredLinks = queryAllByRole('link');
     const requiredIcons = queryAllByRole('img');
@@ -49,11 +52,13 @@ describe('Testes do componente header do aplicativo', () => {
 
   test('Na tela principal de comida, o header possui o título `Comidas` e os ícones/links de profile e search', () => {
     const { getByText, queryAllByRole, queryByTestId } = renderWithRouter(
-      <Header
-        iconProfile={profileIcon}
-        iconSearch={searchIcon}
-        title="Comidas"
-      />,
+      <Provider>
+        <Header
+          iconProfile={profileIcon}
+          iconSearch={searchIcon}
+          title="Comidas"
+        />
+      </Provider>,
     );
     const requiredLinks = queryAllByRole('link');
     const requiredIcons = queryAllByRole('img');
@@ -74,11 +79,13 @@ describe('Testes do componente header do aplicativo', () => {
 
   test('Na tela principal de bebida, o header possui o título `Bebidas` e os ícones/links de profile e search', () => {
     const { getByText, queryAllByRole, queryByTestId } = renderWithRouter(
-      <Header
-        iconProfile={profileIcon}
-        iconSearch={searchIcon}
-        title="Bebidas"
-      />,
+      <Provider>
+        <Header
+          iconProfile={profileIcon}
+          iconSearch={searchIcon}
+          title="Bebidas"
+        />
+      </Provider>,
     );
     const requiredLinks = queryAllByRole('link');
     const requiredIcons = queryAllByRole('img');
@@ -99,7 +106,12 @@ describe('Testes do componente header do aplicativo', () => {
 
   test('Na tela de explorar comidas/bebidas, receitas feitas, receitas favoritas, perfil o header possui o título da tela do aplicativo e apenas o ícone de profile', () => {
     const { queryAllByRole, queryByTestId } = renderWithRouter(
-      <Header iconProfile={profileIcon} title="Explorar Comidas" />,
+      <Provider>
+        <Header
+          iconProfile={profileIcon}
+          title="Comidas"
+        />
+      </Provider>,
     );
     const requiredLinks = queryAllByRole('link');
     const requiredIcons = queryAllByRole('img');
