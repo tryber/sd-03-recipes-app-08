@@ -10,6 +10,39 @@ import CategoriesButtonsGrid from '../components/CategoriesButtonsGrid';
 const maximumDrinkGrid = (data) => data.slice(0, 12);
 const maximumCategoriesGrid = (data) => data.slice(0, 5);
 
+const renderDrinksInfoContainer = (
+  loading,
+  error,
+  categoriesError,
+  categories,
+  drinksData,
+) => !loading
+  && !error && (
+    <div>
+      <Header
+        iconProfile={profileIcon}
+        iconSearch={searchIcon}
+        title="Bebidas"
+      />
+      {!loading && categoriesError ? (
+        <h4>{categoriesError}</h4>
+      ) : (
+        <CategoriesButtonsGrid data={maximumCategoriesGrid(categories)} />
+      )}
+      {maximumDrinkGrid(drinksData).map(
+        ({ idDrink, strDrink, strDrinkThumb }, index) => (
+          <DrinksCard
+            key={idDrink}
+            thumbnail={strDrinkThumb}
+            name={strDrink}
+            index={index}
+          />
+        ),
+      )}
+      <Footer />
+    </div>
+);
+
 const DrinksGrid = () => {
   const {
     drinksData,
@@ -42,30 +75,12 @@ const DrinksGrid = () => {
     <main>
       {loading && <h1>Loading...</h1>}
       {!loading && error && <h4>{error}</h4>}
-      {!loading && !error && (
-        <div>
-          <Header
-            iconProfile={profileIcon}
-            iconSearch={searchIcon}
-            title="Bebidas"
-          />
-          {!loading && categoriesError ? (
-            <h4>{categoriesError}</h4>
-          ) : (
-            <CategoriesButtonsGrid data={maximumCategoriesGrid(categories)} />
-          )}
-          {maximumDrinkGrid(drinksData).map(
-            ({ idDrink, strDrink, strDrinkThumb }, index) => (
-              <DrinksCard
-                key={idDrink}
-                thumbnail={strDrinkThumb}
-                name={strDrink}
-                index={index}
-              />
-            ),
-          )}
-          <Footer />
-        </div>
+      {renderDrinksInfoContainer(
+        loading,
+        error,
+        categoriesError,
+        categories,
+        drinksData,
       )}
     </main>
   );
