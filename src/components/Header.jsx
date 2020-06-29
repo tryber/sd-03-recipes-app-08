@@ -10,11 +10,12 @@ const Header = ({ iconProfile, iconSearch, title }) => {
   return (
     <header className="recipes-header">
       {iconProfile && (
-        <Link to="/perfil" data-testid="profile-top-btn">
+        <Link to="/perfil">
           <img
             src={iconProfile}
             alt="ícone de link para perfil do usuário"
             className="profile-link"
+            data-testid="profile-top-btn"
           />
         </Link>
       )}
