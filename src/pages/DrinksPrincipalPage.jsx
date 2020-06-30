@@ -11,16 +11,22 @@ import '../styles/DrinksPrincipalPage.css';
 const maximumDrinkGrid = (data) => data.slice(0, 12);
 const maximumCategoriesGrid = (data) => data.slice(0, 5);
 
+const toogleCategories = (callback, string, value) => {
+  return string === 'All' ? callback(value) : callback('All');
+};
+
 const renderDrinksInfoContainer = (
   loading,
   error,
   categoriesError,
   categories,
   drinksData,
+  categoriesFilter,
   setCategoriesFilter,
   setSearchFilters,
-) => !loading
-  && !error && (
+) =>
+  !loading &&
+  !error && (
     <div className="recipes-page">
       <header className="recipes-header">
         <Header
@@ -37,10 +43,10 @@ const renderDrinksInfoContainer = (
         <div className="filter-buttons-container">
           <CategoriesButtonsGrid
             data={maximumCategoriesGrid(categories)}
-            onClick={
-              ((event) => ((setCategoriesFilter(event.target.value),
-              setSearchFilters({ value: '', filter: '' }))))
-            }
+            onClick={(event) => ((
+              toogleCategories(setCategoriesFilter, categoriesFilter, event.target.value),
+              setSearchFilters({ value: '', filter: '' })
+            ))}
           />
         </div>
       )}
@@ -60,7 +66,7 @@ const renderDrinksInfoContainer = (
         <Footer />
       </footer>
     </div>
-);
+  );
 
 const DrinksGrid = () => {
   const {
@@ -104,6 +110,7 @@ const DrinksGrid = () => {
         categoriesError,
         categories,
         drinksData,
+        categoriesFilter,
         setCategoriesFilter,
         setSearchFilters,
       )}
