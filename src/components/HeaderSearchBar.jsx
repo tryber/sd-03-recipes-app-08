@@ -12,7 +12,10 @@ const renderSearchInput = (callback, object) => (
     value={object.value}
     disabled={object.filter === ''}
     onChange={(event) => {
-      if (event.target.value.length === 1) {
+      if (object.filter !== 'first-letter') {
+        return callback({ ...object, value: event.target.value });
+      }
+      if (event.target.value.length === 1 && object.filter === 'first-letter') {
         return callback({ ...object, value: event.target.value });
       }
       return alert('Sua busca deve conter somente 1 (um) caracter');
@@ -66,7 +69,7 @@ const renderSearchButton = (callback1, callback2, object) => (
     className="search-button"
     disabled={object.value === '' || object.filter === ''}
     onClick={() => (
-      (callback1({ ...object }), callback2({ value: '', filter: '' }))
+      callback1({ ...object }), callback2({ value: '', filter: '' })
     )}
   >
     Buscar
