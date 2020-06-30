@@ -59,6 +59,6 @@ describe('Login component test', () => {
     const passwordImput = getByTestId('password-input');
     fireEvent.change(passwordImput, { target: { value: 'biggerThenSIX' } });
     const enterButton = getByTestId('login-submit-btn');
-    expect(enterButton.disabled).toBe(true);
+    expect(enterButton.disabled).not.toBe(true);
   });
 });

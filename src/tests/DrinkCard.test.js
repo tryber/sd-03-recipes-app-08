@@ -7,11 +7,12 @@ describe('Testes do componente DrinkCard', () => {
   beforeEach(cleanup);
 
   test('Card de bebida exibe a imagem e o nome da bebida em elementos que possuem os ids de teste corretos', () => {
-    const { queryByTestId, queryAllByRole, container } = renderWithRouter(
+    const { queryByTestId, queryAllByRole } = renderWithRouter(
       <DrinkCard
         thumbnail="https://www.thecocktaildb.com/images/media/drink/fs6kiq1513708455.jpg"
         name="Martinez 2"
         index={0}
+        id="17256"
       />,
     );
     const drinkCard = queryByTestId('0-recipe-card');
