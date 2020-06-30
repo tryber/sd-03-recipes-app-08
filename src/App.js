@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import MainFoodPagePV from './pages/MainFoodPagePV';
 import './styles/App.css';
 
 function App() {
@@ -7,9 +9,9 @@ function App() {
     <div id="meals" className="meals">
       <Router>
         <Switch>
-          <Route to="/">{}</Route>
-          <Route to="/comidas">{}</Route>
-          <Route to="/bebidas">{}</Route>
+          <Route exact path to="/" component={Login} />
+          <Route path to="/comidas" component={MainFoodPagePV} />
+          {/* <Route to="/bebidas">{}</Route>
           <Route to="/comidas/:id">{}</Route>
           <Route to="/bebidas/:id">{}</Route>
           <Route to="/comidas/:id/in-progress">{}</Route>
@@ -23,7 +25,7 @@ function App() {
           <Route to="/perfil">{}</Route>
           <Route to="/receitas-feitas">{}</Route>
           <Route to="/receitas-favoritas">{}</Route>
-          <Route to="*">{}</Route>
+          <Route to="*">{}</Route> */}
         </Switch>
       </Router>
     </div>
