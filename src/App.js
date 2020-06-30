@@ -10,23 +10,23 @@ function App() {
     <div id="meals" className="meals">
       <Router>
         <Switch>
-          <Route exact path to="/" component={Login} />
-          <Route path to="/comidas" component={ComidasPrincipalPage} />
-          <Route to="/bebidas" component={DrinksPrincipalPage} />
-          <Route to="/comidas/:id">{}</Route>
-          <Route to="/bebidas/:id">{}</Route>
-          <Route to="/comidas/:id/in-progress">{}</Route>
-          <Route to="/bebidas/:id/in-progress">{}</Route>
-          <Route to="/explorar">{}</Route>
-          <Route to="/explorar/comidas">{}</Route>
-          <Route to="/explorar/bebidas">{}</Route>
-          <Route to="/explorar/comidas/ingredientes">{}</Route>
-          <Route to="/explorar/bebidas/ingredientes">{}</Route>
-          <Route to="/explorar/comidas/area">{}</Route>
-          <Route to="/perfil">{}</Route>
-          <Route to="/receitas-feitas">{}</Route>
-          <Route to="/receitas-favoritas">{}</Route>
-          <Route to="*">{}</Route>
+          <Route exact path="/" component={Login} />
+          <Route path="/comidas" component={ComidasPrincipalPage} />
+          <Route path="/bebidas" component={DrinksPrincipalPage} />
+          <Route path="/comidas/:id">{}</Route>
+          <Route path="/bebidas/:id">{}</Route>
+          <Route path="/comidas/:id/in-progress">{}</Route>
+          <Route path="/bebidas/:id/in-progress">{}</Route>
+          <Route path="/explorar">{}</Route>
+          <Route path="/explorar/comidas">{}</Route>
+          <Route path="/explorar/bebidas">{}</Route>
+          <Route path="/explorar/comidas/ingredientes">{}</Route>
+          <Route path="/explorar/bebidas/ingredientes">{}</Route>
+          <Route path="/explorar/comidas/area">{}</Route>
+          <Route path="/perfil">{}</Route>
+          <Route path="/receitas-feitas">{}</Route>
+          <Route path="/receitas-favoritas">{}</Route>
+          <Route path="*">{}</Route>
         </Switch>
       </Router>
     </div>

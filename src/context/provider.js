@@ -85,6 +85,7 @@ const RecipeAppProvider = ({ children }) => {
     error,
     errorFood,
     setError,
+    setErrorFood,
     loading,
     loadingFood,
     setLoading,
