@@ -7,7 +7,6 @@ import {
 } from './meals&drinksAPI';
 
 export default function requestDrinksData(categoriesFilter, searchFilters) {
-  if (categoriesFilter === 'All' && searchFilters === { value: '', filter: '' }) return getDrinkList();
   if (categoriesFilter !== 'All') return getDrinkByCategorie(categoriesFilter);
   if (searchFilters.filter === 'ingredient') return getDrinkByIngredient(searchFilters.value);
   if (searchFilters.filter === 'name') return getDrinkByName(searchFilters.value);
