@@ -6,6 +6,7 @@ import DrinksCard from '../components/DrinkCard';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import CategoriesButtonsGrid from '../components/CategoriesButtonsGrid';
+import '../styles/DrinksPrincipalPage.css';
 
 const maximumDrinkGrid = (data) => data.slice(0, 12);
 const maximumCategoriesGrid = (data) => data.slice(0, 5);
@@ -19,17 +20,21 @@ const renderDrinksInfoContainer = (
 ) => !loading
   && !error && (
     <div className="recipes-page">
-      <Header
-        iconProfile={profileIcon}
-        iconSearch={searchIcon}
-        title="Bebidas"
-      />
+      <header className="recipes-header">
+        <Header
+          iconProfile={profileIcon}
+          iconSearch={searchIcon}
+          title="Bebidas"
+        />
+      </header>
       {!loading && categoriesError ? (
-        <div>
+        <div className="error-container">
           <h4>{categoriesError}</h4>
         </div>
       ) : (
-        <CategoriesButtonsGrid data={maximumCategoriesGrid(categories)} />
+        <div className="filter-buttons-container">
+          <CategoriesButtonsGrid data={maximumCategoriesGrid(categories)} />
+        </div>
       )}
       <div className="recipes-card-grid">
         {maximumDrinkGrid(drinksData).map(
@@ -43,7 +48,9 @@ const renderDrinksInfoContainer = (
           ),
         )}
       </div>
-      <Footer />
+      <footer className="recipes-footer">
+        <Footer />
+      </footer>
     </div>
 );
 
@@ -78,7 +85,7 @@ const DrinksGrid = () => {
   return (
     <main>
       {loading && <h1>Loading...</h1>}
-      {!loading && error && <h4>{error}</h4>}
+      {!loading && error && <h4 className="error-container">{error}</h4>}
       {renderDrinksInfoContainer(
         loading,
         error,

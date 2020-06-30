@@ -6,6 +6,7 @@
   margin-top: 65px;
   position: absolute;
   width: 360px;
+  z-index: 1;
 }
 
 .search-input {

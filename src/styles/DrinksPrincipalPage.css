@@ -1,4 +1,33 @@
 .recipes-page {
   align-items: center;
+  width: 360px;
+  height: 640px;
+}
+
+.filter-buttons-container {
+  border: 2px solid black;
+  margin-top: 60px;
+  max-width: 360px;
+  position: absolute;
   display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+}
+
+.recipes-card-grid {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 125px 6px;
+  max-height: 300px;
+  max-width: 360px;
+  overflow-y: scroll;
+  position: absolute;
+}
+
+.recipes-footer {
+  position: ;
+  top: 582px;
 }
