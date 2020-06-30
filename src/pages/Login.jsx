@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../css/Login.css';
 
 const memoryEmail = JSON.parse(localStorage.getItem('email'));
 
@@ -28,6 +29,7 @@ class Login extends React.Component {
           onChange={(e) => this.handleChange(e)}
           value={email}
           placeholder={(memoryEmail) ? email : 'email'}
+          className="email-input"
         />
       </div>
     );
@@ -44,6 +46,7 @@ class Login extends React.Component {
           onChange={(e) => this.handleChange(e)}
           value={password}
           placeholder="senha"
+          className="password-input"
         />
       </div>
     );
@@ -68,7 +71,7 @@ class Login extends React.Component {
       <Link to="/comidas">
         <button
           type="button"
-          className="button-enter"
+          className="login-submit-btn"
           data-testid="login-submit-btn"
           onClick={() => this.clickToEnter()}
           disabled={this.isDisabled()}
@@ -82,7 +85,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h1>Login</h1>
+        <h1 className="Login">Login</h1>
         {this.emailInput()}
         {this.passwordInput()}
         {this.enterButton()}
