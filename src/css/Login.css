@@ -1,12 +1,10 @@
 .email-input {
-  background: #FFFFFF;
-  border: 1px solid #000000;
+  background: white;
+  border: 1px solid black;
   box-sizing: border-box;
-  color: #000000;  
-  font-family: Roboto;
+  color: black;  
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 29px;
-  font-style: normal;
-  font-weight: normal;
   height: 58px;
   left: 31px;
   line-height: 34px;
@@ -18,50 +16,44 @@
 
 .Login {
   align-items: flex-end;
-  color: #000000;
+  color: black;
   display: flex;
-  top: 79px;
-  font-family: Roboto;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 39px;
-  font-style: normal;
-  font-weight: normal;
   height: 46px;
-  line-height: 46px;
   left: 128px;
+  line-height: 46px;
   position: absolute;
+  top: 79px;
   width: 97px;
 }
 
-.login-submit-btn{
-  background: #6CE34F;
-  color: #000000;
-  font-family: Roboto;
+.login-submit-btn {
+  background: #6ce34f;
+  color: black;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 29px;
-  font-style: normal;
-  font-weight: normal;
   height: 76px;
-  line-height: 34px;
   left: 11px;
+  line-height: 34px;
+  position: absolute;
   text-align: center;
   top: 389px;
-  position: absolute;
   width: 339px;
 }
 
 .password-input {
-  background: #FFFFFF;
-  border: 1px solid #000000;
+  background: white;
+  border: 1px solid black;
   box-sizing: border-box;
-  color: #000000;
-  font-family: Roboto;
+  color: black;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 29px;
-  font-style: normal;
-  font-weight: normal;
   height: 58px;
-  line-height: 34px;
   left: 30px;
+  line-height: 34px;
+  position: absolute;
   text-align: center;
   top: 243px;
-  position: absolute;
   width: 293px;
 }

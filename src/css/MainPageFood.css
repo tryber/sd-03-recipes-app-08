@@ -1,10 +1,8 @@
 .All-category-filter {
-  background: #C4C4C4;
-  color: #000000;
-  font-family: Roboto;
+  background: #c4c4c4;
+  color: black;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
   height: 28px;
   left: 17px;
   line-height: 21px;
@@ -14,12 +12,10 @@
 }
 
 .Beef-category-filter {
-  background: #C4C4C4;
-  color: #000000;
-  font-family: Roboto;
+  background: #c4c4c4;
+  color: black;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
   height: 28px;
   left: 130px;
   line-height: 21px;
@@ -29,11 +25,9 @@
 }
 
 .Breakfast-category-filter {
-  background: #C4C4C4;
-  font-family: Roboto;
+  background: #c4c4c4;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
   height: 28px;
   line-height: 21px;
   left: 130px;
@@ -48,25 +42,21 @@
   width: 161px;
 }
 
-.card-name{
+.card-name {
   align-items: flex-end;
-  color: #000000;
+  color: black;
   display: flex;
-  font-family: Roboto;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
   line-height: 21px;
 }
 
 .Chicken-category-filter {
-  background: #C4C4C4;
-  color: #000000;
+  background: #c4c4c4;
+  color: black;
   height: 28px;
-  font-family: Roboto;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
   line-height: 21px;
   left: 17px;
   position: absolute;
@@ -75,11 +65,9 @@
 }
 
 .Dessert-category-filter {
-  background: #C4C4C4;
-  font-family: Roboto;
+  background: #c4c4c4;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
   height: 28px;
   line-height: 21px;
   left: 245px;
@@ -96,22 +84,20 @@
 }
 
 .Lamb-category-filter {
-  background: #C4C4C4;
-  color: #000000;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
+  background: #c4c4c4;
+  color: black;
+  font-family: Roboto, 'Lucida Sans Regular';
   font-size: 18px;
   height: 28px;
   line-height: 21px;
   left: 245px;
   position: absolute;
-  top: 75px;  
+  top: 75px;
   width: 105px;
 }
 
 .recipe-card{
-  background: #FFFFFF;
+  background: white;
   border-radius: 6px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   height: 172px;
