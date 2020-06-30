@@ -1,7 +1,7 @@
 .All-category-filter {
   background: #c4c4c4;
   color: black;
-  font-family: Roboto, 'Lucida Sans Regular';
+  font-family: "Roboto";
   font-size: 18px;
   height: 28px;
   left: 17px;
@@ -14,7 +14,7 @@
 .Beef-category-filter {
   background: #c4c4c4;
   color: black;
-  font-family: Roboto, 'Lucida Sans Regular';
+  font-family: "Roboto";
   font-size: 18px;
   height: 28px;
   left: 130px;
@@ -26,7 +26,7 @@
 
 .Breakfast-category-filter {
   background: #c4c4c4;
-  font-family: Roboto, 'Lucida Sans Regular';
+  font-family: "Roboto";
   font-size: 18px;
   height: 28px;
   line-height: 21px;
@@ -46,7 +46,7 @@
   align-items: flex-end;
   color: black;
   display: flex;
-  font-family: Roboto, 'Lucida Sans Regular';
+  font-family: "Roboto";
   font-size: 18px;
   line-height: 21px;
 }
@@ -55,7 +55,7 @@
   background: #c4c4c4;
   color: black;
   height: 28px;
-  font-family: Roboto, 'Lucida Sans Regular';
+  font-family: "Roboto";
   font-size: 18px;
   line-height: 21px;
   left: 17px;
@@ -66,7 +66,7 @@
 
 .Dessert-category-filter {
   background: #c4c4c4;
-  font-family: Roboto, 'Lucida Sans Regular';
+  font-family: "Roboto";
   font-size: 18px;
   height: 28px;
   line-height: 21px;
@@ -86,7 +86,7 @@
 .Lamb-category-filter {
   background: #c4c4c4;
   color: black;
-  font-family: Roboto, 'Lucida Sans Regular';
+  font-family: "Roboto";
   font-size: 18px;
   height: 28px;
   line-height: 21px;
