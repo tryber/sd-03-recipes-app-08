@@ -1,67 +1,67 @@
 .email-input {
-  position: absolute;
-  width: 293px;
-  height: 58px;
-  left: 31px;
-  top: 155px;
   background: #FFFFFF;
   border: 1px solid #000000;
   box-sizing: border-box;
+  color: #000000;  
   font-family: Roboto;
+  font-size: 29px;
   font-style: normal;
   font-weight: normal;
-  font-size: 29px;
+  height: 58px;
+  left: 31px;
   line-height: 34px;
+  position: absolute;
   text-align: center;
-  color: #000000;  
+  top: 155px;
+  width: 293px;
 }
 
 .Login {
-  position: absolute;
-  width: 97px;
-  height: 46px;
-  left: 128px;
-  top: 79px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 39px;
-  line-height: 46px;
-  display: flex;
   align-items: flex-end;
   color: #000000;
+  display: flex;
+  top: 79px;
+  font-family: Roboto;
+  font-size: 39px;
+  font-style: normal;
+  font-weight: normal;
+  height: 46px;
+  line-height: 46px;
+  left: 128px;
+  position: absolute;
+  width: 97px;
 }
 
 .login-submit-btn{
-  position: absolute;
-  width: 339px;
-  height: 76px;
-  left: 11px;
-  top: 389px;
   background: #6CE34F;
+  color: #000000;
   font-family: Roboto;
+  font-size: 29px;
   font-style: normal;
   font-weight: normal;
-  font-size: 29px;
+  height: 76px;
   line-height: 34px;
+  left: 11px;
   text-align: center;
-  color: #000000;
+  top: 389px;
+  position: absolute;
+  width: 339px;
 }
 
 .password-input {
-  position: absolute;
-  width: 293px;
-  height: 58px;
-  left: 30px;
-  top: 243px;
   background: #FFFFFF;
   border: 1px solid #000000;
   box-sizing: border-box;
+  color: #000000;
   font-family: Roboto;
+  font-size: 29px;
   font-style: normal;
   font-weight: normal;
-  font-size: 29px;
+  height: 58px;
   line-height: 34px;
+  left: 30px;
   text-align: center;
-  color: #000000;
+  top: 243px;
+  position: absolute;
+  width: 293px;
 }
