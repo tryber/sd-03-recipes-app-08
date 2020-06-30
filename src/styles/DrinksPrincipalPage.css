@@ -17,7 +17,6 @@
 .recipes-card-grid {
   align-items: center;
   display: flex;
-  flex-direction: row;
   flex-flow: row wrap;
   justify-content: center;
   margin: 125px 1px;
