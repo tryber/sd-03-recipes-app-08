@@ -1,7 +1,6 @@
 const initialFoodsURL = 'https://www.themealdb.com/api/json/v1/1/search.php?';
 
-const initialDrinksURL =
-  'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
+const initialDrinksURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?';
 
 export const getFoodList = async () => {
   const initialPageFoods = `${initialFoodsURL}s=`;
