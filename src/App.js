@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
 import Login from './pages/Login';
 import MainFoodPagePV from './pages/MainFoodPagePV';
-
+import './styles/App.css';
 
 function App() {
   return (
-    <div id="meals">
+    <div id="meals" className="meals">
       <Router>
         <Switch>
           <Route exact path to="/" component={Login} />
