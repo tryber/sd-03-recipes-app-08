@@ -18,27 +18,31 @@ const renderDrinksInfoContainer = (
   drinksData,
 ) => !loading
   && !error && (
-    <div>
+    <div className="recipes-page">
       <Header
         iconProfile={profileIcon}
         iconSearch={searchIcon}
         title="Bebidas"
       />
       {!loading && categoriesError ? (
-        <h4>{categoriesError}</h4>
+        <div>
+          <h4>{categoriesError}</h4>
+        </div>
       ) : (
         <CategoriesButtonsGrid data={maximumCategoriesGrid(categories)} />
       )}
-      {maximumDrinkGrid(drinksData).map(
-        ({ idDrink, strDrink, strDrinkThumb }, index) => (
-          <DrinksCard
-            key={idDrink}
-            thumbnail={strDrinkThumb}
-            name={strDrink}
-            index={index}
-          />
-        ),
-      )}
+      <div className="recipes-card-grid">
+        {maximumDrinkGrid(drinksData).map(
+          ({ idDrink, strDrink, strDrinkThumb }, index) => (
+            <DrinksCard
+              key={idDrink}
+              thumbnail={strDrinkThumb}
+              name={strDrink}
+              index={index}
+            />
+          ),
+        )}
+      </div>
       <Footer />
     </div>
 );
