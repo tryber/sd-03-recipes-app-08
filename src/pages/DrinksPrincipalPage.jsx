@@ -19,9 +19,8 @@ const renderDrinksInfoContainer = (
   drinksData,
   setCategoriesFilter,
   setSearchFilters,
-) =>
-  !loading &&
-  !error && (
+) => !loading
+  && !error && (
     <div className="recipes-page">
       <header className="recipes-header">
         <Header
@@ -61,7 +60,7 @@ const renderDrinksInfoContainer = (
         <Footer />
       </footer>
     </div>
-  );
+);
 
 const DrinksGrid = () => {
   const {

@@ -55,7 +55,6 @@ export const getDrinkByCategorie = async (categorie) => {
   const data = await (response.ok
     ? Promise.resolve(json)
     : Promise.reject(json));
-  console.log(json);
   return data;
 };
 
