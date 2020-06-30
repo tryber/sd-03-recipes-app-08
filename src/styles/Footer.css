@@ -1,31 +1,37 @@
-.recipes-footer {
+.footer {
+  align-items: center;
   background: #c4c4c4;
+  display: flex;
   height: 58px;
+  justify-content: space-around;
   position: absolute;
   top: 582px;
   width: 360px;
 }
 
-.drinks-icon {
+.drinks-bottom-btn {
+  background: url(cocktail.png);
   height: 40px;
   left: 16px;
   position: absolute;
-  top: 5px;
+  top: 591px;
   width: 40px;
 }
 
-.explore-icon {
+.explore-bottom-btn {
+  background: url(internet-explorer.png);
   height: 40px;
   left: 160px;
   position: absolute;
-  top: 5px;
+  top: 593px;
   width: 40px;
 }
 
-.food-icon {
+.food-bottom-btn {
+  background: url(fork.png);
   height: 40px;
   left: 302px;
   position: absolute;
-  top: 5px;
+  top: 593px;
   width: 40px;
 }
