@@ -11,7 +11,7 @@ import '../styles/DrinksPrincipalPage.css';
 const maximumDrinkGrid = (data) => data.slice(0, 12);
 const maximumCategoriesGrid = (data) => data.slice(0, 5);
 
-const toogleCategories = (callback, string, value) => (string === 'All' ? callback(value) : callback('All'));
+const toogleCategories = (callback, string, value) => (string !== 'All' && string === value ? callback('All') : callback(value));
 
 const renderDrinksInfoContainer = (
   loading,
@@ -41,7 +41,11 @@ const renderDrinksInfoContainer = (
           <CategoriesButtonsGrid
             data={maximumCategoriesGrid(categories)}
             onClick={(event) => ((
-              toogleCategories(setCategoriesFilter, categoriesFilter, event.target.value),
+              toogleCategories(
+                setCategoriesFilter,
+                categoriesFilter,
+                event.target.value,
+              ),
               setSearchFilters({ value: '', filter: '' })
             ))}
           />
@@ -55,6 +59,7 @@ const renderDrinksInfoContainer = (
               thumbnail={strDrinkThumb}
               name={strDrink}
               index={index}
+              id={idDrink}
             />
           ),
         )}
@@ -64,7 +69,11 @@ const renderDrinksInfoContainer = (
       </footer>
     </div>
 );
-
+const fetchHandlerContainer = (loading, error) => {
+  if (loading) return <h1>Loading...</h1>;
+  if (!loading && error && <h4 className="data-error-container">{error}</h4>);
+  return null;
+};
 const DrinksGrid = () => {
   const {
     drinksData,
@@ -99,8 +108,7 @@ const DrinksGrid = () => {
   }, [searchFilters, categoriesFilter]);
   return (
     <main>
-      {loading && <h1>Loading...</h1>}
-      {!loading && error && <h4 className="data-error-container">{error}</h4>}
+      {fetchHandlerContainer(loading, error)}
       {renderDrinksInfoContainer(
         loading,
         error,
