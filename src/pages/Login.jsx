@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../css/Login.css';
+import '../styles/Login.css';
 
 const memoryEmail = JSON.parse(localStorage.getItem('email'));
 
