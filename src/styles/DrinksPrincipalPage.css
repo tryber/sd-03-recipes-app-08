@@ -1,26 +1,26 @@
 .recipes-page {
   align-items: center;
-  width: 360px;
   height: 640px;
+  width: 360px;
 }
 
 .filter-buttons-container {
   border: 2px solid black;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
   margin-top: 60px;
   max-width: 360px;
   position: absolute;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-evenly;
 }
 
 .recipes-card-grid {
   align-items: center;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   justify-content: center;
-  margin: 125px 6px;
+  margin: 125px 1px;
   max-height: 300px;
   max-width: 360px;
   overflow-y: scroll;
@@ -28,6 +28,5 @@
 }
 
 .recipes-footer {
-  position: ;
   top: 582px;
 }
