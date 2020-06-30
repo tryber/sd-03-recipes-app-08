@@ -66,7 +66,7 @@ const renderSearchButton = (callback1, callback2, object) => (
     className="search-button"
     disabled={object.value === '' || object.filter === ''}
     onClick={() => (
-      callback1({ ...object }), callback2({ value: '', filter: '' })
+      (callback1({ ...object }), callback2({ value: '', filter: '' }))
     )}
   >
     Buscar
