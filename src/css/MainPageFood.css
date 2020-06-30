@@ -1,0 +1,98 @@
+.All-category-filter {
+  background: #c4c4c4;
+  color: black;
+  font-size: 18px;
+  height: 28px;
+  left: 17px;
+  line-height: 21px;
+  position: absolute;
+  top: 75px;
+  width: 105px;
+}
+
+.Beef-category-filter {
+  background: #c4c4c4;
+  color: black;
+  font-size: 18px;
+  height: 28px;
+  left: 130px;
+  line-height: 21px;
+  position: absolute;
+  top: 75px;
+  width: 105px;
+}
+
+.Breakfast-category-filter {
+  background: #c4c4c4;
+  font-size: 18px;
+  height: 28px;
+  left: 130px;
+  line-height: 21px;
+  position: absolute;
+  top: 114px;
+  width: 105px;
+}
+
+.card-img {
+  border-radius: 6px 6px 0 0;
+  height: 109px;
+  width: 161px;
+}
+
+.card-name {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.Chicken-category-filter {
+  background: #c4c4c4;
+  color: black;
+  font-size: 18px;
+  height: 28px;
+  left: 17px;
+  line-height: 21px;
+  position: absolute;
+  top: 114px;
+  width: 105px;
+}
+
+.Dessert-category-filter {
+  background: #c4c4c4;
+  font-size: 18px;
+  height: 28px;
+  left: 245px;
+  line-height: 21px;
+  position: absolute;
+  top: 114px;
+  width: 105px;
+}
+
+.Display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 6px 2px 6px 12px;
+}
+
+.Lamb-category-filter {
+  background: #c4c4c4;
+  color: black;
+  font-size: 18px;
+  height: 28px;
+  left: 245px;
+  line-height: 21px;
+  position: absolute;
+  top: 75px;
+  width: 105px;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 172px;
+  width: 161px;
+}
