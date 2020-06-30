@@ -6,10 +6,15 @@ import {
   getDrinkByFirstLetter,
 } from './meals&drinksAPI';
 
+const conditionalsearchFilters = (object) => {
+  if (object.filter === 'ingredient') return getDrinkByIngredient(object.value);
+  if (object.filter === 'name') return getDrinkByName(object.value);
+  if (object.filter === 'first-letter') return getDrinkByFirstLetter(object.value);
+  return getDrinkList();
+};
+
 export default function requestDrinksData(categoriesFilter, searchFilters) {
   if (categoriesFilter !== 'All') return getDrinkByCategorie(categoriesFilter);
-  if (searchFilters.filter === 'ingredient') return getDrinkByIngredient(searchFilters.value);
-  if (searchFilters.filter === 'name') return getDrinkByName(searchFilters.value);
-  if (searchFilters.filter === 'first-letter') return getDrinkByFirstLetter(searchFilters.value);
-  return getDrinkList();
+  if (categoriesFilter === 'All' && searchFilters === { value: '', filter: '' }) return getDrinkList();
+  return conditionalsearchFilters(searchFilters);
 }
