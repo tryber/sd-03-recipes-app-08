@@ -58,6 +58,7 @@ const renderSearchButton = (callback1, callback2, object) => (
     type="button"
     data-testid="exec-search-btn"
     className="search-button"
+    disabled={object.value === '' || object.filter === ''}
     onClick={() => (
       (callback1({ ...object }), callback2({ value: '', filter: '' }))
     )}

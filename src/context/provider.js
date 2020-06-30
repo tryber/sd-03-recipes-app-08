@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeAppContext from './context';
-import * as requestFunctions from '../services/meals&drinksAPI';
+import { getDrinksCategoriesList } from '../services/meals&drinksAPI';
+import requestDrinksData from '../services/requestData';
 
 const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
@@ -15,7 +16,7 @@ const RecipeAppProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
 
   const fetchDrinksData = () => {
-    requestFunctions.getDrinkList().then(
+    requestDrinksData(categoriesFilter, searchFilters).then(
       (response) => {
         setDrinksData(response.drinks);
         setLoading(false);
@@ -28,7 +29,7 @@ const RecipeAppProvider = ({ children }) => {
   };
 
   const fetchDrinksCategories = () => {
-    requestFunctions.getDrinksCategoriesList().then(
+    getDrinksCategoriesList().then(
       (response) => {
         setCategories(response.drinks);
         setLoading(false);

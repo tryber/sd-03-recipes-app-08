@@ -18,8 +18,10 @@ const renderDrinksInfoContainer = (
   categories,
   drinksData,
   setCategoriesFilter,
-) => !loading
-  && !error && (
+  setSearchFilters,
+) =>
+  !loading &&
+  !error && (
     <div className="recipes-page">
       <header className="recipes-header">
         <Header
@@ -36,7 +38,10 @@ const renderDrinksInfoContainer = (
         <div className="filter-buttons-container">
           <CategoriesButtonsGrid
             data={maximumCategoriesGrid(categories)}
-            onClick={(event) => setCategoriesFilter(event.target.value)}
+            onClick={
+              ((event) => ((setCategoriesFilter(event.target.value),
+              setSearchFilters({ value: '', filter: '' }))))
+            }
           />
         </div>
       )}
@@ -56,7 +61,7 @@ const renderDrinksInfoContainer = (
         <Footer />
       </footer>
     </div>
-);
+  );
 
 const DrinksGrid = () => {
   const {
@@ -72,7 +77,10 @@ const DrinksGrid = () => {
     categoriesError,
     setCategoriesError,
     fetchDrinksCategories,
+    searchFilters,
+    categoriesFilter,
     setCategoriesFilter,
+    setSearchFilters,
   } = useContext(RecipeAppContext);
 
   useEffect(() => {
@@ -86,11 +94,11 @@ const DrinksGrid = () => {
       setError('');
       setCategoriesError('');
     };
-  }, []);
+  }, [searchFilters, categoriesFilter]);
   return (
     <main>
       {loading && <h1>Loading...</h1>}
-      {!loading && error && <h4 className="error-container">{error}</h4>}
+      {!loading && error && <h4 className="data-error-container">{error}</h4>}
       {renderDrinksInfoContainer(
         loading,
         error,
@@ -98,6 +106,7 @@ const DrinksGrid = () => {
         categories,
         drinksData,
         setCategoriesFilter,
+        setSearchFilters,
       )}
     </main>
   );
