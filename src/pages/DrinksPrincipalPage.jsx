@@ -11,9 +11,7 @@ import '../styles/DrinksPrincipalPage.css';
 const maximumDrinkGrid = (data) => data.slice(0, 12);
 const maximumCategoriesGrid = (data) => data.slice(0, 5);
 
-const toogleCategories = (callback, string, value) => {
-  return string === 'All' ? callback(value) : callback('All');
-};
+const toogleCategories = (callback, string, value) => (string === 'All' ? callback(value) : callback('All'));
 
 const renderDrinksInfoContainer = (
   loading,
@@ -24,9 +22,8 @@ const renderDrinksInfoContainer = (
   categoriesFilter,
   setCategoriesFilter,
   setSearchFilters,
-) =>
-  !loading &&
-  !error && (
+) => !loading
+  && !error && (
     <div className="recipes-page">
       <header className="recipes-header">
         <Header
@@ -66,7 +63,7 @@ const renderDrinksInfoContainer = (
         <Footer />
       </footer>
     </div>
-  );
+);
 
 const DrinksGrid = () => {
   const {
