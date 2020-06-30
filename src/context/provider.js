@@ -8,6 +8,7 @@ const RecipeAppProvider = ({ children }) => {
   const [cocktailsToken, setCocktailsToken] = useState(1);
   const [loading, setLoading] = useState(false);
   const [searchFilters, setSearchFilters] = useState({ value: '', filter: '' });
+  const [categoriesFilter, setCategoriesFilter] = useState('All');
   const [drinksData, setDrinksData] = useState([]);
   const [error, setError] = useState('');
   const [categoriesError, setCategoriesError] = useState('');
@@ -58,6 +59,8 @@ const RecipeAppProvider = ({ children }) => {
     categoriesError,
     setCategoriesError,
     fetchDrinksCategories,
+    categoriesFilter,
+    setCategoriesFilter,
   };
 
   return (

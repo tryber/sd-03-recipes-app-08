@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 
 const CategoriesButtonsGrid = ({ data, onClick }) => (
   <div>
-    <button type="button" onClick={onClick} data-testid="All-category-filter">
+    <button
+      type="button"
+      onClick={onClick}
+      data-testid="All-category-filter"
+      value="All"
+    >
       All
     </button>
     {data.map((element) => (
@@ -12,6 +17,7 @@ const CategoriesButtonsGrid = ({ data, onClick }) => (
         type="button"
         onClick={onClick}
         data-testid={`${element.strCategory}-category-filter`}
+        value={element.strCategory}
       >
         {element.strCategory}
       </button>
