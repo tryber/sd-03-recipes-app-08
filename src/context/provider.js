@@ -14,7 +14,7 @@ const RecipeAppProvider = ({ children }) => {
   const [categoriesError, setCategoriesError] = useState('');
   const [categories, setCategories] = useState([]);
 
-  const fetchDrinks = () => {
+  const fetchDrinksData = () => {
     requestFunctions.getDrinkList().then(
       (response) => {
         setDrinksData(response.drinks);
@@ -53,7 +53,7 @@ const RecipeAppProvider = ({ children }) => {
     setLoading,
     searchFilters,
     setSearchFilters,
-    fetchDrinks,
+    fetchDrinksData,
     categories,
     setCategories,
     categoriesError,

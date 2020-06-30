@@ -66,7 +66,7 @@ const DrinksGrid = () => {
     setError,
     loading,
     setLoading,
-    fetchDrinks,
+    fetchDrinksData,
     categories,
     setCategories,
     categoriesError,
@@ -78,7 +78,7 @@ const DrinksGrid = () => {
   useEffect(() => {
     setLoading(true);
     fetchDrinksCategories();
-    fetchDrinks();
+    fetchDrinksData();
     return () => {
       setLoading(false);
       setCategories([]);
