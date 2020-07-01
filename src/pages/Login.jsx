@@ -4,48 +4,63 @@ import '../styles/Login.css';
 
 const memoryEmail = JSON.parse(localStorage.getItem('email'));
 
+const emailInput = (userInfo, setUserInfo, handleChange) => {
+  const { email } = userInfo;
+  if (memoryEmail && email !== memoryEmail) {
+    return setUserInfo({ ...userInfo, email: memoryEmail });
+  }
+  return (
+    <div>
+      <input
+        type="email"
+        data-testid="email-input"
+        id="email"
+        onChange={(event) => handleChange(event, setUserInfo, userInfo)}
+        value={email}
+        placeholder={memoryEmail ? email : 'email'}
+        className="email-input"
+      />
+    </div>
+  );
+};
+
+const passwordInput = (userInfo, handleChange) => {
+  const { password } = userInfo;
+  return (
+    <div>
+      <input
+        type="password"
+        data-testid="password-input"
+        id="password"
+        onChange={(e) => handleChange(e)}
+        value={password}
+        placeholder="senha"
+        className="password-input"
+      />
+    </div>
+  );
+};
+
+const enterButton = (userInfo, clickToEnter, isDisabled) => (
+  <Link to="/comidas">
+    <button
+      type="button"
+      className="login-submit-btn"
+      data-testid="login-submit-btn"
+      onClick={() => clickToEnter(userInfo)}
+      disabled={isDisabled(userInfo)}
+    >
+      Entrar
+    </button>
+  </Link>
+);
+
 function Login() {
   const [userInfo, setUserInfo] = useState({ email: '', password: '' });
 
-  const handleChange = (e) => {
-    setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
-  };
-
-  const emailInput = () => {
-    const { email } = userInfo;
-    if (memoryEmail && email !== memoryEmail) {
-      return setUserInfo({ ...userInfo, email: memoryEmail });
-    }
-    return (
-      <div>
-        <input
-          type="email"
-          data-testid="email-input"
-          id="email"
-          onChange={(e) => handleChange(e)}
-          value={email}
-          placeholder={memoryEmail ? email : 'email'}
-          className="email-input"
-        />
-      </div>
-    );
-  };
-
-  const passwordInput = () => {
-    const { password } = userInfo;
-    return (
-      <div>
-        <input
-          type="password"
-          data-testid="password-input"
-          id="password"
-          onChange={(e) => handleChange(e)}
-          value={password}
-          placeholder="senha"
-          className="password-input"
-        />
-      </div>
-    );
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setUserInfo({ ...userInfo, [id]: value });
   };
 
   const clickToEnter = () => {
@@ -62,26 +77,12 @@ function Login() {
     return true;
   };
 
-  const enterButton = () => (
-    <Link to="/comidas">
-      <button
-        type="button"
-        className="login-submit-btn"
-        data-testid="login-submit-btn"
-        onClick={() => clickToEnter()}
-        disabled={isDisabled()}
-      >
-        Entrar
-      </button>
-    </Link>
-  );
-
   return (
     <div>
       <h1 className="Login">Login</h1>
-      {emailInput()}
-      {passwordInput()}
-      {enterButton()}
+      {emailInput(userInfo, setUserInfo, handleChange)}
+      {passwordInput(userInfo, handleChange)}
+      {enterButton(userInfo, clickToEnter, isDisabled)}
     </div>
   );
 }
