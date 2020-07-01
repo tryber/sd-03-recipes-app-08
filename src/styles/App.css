@@ -1,16 +1,15 @@
 .meals {
   align-items: center;
-  background: #C4C4C4;
+  background: #c4c4c4;
   color: #464646;
   display: flex;
   flex-direction: column;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
   height: 58px;
   left: 0;
   position: absolute;
   top: 0;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   width: 360px;
-  -moz-osx-font-smoothing: grayscale;
 }
