@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { RecipeAppContext } from '../context';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
 import RecipesContainer from '../components/RecipesContainer';
+import {
+  maximumRecipeGrid,
+  maximumCategoriesGrid,
+  toogleCategories,
+} from '../helpers/dataHandlers';
 import '../styles/DrinksPrincipalPage.css';
 
-const maximumFoodGrid = (data) => data.slice(0, 12);
-const maximumCategoriesGrid = (data) => data.slice(0, 5);
-const toogleCategories = (callback, string, value) => (string !== 'All' && string === value ? callback('All') : callback(value));
-
-const FoodsGrid = () => {
+const MealsGrid = () => {
   const {
     mealsData: {
       data: foodsData,
@@ -40,10 +41,12 @@ const FoodsGrid = () => {
           setSearchFilters({ value: '', filter: '' })
         ))}
         maximumCategoriesGrid={maximumCategoriesGrid}
-        maximumDrinkGrid={maximumFoodGrid}
+        maximumRecipeGrid={maximumRecipeGrid}
+        path="comidas"
+        title="Comidas"
       />
     </main>
   );
 };
 
-export default FoodsGrid;
+export default MealsGrid;

@@ -16,7 +16,9 @@ function RecipesContainer({
   data,
   onClick,
   maximumCategoriesGrid,
-  maximumDrinkGrid,
+  maximumRecipeGrid,
+  path,
+  title,
 }) {
   return (
     !loading
@@ -26,7 +28,7 @@ function RecipesContainer({
           <Header
             iconProfile={profileIcon}
             iconSearch={searchIcon}
-            title="Bebidas"
+            title={title}
           />
         </header>
         {!loading && categoriesError ? (
@@ -42,7 +44,7 @@ function RecipesContainer({
           </div>
         )}
         <div className="recipes-card-grid">
-          {maximumDrinkGrid(data).map(
+          {maximumRecipeGrid(data).map(
             (
               {
                 idDrink,
@@ -60,6 +62,7 @@ function RecipesContainer({
                 name={strDrink || strMeal}
                 index={index}
                 id={idDrink || idMeal}
+                path={path}
               />
             ),
           )}
@@ -73,21 +76,23 @@ function RecipesContainer({
 }
 
 RecipesContainer.defaultProps = {
-  error: '',
-  categoriesError: '',
   categories: [],
+  categoriesError: '',
   data: [],
+  error: '',
 };
 
 RecipesContainer.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  categoriesError: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.object),
+  categoriesError: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.object),
-  onClick: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
   maximumCategoriesGrid: PropTypes.func.isRequired,
-  maximumDrinkGrid: PropTypes.func.isRequired,
+  maximumRecipeGrid: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default RecipesContainer;

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DrinksPrincipalPage from './pages/DrinksPrincipalPage';
 import Login from './pages/Login';
-import ComidasPrincipalPage from './pages/ComidasPrincipalPage';
+import MealsPrincipalPage from './pages/MealsPrincipalPage';
 import './styles/App.css';
 
 function App() {
@@ -11,9 +11,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route path="/comidas" component={ComidasPrincipalPage} />
+          <Route path="/comidas" component={MealsPrincipalPage} />
           <Route path="/bebidas" component={DrinksPrincipalPage} />
-          <Route path="/comidas/:id">{}</Route>
+          <Route path="/comidas/:id">
+            {}
+          </Route>
           <Route path="/bebidas/:id">{}</Route>
           <Route path="/comidas/:id/in-progress">{}</Route>
           <Route path="/bebidas/:id/in-progress">{}</Route>

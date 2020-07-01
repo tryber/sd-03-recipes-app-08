@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { RecipeAppContext } from '../context';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
 import RecipesContainer from '../components/RecipesContainer';
+import {
+  maximumRecipeGrid,
+  maximumCategoriesGrid,
+  toogleCategories,
+} from '../helpers/dataHandlers';
 import '../styles/DrinksPrincipalPage.css';
-
-const maximumDrinkGrid = (data) => data.slice(0, 12);
-const maximumCategoriesGrid = (data) => data.slice(0, 5);
-const toogleCategories = (callback, string, value) => (string !== 'All' && string === value ? callback('All') : callback(value));
 
 const DrinksGrid = () => {
   const {
@@ -31,16 +32,18 @@ const DrinksGrid = () => {
         categories={categories}
         categoriesError={categoriesError}
         data={drinksData}
-        onClick={((event) => ((
+        onClick={(event) => ((
           toogleCategories(
             setCategoriesFilter,
             categoriesFilter,
             event.target.value,
           ),
           setSearchFilters({ value: '', filter: '' })
-        )))}
+        ))}
         maximumCategoriesGrid={maximumCategoriesGrid}
-        maximumDrinkGrid={maximumDrinkGrid}
+        maximumRecipeGrid={maximumRecipeGrid}
+        path="bebidas"
+        title="Bebidas"
       />
     </main>
   );

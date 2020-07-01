@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import '../styles/RecipeCard.css';
 
 const RecipeCard = ({
-  thumbnail, name, index, id,
+  thumbnail, name, index, id, path,
 }) => (
-  <Link to={`/bebidas/${id}`}>
+  <Link to={`/${path}/${id}`}>
     <div data-testid={`${index}-recipe-card`} className="recipe-card">
       <img
         src={thumbnail}
@@ -25,6 +25,7 @@ RecipeCard.propTypes = {
   id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
 };
 
