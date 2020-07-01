@@ -3,6 +3,7 @@ import { RecipeAppContext } from '../context';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FoodsCard from '../components/FoodCard';
+import FetchHandlerContainer from '../components/FetchHandlerContainer';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import CategoriesButtonsGrid from '../components/CategoriesButtonsGrid';
@@ -69,12 +70,6 @@ const renderFoodsInfoContainer = (
     </div>
 );
 
-const fetchHandlerContainer = (loading, error) => {
-  if (loading) return <h1>Loading...</h1>;
-  if (!loading && error && <h4 className="data-error-container">{error}</h4>);
-  return null;
-};
-
 const FoodsGrid = () => {
   const {
     foodsData,
@@ -109,7 +104,7 @@ const FoodsGrid = () => {
   }, [searchFilters, categoriesFilter]);
   return (
     <main>
-      {fetchHandlerContainer(loading, error)}
+      <FetchHandlerContainer loading={loading} error={error} />
       {renderFoodsInfoContainer(
         loading,
         error,
