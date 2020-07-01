@@ -8,12 +8,11 @@ const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
   const [cocktailsToken, setCocktailsToken] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [searchFilters, setSearchFilters] = useState({ value: '', filter: '' });
+  const [searchFilters, setSearchFilters] = useState({ filter: '', value: '' });
   const [categoriesFilter, setCategoriesFilter] = useState('All');
   const [drinksData, setDrinksData] = useState([]);
   const [foodsData, setFoodsData] = useState([]);
   const [error, setError] = useState('');
-  const [errorFood, setErrorFood] = useState('');
   const [categoriesError, setCategoriesError] = useState('');
   const [categories, setCategories] = useState([]);
 
@@ -37,7 +36,7 @@ const RecipeAppProvider = ({ children }) => {
         setLoading(false);
       },
       (response) => {
-        setErrorFood(response.message);
+        setError(response.message);
         setLoading(false);
       },
     );
@@ -78,9 +77,7 @@ const RecipeAppProvider = ({ children }) => {
     foodsData,
     setFoodsData,
     error,
-    errorFood,
     setError,
-    setErrorFood,
     loading,
     setLoading,
     searchFilters,

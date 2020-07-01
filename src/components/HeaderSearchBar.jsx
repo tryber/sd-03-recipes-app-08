@@ -68,9 +68,9 @@ const renderSearchButton = (callback1, callback2, object) => (
     data-testid="exec-search-btn"
     className="search-button"
     disabled={object.value === '' || object.filter === ''}
-    onClick={() => (
-      (callback1({ ...object }), callback2({ value: '', filter: '' }))
-    )}
+    onClick={() => ((
+      callback1({ ...object }), callback2({ value: '', filter: '' })
+    ))}
   >
     Buscar
   </button>
@@ -78,7 +78,7 @@ const renderSearchButton = (callback1, callback2, object) => (
 
 const HeaderSearchBar = () => {
   const { setSearchFilters } = useContext(RecipeAppContext);
-  const [filters, setFilters] = useState({ value: '', filter: '' });
+  const [filters, setFilters] = useState({ filter: '', value: '' });
   return (
     <section className="search-container">
       {renderSearchInput(setFilters, filters)}

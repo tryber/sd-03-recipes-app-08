@@ -61,7 +61,7 @@ class Login extends React.Component {
 
   isDisabled() {
     const { password, email } = this.state;
-    const emailTest = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[A-Za-z]+$/;
+    const emailTest = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     if (password.length > 6 && email.match(emailTest)) return false;
     return true;
   }
