@@ -9,6 +9,10 @@ import searchIcon from '../images/searchIcon.svg';
 describe('Testes do componente header do aplicativo', () => {
   beforeEach(cleanup);
 
+  const setFilters = (object, value) => ({ ...object, value });
+  const setSearchFilters = (object, value) => ({ ...object, value });
+  const filters = { filter: '', value: '' };
+
   test('Na tela principal de comida/bebida o header possui os ícones de profile e search, é possível abrir a barra de busca clicando no ícone de search', () => {
     const { queryAllByRole, queryByTestId } = renderWithRouter(
       <Provider>
@@ -16,6 +20,9 @@ describe('Testes do componente header do aplicativo', () => {
           iconProfile={profileIcon}
           iconSearch={searchIcon}
           title="Comidas"
+          searchFilters={setSearchFilters}
+          filters={filters}
+          setFilters={setFilters}
         />
       </Provider>,
     );
@@ -57,6 +64,9 @@ describe('Testes do componente header do aplicativo', () => {
           iconProfile={profileIcon}
           iconSearch={searchIcon}
           title="Comidas"
+          searchFilters={setSearchFilters}
+          filters={filters}
+          setFilters={setFilters}
         />
       </Provider>,
     );
@@ -84,6 +94,9 @@ describe('Testes do componente header do aplicativo', () => {
           iconProfile={profileIcon}
           iconSearch={searchIcon}
           title="Bebidas"
+          searchFilters={setSearchFilters}
+          filters={filters}
+          setFilters={setFilters}
         />
       </Provider>,
     );

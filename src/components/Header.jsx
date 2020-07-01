@@ -55,15 +55,18 @@ Header.defaultProps = {
   iconProfile: null,
   iconSearch: null,
   title: '',
+  searchFilters: undefined,
+  setFilters: undefined,
+  filters: undefined,
 };
 
 Header.propTypes = {
   iconProfile: PropTypes.node,
   iconSearch: PropTypes.node,
   title: PropTypes.string,
-  searchFilters: PropTypes.func.isRequired,
-  setFilters: PropTypes.func.isRequired,
-  filters: PropTypes.shape({ filter: '', value: '' }).isRequired,
+  searchFilters: PropTypes.func,
+  setFilters: PropTypes.func,
+  filters: PropTypes.shape({ filter: '', value: '' }),
 };
 
 export default Header;
