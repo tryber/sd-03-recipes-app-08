@@ -6,6 +6,7 @@ import {
   maximumRecipeGrid,
   maximumCategoriesGrid,
   toogleCategories,
+  noDataAlert,
 } from '../helpers/dataHandlers';
 import '../styles/DrinksPrincipalPage.css';
 
@@ -28,28 +29,32 @@ const DrinksGrid = () => {
   return (
     <main>
       <FetchHandlerContainer loading={loading} error={error} />
-      <RecipesContainer
-        loading={loading}
-        error={error}
-        categories={categories}
-        categoriesError={categoriesError}
-        data={data}
-        onClick={(event) => ((
-          toogleCategories(
-            setCategoriesFilter,
-            categoriesFilter,
-            event.target.value,
-          ),
-          setSearchFilters({ value: '', filter: '' })
-        ))}
-        maximumCategoriesGrid={maximumCategoriesGrid}
-        maximumRecipeGrid={maximumRecipeGrid}
-        path="bebidas"
-        title="Bebidas"
-        searchFilters={setSearchFilters}
-        filters={filters}
-        setFilters={setFilters}
-      />
+      {data !== null ? (
+        <RecipesContainer
+          loading={loading}
+          error={error}
+          categories={categories}
+          categoriesError={categoriesError}
+          data={data}
+          onClick={(event) => ((
+            toogleCategories(
+              setCategoriesFilter,
+              categoriesFilter,
+              event.target.value,
+            ),
+            setSearchFilters({ value: '', filter: '' })
+          ))}
+          maximumCategoriesGrid={maximumCategoriesGrid}
+          maximumRecipeGrid={maximumRecipeGrid}
+          path="bebidas"
+          title="Bebidas"
+          searchFilters={setSearchFilters}
+          filters={filters}
+          setFilters={setFilters}
+        />
+      ) : (
+        noDataAlert()
+      )}
     </main>
   );
 };

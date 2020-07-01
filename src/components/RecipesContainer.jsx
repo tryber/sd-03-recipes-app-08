@@ -25,7 +25,7 @@ function RecipesContainer({
 }) {
   return (
     !loading
-    && !error && (
+    && !error && data && (
       <div className="recipes-page">
         <header className="recipes-header">
           <Header
