@@ -9,7 +9,5 @@
   left: 0;
   position: absolute;
   top: 0;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   width: 360px;
 }
