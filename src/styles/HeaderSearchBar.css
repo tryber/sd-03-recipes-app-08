@@ -24,9 +24,13 @@
 }
 
 .search-button {
-  background: #c4c4c4;
+  align-items: center;
+  background-color: #c4c4c4;
   bottom: 5px;
-  left: 300px;
+  display: flex;
+  font-size: 16pt;
+  justify-content: space-around;
+  max-height: 65px;
   position: absolute;
 }
 

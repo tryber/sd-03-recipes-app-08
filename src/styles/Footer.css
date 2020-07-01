@@ -1,30 +1,42 @@
 .recipes-footer {
-  background: #c4c4c4;
+  align-items: center;
+  background-color: #c4c4c4;
+  bottom: 0;
+  display: flex;
   height: 58px;
+  justify-content: space-around;
+  left: 0px;
+  max-height: 60px;
+  padding: 10px;
   position: fixed;
+  top: 582px;
   width: 360px;
 }
 
 .drinks-icon {
+  background-color: #c4c4c4;
+  cursor: pointer;
   height: 40px;
   left: 16px;
   position: absolute;
-  top: 5px;
+  top: 591px;
   width: 40px;
 }
 
 .explore-icon {
+  background-color: #c4c4c4;
   height: 40px;
   left: 160px;
   position: absolute;
-  top: 5px;
+  top: 593px;
   width: 40px;
 }
 
 .food-icon {
+  background-color: #c4c4c4;
   height: 40px;
   left: 302px;
   position: absolute;
-  top: 5px;
+  top: 593px;
   width: 40px;
 }

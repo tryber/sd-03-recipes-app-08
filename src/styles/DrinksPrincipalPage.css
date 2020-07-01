@@ -20,8 +20,8 @@
   flex-flow: row wrap;
   justify-content: center;
   margin: 125px 1px;
-  max-height: 300px;
-  max-width: 360px;
+  max-height: 400px;
+  max-width: 460px;
   overflow-y: scroll;
   position: absolute;
 }

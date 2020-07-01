@@ -1,11 +1,20 @@
 .recipes-header {
+  align-items: center;
   background: #c4c4c4;
+  border: none;
+  display: flex;
   height: 58px;
+  justify-content: space-around;
+  left: 0px;
   position: absolute;
+  top: 0px;
   width: 360px;
 }
 
 .profile-link {
+  align-items: flex-start;
+  color: black;
+  display: flex;
   height: 30px;
   left: 15px;
   position: absolute;
@@ -14,6 +23,9 @@
 }
 
 .search-link {
+  align-items: flex-start;
+  color: black;
+  display: flex;
   height: 30px;
   left: 317px;
   position: absolute;
@@ -28,8 +40,8 @@
   font-family: Roboto, sans-serif;
   font-size: 30px;
   font-style: normal;
-  font-weight: 100;
-  height: 35px;
+  font-weight: normal;
+  height: 15px;
   left: 123px;
   line-height: 35px;
   position: absolute;
