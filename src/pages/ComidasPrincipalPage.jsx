@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { RecipeAppContext } from '../context';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -72,36 +72,18 @@ const renderFoodsInfoContainer = (
 
 const FoodsGrid = () => {
   const {
-    foodsData,
-    setFoodsData,
-    error,
-    setError,
-    loading,
-    setLoading,
-    fetchFoodsData,
-    categories,
-    setCategories,
-    categoriesError,
-    setCategoriesError,
-    fetchFoodsCategories,
-    searchFilters,
+    mealsData: {
+      data: foodsData,
+      categories,
+      categoriesError,
+      error,
+      loading,
+    },
     categoriesFilter,
     setCategoriesFilter,
     setSearchFilters,
   } = useContext(RecipeAppContext);
 
-  useEffect(() => {
-    setLoading(true);
-    fetchFoodsCategories();
-    fetchFoodsData();
-    return () => {
-      setLoading(false);
-      setCategories([]);
-      setFoodsData([]);
-      setError('');
-      setCategoriesError('');
-    };
-  }, [searchFilters, categoriesFilter]);
   return (
     <main>
       <FetchHandlerContainer loading={loading} error={error} />
