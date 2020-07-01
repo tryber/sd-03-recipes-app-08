@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeAppContext from './context';
-import { getDrinksCategoriesList } from '../services/meals&drinksAPI';
+import { getDrinksCategoriesList, getFoodsCategoriesList } from '../services/meals&drinksAPI';
 import { requestDrinksData, requestFoodsData } from '../services/requestData';
 
 const RecipeAppProvider = ({ children }) => {
@@ -11,7 +11,9 @@ const RecipeAppProvider = ({ children }) => {
   const [searchFilters, setSearchFilters] = useState({ value: '', filter: '' });
   const [categoriesFilter, setCategoriesFilter] = useState('All');
   const [drinksData, setDrinksData] = useState([]);
+  const [foodsData, setFoodsData] = useState([]);
   const [error, setError] = useState('');
+  const [errorFood, setErrorFood] = useState('');
   const [categoriesError, setCategoriesError] = useState('');
   const [categories, setCategories] = useState([]);
 
@@ -23,6 +25,19 @@ const RecipeAppProvider = ({ children }) => {
       },
       (response) => {
         setError(response.message);
+        setLoading(false);
+      },
+    );
+  };
+
+  const fetchFoodsData = () => {
+    requestFoodsData(categoriesFilter, searchFilters).then(
+      (response) => {
+        setFoodsData(response.meals);
+        setLoading(false);
+      },
+      (response) => {
+        setErrorFood(response.message);
         setLoading(false);
       },
     );
@@ -41,6 +56,18 @@ const RecipeAppProvider = ({ children }) => {
     );
   };
 
+  const fetchFoodsCategories = () => {
+    getFoodsCategoriesList().then(
+      (response) => {
+        setCategories(response.meals);
+        setLoading(false);
+      },
+      (response) => {
+        setCategoriesError(response.message);
+        setLoading(false);
+      },
+    );
+  };
   const context = {
     mealsToken,
     cocktailsToken,
@@ -48,18 +75,24 @@ const RecipeAppProvider = ({ children }) => {
     setCocktailsToken,
     drinksData,
     setDrinksData,
+    foodsData,
+    setFoodsData,
     error,
+    errorFood,
     setError,
+    setErrorFood,
     loading,
     setLoading,
     searchFilters,
     setSearchFilters,
     fetchDrinksData,
+    fetchFoodsData,
     categories,
     setCategories,
     categoriesError,
     setCategoriesError,
     fetchDrinksCategories,
+    fetchFoodsCategories,
     categoriesFilter,
     setCategoriesFilter,
   };

@@ -2,22 +2,22 @@ import React, { useEffect, useContext } from 'react';
 import { RecipeAppContext } from '../context';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import DrinksCard from '../components/DrinkCard';
+import FoodsCard from '../components/FoodCard';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import CategoriesButtonsGrid from '../components/CategoriesButtonsGrid';
 import '../styles/DrinksPrincipalPage.css';
 
-const maximumDrinkGrid = (data) => data.slice(0, 12);
+const maximumFoodGrid = (data) => data.slice(0, 12);
 const maximumCategoriesGrid = (data) => data.slice(0, 5);
 const toogleCategories = (callback, string, value) => (string !== 'All' && string === value ? callback('All') : callback(value));
 
-const renderDrinksInfoContainer = (
+const renderFoodsInfoContainer = (
   loading,
   error,
   categoriesError,
   categories,
-  drinksData,
+  foodsData,
   categoriesFilter,
   setCategoriesFilter,
   setSearchFilters,
@@ -28,7 +28,7 @@ const renderDrinksInfoContainer = (
         <Header
           iconProfile={profileIcon}
           iconSearch={searchIcon}
-          title="Bebidas"
+          title="Comidas"
         />
       </header>
       {!loading && categoriesError ? (
@@ -51,14 +51,14 @@ const renderDrinksInfoContainer = (
         </div>
       )}
       <div className="recipes-card-grid">
-        {maximumDrinkGrid(drinksData).map(
-          ({ idDrink, strDrink, strDrinkThumb }, index) => (
-            <DrinksCard
-              key={idDrink}
-              thumbnail={strDrinkThumb}
-              name={strDrink}
+        {maximumFoodGrid(foodsData).map(
+          ({ idMeal, strMeal, strMealThumb }, index) => (
+            <FoodsCard
+              key={idMeal}
+              thumbnail={strMealThumb}
+              name={strMeal}
               index={index}
-              id={idDrink}
+              id={idMeal}
             />
           ),
         )}
@@ -75,20 +75,20 @@ const fetchHandlerContainer = (loading, error) => {
   return null;
 };
 
-const DrinksGrid = () => {
+const FoodsGrid = () => {
   const {
-    drinksData,
-    setDrinksData,
+    foodsData,
+    setFoodsData,
     error,
     setError,
     loading,
     setLoading,
-    fetchDrinksData,
+    fetchFoodsData,
     categories,
     setCategories,
     categoriesError,
     setCategoriesError,
-    fetchDrinksCategories,
+    fetchFoodsCategories,
     searchFilters,
     categoriesFilter,
     setCategoriesFilter,
@@ -97,12 +97,12 @@ const DrinksGrid = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetchDrinksCategories();
-    fetchDrinksData();
+    fetchFoodsCategories();
+    fetchFoodsData();
     return () => {
       setLoading(false);
       setCategories([]);
-      setDrinksData([]);
+      setFoodsData([]);
       setError('');
       setCategoriesError('');
     };
@@ -110,12 +110,12 @@ const DrinksGrid = () => {
   return (
     <main>
       {fetchHandlerContainer(loading, error)}
-      {renderDrinksInfoContainer(
+      {renderFoodsInfoContainer(
         loading,
         error,
         categoriesError,
         categories,
-        drinksData,
+        foodsData,
         categoriesFilter,
         setCategoriesFilter,
         setSearchFilters,
@@ -124,4 +124,4 @@ const DrinksGrid = () => {
   );
 };
 
-export default DrinksGrid;
+export default FoodsGrid;

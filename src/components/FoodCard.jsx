@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import '../styles/DrinkCard.css';
 
-const DrinkCard = ({
-  thumbnail, name, index, id,
-}) => (
-  <Link to={`/bebidas/${id}`}>
+const FoodCard = ({ thumbnail, name, index, id }) => (
+  <Link to={`/comidas/${id}`}>
     <div data-testid={`${index}-recipe-card`} className="recipe-card">
       <img
         src={thumbnail}
@@ -21,11 +19,11 @@ const DrinkCard = ({
   </Link>
 );
 
-DrinkCard.propTypes = {
+FoodCard.propTypes = {
   id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   thumbnail: PropTypes.string.isRequired,
 };
 
-export default DrinkCard;
+export default FoodCard;
