@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import HeaderSearchBar from './HeaderSearchBar';
 import '../styles/Header.css';
 
-const Header = ({ iconProfile, iconSearch, title }) => {
+const Header = ({
+  iconProfile,
+  iconSearch,
+  title,
+  searchFilters,
+  filters,
+  setFilters,
+}) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -32,7 +39,15 @@ const Header = ({ iconProfile, iconSearch, title }) => {
           data-testid="search-top-btn"
         />
       )}
-      <div>{show && <HeaderSearchBar />}</div>
+      <div>
+        {show && (
+          <HeaderSearchBar
+            searchFilters={searchFilters}
+            filters={filters}
+            setFilters={setFilters}
+          />
+        )}
+      </div>
     </header>
   );
 };
@@ -40,12 +55,18 @@ Header.defaultProps = {
   iconProfile: null,
   iconSearch: null,
   title: '',
+  searchFilters: undefined,
+  setFilters: undefined,
+  filters: undefined,
 };
 
 Header.propTypes = {
   iconProfile: PropTypes.node,
   iconSearch: PropTypes.node,
   title: PropTypes.string,
+  searchFilters: PropTypes.func,
+  setFilters: PropTypes.func,
+  filters: PropTypes.shape({ filter: '', value: '' }),
 };
 
 export default Header;

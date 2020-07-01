@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import DrinksPrincipalPage from './pages/DrinksPrincipalPage';
 import Login from './pages/Login';
-import MainFoodPagePV from './pages/MainFoodPagePV';
+import DrinksPrincipalPage from './pages/DrinksPrincipalPage';
+import MealsPrincipalPage from './pages/MealsPrincipalPage';
+import Test from './pages/Test';
 import './styles/App.css';
 
 function App() {
@@ -11,19 +12,19 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route path="/comidas" component={MainFoodPagePV} />
-          <Route path="/bebidas" component={DrinksPrincipalPage} />
-          <Route path="/comidas/:id">{}</Route>
-          <Route path="/bebidas/:id">{}</Route>
+          <Route exact path="/comidas" component={MealsPrincipalPage} />
+          <Route exact path="/bebidas" component={DrinksPrincipalPage} />
+          <Route exact path="/comidas/:id" component={Test} />
+          <Route exact path="/bebidas/:id" component={Test} />
           <Route path="/comidas/:id/in-progress">{}</Route>
           <Route path="/bebidas/:id/in-progress">{}</Route>
-          <Route path="/explorar">{}</Route>
+          <Route path="/explorar" component={Test} />
           <Route path="/explorar/comidas">{}</Route>
           <Route path="/explorar/bebidas">{}</Route>
           <Route path="/explorar/comidas/ingredientes">{}</Route>
           <Route path="/explorar/bebidas/ingredientes">{}</Route>
           <Route path="/explorar/comidas/area">{}</Route>
-          <Route path="/perfil">{}</Route>
+          <Route exact path="/perfil">{Test}</Route>
           <Route path="/receitas-feitas">{}</Route>
           <Route path="/receitas-favoritas">{}</Route>
           <Route path="*">{}</Route>

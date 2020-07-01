@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { RecipeAppContext } from '../context';
+import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/HeaderSearchBar.css';
 
 const renderSearchInput = (callback, object) => (
@@ -68,24 +68,26 @@ const renderSearchButton = (callback1, callback2, object) => (
     data-testid="exec-search-btn"
     className="search-button"
     disabled={object.value === '' || object.filter === ''}
-    onClick={() => (
-      (callback1({ ...object }), callback2({ value: '', filter: '' }))
+    onClick={() => ((
+      callback1({ ...object }), callback2({ value: '', filter: '' }))
     )}
   >
     Buscar
   </button>
 );
 
-const HeaderSearchBar = () => {
-  const { setSearchFilters } = useContext(RecipeAppContext);
-  const [filters, setFilters] = useState({ value: '', filter: '' });
-  return (
-    <section className="search-container">
-      {renderSearchInput(setFilters, filters)}
-      {renderSearchRadioButtons(setFilters, filters)}
-      {renderSearchButton(setSearchFilters, setFilters, filters)}
-    </section>
-  );
+const HeaderSearchBar = ({ searchFilters, filters, setFilters }) => (
+  <section className="search-container">
+    {renderSearchInput(setFilters, filters)}
+    {renderSearchRadioButtons(setFilters, filters)}
+    {renderSearchButton(searchFilters, setFilters, filters)}
+  </section>
+);
+
+HeaderSearchBar.propTypes = {
+  searchFilters: PropTypes.func.isRequired,
+  setFilters: PropTypes.func.isRequired,
+  filters: PropTypes.shape({ filter: '', value: '' }).isRequired,
 };
 
 export default HeaderSearchBar;

@@ -9,9 +9,9 @@ import {
 } from '../helpers/dataHandlers';
 import '../styles/DrinksPrincipalPage.css';
 
-const DrinksGrid = () => {
+const MealsGrid = () => {
   const {
-    beverageData: {
+    mealsData: {
       data,
       categories,
       categoriesError,
@@ -44,8 +44,8 @@ const DrinksGrid = () => {
         ))}
         maximumCategoriesGrid={maximumCategoriesGrid}
         maximumRecipeGrid={maximumRecipeGrid}
-        path="bebidas"
-        title="Bebidas"
+        path="comidas"
+        title="Comidas"
         searchFilters={setSearchFilters}
         filters={filters}
         setFilters={setFilters}
@@ -54,4 +54,4 @@ const DrinksGrid = () => {
   );
 };
 
-export default DrinksGrid;
+export default MealsGrid;
