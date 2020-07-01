@@ -1,74 +1,12 @@
 import React, { useContext } from 'react';
 import { RecipeAppContext } from '../context';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import FoodsCard from '../components/FoodCard';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
-import CategoriesButtonsGrid from '../components/CategoriesButtonsGrid';
+import RecipesContainer from '../components/RecipesContainer';
 import '../styles/DrinksPrincipalPage.css';
 
 const maximumFoodGrid = (data) => data.slice(0, 12);
 const maximumCategoriesGrid = (data) => data.slice(0, 5);
 const toogleCategories = (callback, string, value) => (string !== 'All' && string === value ? callback('All') : callback(value));
-
-const renderFoodsInfoContainer = (
-  loading,
-  error,
-  categoriesError,
-  categories,
-  foodsData,
-  categoriesFilter,
-  setCategoriesFilter,
-  setSearchFilters,
-) => !loading
-  && !error && (
-    <div className="recipes-page">
-      <header className="recipes-header">
-        <Header
-          iconProfile={profileIcon}
-          iconSearch={searchIcon}
-          title="Comidas"
-        />
-      </header>
-      {!loading && categoriesError ? (
-        <div className="error-container">
-          <h4>{categoriesError}</h4>
-        </div>
-      ) : (
-        <div className="filter-buttons-container">
-          <CategoriesButtonsGrid
-            data={maximumCategoriesGrid(categories)}
-            onClick={(event) => ((
-              toogleCategories(
-                setCategoriesFilter,
-                categoriesFilter,
-                event.target.value,
-              ),
-              setSearchFilters({ value: '', filter: '' })
-            ))}
-          />
-        </div>
-      )}
-      <div className="recipes-card-grid">
-        {maximumFoodGrid(foodsData).map(
-          ({ idMeal, strMeal, strMealThumb }, index) => (
-            <FoodsCard
-              key={idMeal}
-              thumbnail={strMealThumb}
-              name={strMeal}
-              index={index}
-              id={idMeal}
-            />
-          ),
-        )}
-      </div>
-      <footer className="recipes-footer">
-        <Footer />
-      </footer>
-    </div>
-);
 
 const FoodsGrid = () => {
   const {
@@ -87,16 +25,23 @@ const FoodsGrid = () => {
   return (
     <main>
       <FetchHandlerContainer loading={loading} error={error} />
-      {renderFoodsInfoContainer(
-        loading,
-        error,
-        categoriesError,
-        categories,
-        foodsData,
-        categoriesFilter,
-        setCategoriesFilter,
-        setSearchFilters,
-      )}
+      <RecipesContainer
+        loading={loading}
+        error={error}
+        categories={categories}
+        categoriesError={categoriesError}
+        data={foodsData}
+        onClick={(event) => ((
+          toogleCategories(
+            setCategoriesFilter,
+            categoriesFilter,
+            event.target.value,
+          ),
+          setSearchFilters({ value: '', filter: '' })
+        ))}
+        maximumCategoriesGrid={maximumCategoriesGrid}
+        maximumDrinkGrid={maximumFoodGrid}
+      />
     </main>
   );
 };

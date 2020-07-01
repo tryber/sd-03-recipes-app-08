@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/DrinksPrincipalPage.css';
 
 const FetchHandlerContainer = ({ loading, error }) => {
   if (loading) return <h1>Loading...</h1>;
