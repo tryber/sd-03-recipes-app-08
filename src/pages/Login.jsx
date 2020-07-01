@@ -1,97 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Login.css';
 
 const memoryEmail = JSON.parse(localStorage.getItem('email'));
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
+function Login() {
+  const [userInfo, setUserInfo] = useState({ email: '', password: '' });
 
-  handleChange(e) {
-    this.setState({ [e.target.id]: e.target.value });
-  }
+  const handleChange = (e) => {
+    setUserInfo({ ...userInfo, [e.target.id]: e.target.value });
+  };
 
-  emailInput() {
-    const { email } = this.state;
-    if (memoryEmail && email !== memoryEmail) this.setState({ email: memoryEmail });
+  const emailInput = () => {
+    const { email } = userInfo;
+    if (memoryEmail && email !== memoryEmail) {
+      return setUserInfo({ ...userInfo, email: memoryEmail });
+    }
     return (
       <div>
         <input
           type="email"
           data-testid="email-input"
           id="email"
-          onChange={(e) => this.handleChange(e)}
+          onChange={(e) => handleChange(e)}
           value={email}
-          placeholder={(memoryEmail) ? email : 'email'}
+          placeholder={memoryEmail ? email : 'email'}
           className="email-input"
         />
       </div>
     );
-  }
+  };
 
-  passwordInput() {
-    const { password } = this.state;
+  const passwordInput = () => {
+    const { password } = userInfo;
     return (
       <div>
         <input
           type="password"
           data-testid="password-input"
           id="password"
-          onChange={(e) => this.handleChange(e)}
+          onChange={(e) => handleChange(e)}
           value={password}
           placeholder="senha"
           className="password-input"
         />
       </div>
     );
-  }
+  };
 
-  clickToEnter() {
-    const { email } = this.state;
+  const clickToEnter = () => {
+    const { email } = userInfo;
     localStorage.setItem('mealsToken', JSON.stringify(1));
     localStorage.setItem('cocktailsToken', JSON.stringify(1));
     localStorage.setItem('user', JSON.stringify({ email }));
-  }
+  };
 
-  isDisabled() {
-    const { password, email } = this.state;
+  const isDisabled = () => {
+    const { password, email } = userInfo;
     const emailTest = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     if (password.length > 6 && email.match(emailTest)) return false;
     return true;
-  }
+  };
 
-  enterButton() {
-    return (
-      <Link to="/comidas">
-        <button
-          type="button"
-          className="login-submit-btn"
-          data-testid="login-submit-btn"
-          onClick={() => this.clickToEnter()}
-          disabled={this.isDisabled()}
-        >
-          Entrar
-        </button>
-      </Link>
-    );
-  }
+  const enterButton = () => (
+    <Link to="/comidas">
+      <button
+        type="button"
+        className="login-submit-btn"
+        data-testid="login-submit-btn"
+        onClick={() => clickToEnter()}
+        disabled={isDisabled()}
+      >
+        Entrar
+      </button>
+    </Link>
+  );
 
-  render() {
-    return (
-      <div>
-        <h1 className="Login">Login</h1>
-        {this.emailInput()}
-        {this.passwordInput()}
-        {this.enterButton()}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1 className="Login">Login</h1>
+      {emailInput()}
+      {passwordInput()}
+      {enterButton()}
+    </div>
+  );
 }
 
 export default Login;
