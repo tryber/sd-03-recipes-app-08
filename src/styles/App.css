@@ -7,9 +7,9 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
   sans-serif;
   height: 58px;
-  left: 0px;
+  left: 0;
   position: absolute;
-  top: 0px;
+  top: 0;
   -webkit-font-smoothing: antialiased;
   width: 360px;
   -moz-osx-font-smoothing: grayscale;

@@ -12,32 +12,32 @@
 }
 
 .drinks-icon {
-  background-color: #c4c4c4;
-  cursor: pointer;
   align-items: flex-start;
+  background-color: #c4c4c4;
+  bottom: 10px;
+  cursor: pointer;
   height: 40px;
   left: 16px;
   position: absolute;
-  bottom: 10px;
   width: 40px;
 }
 
 .explore-icon {
-  background-color: #c4c4c4;
   align-items: flex-start;
+  background-color: #c4c4c4;
+  bottom: 10px;
   height: 40px;
   left: 160px;
   position: absolute;
-  bottom: 10px;
   width: 40px;
 }
 
 .food-icon {
-  background-color: #c4c4c4;
   align-items: flex-end;
+  background-color: #c4c4c4;
+  bottom: 10px;
   height: 40px;
   left: 302px;
   position: absolute;
-  bottom: 10px;
   width: 40px;
 }
