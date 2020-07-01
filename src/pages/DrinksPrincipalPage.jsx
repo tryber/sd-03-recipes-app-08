@@ -12,15 +12,17 @@ import '../styles/DrinksPrincipalPage.css';
 const DrinksGrid = () => {
   const {
     beverageData: {
-      data: drinksData,
+      data,
       categories,
       categoriesError,
       error,
       loading,
+      setSearchFilters,
+      categoriesFilter,
+      setCategoriesFilter,
+      filters,
+      setFilters,
     },
-    categoriesFilter,
-    setCategoriesFilter,
-    setSearchFilters,
   } = useContext(RecipeAppContext);
 
   return (
@@ -31,7 +33,7 @@ const DrinksGrid = () => {
         error={error}
         categories={categories}
         categoriesError={categoriesError}
-        data={drinksData}
+        data={data}
         onClick={(event) => ((
           toogleCategories(
             setCategoriesFilter,
@@ -44,6 +46,9 @@ const DrinksGrid = () => {
         maximumRecipeGrid={maximumRecipeGrid}
         path="bebidas"
         title="Bebidas"
+        searchFilters={setSearchFilters}
+        filters={filters}
+        setFilters={setFilters}
       />
     </main>
   );

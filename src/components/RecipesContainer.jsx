@@ -19,6 +19,9 @@ function RecipesContainer({
   maximumRecipeGrid,
   path,
   title,
+  searchFilters,
+  filters,
+  setFilters,
 }) {
   return (
     !loading
@@ -29,6 +32,9 @@ function RecipesContainer({
             iconProfile={profileIcon}
             iconSearch={searchIcon}
             title={title}
+            searchFilters={searchFilters}
+            filters={filters}
+            setFilters={setFilters}
           />
         </header>
         {!loading && categoriesError ? (
@@ -92,7 +98,10 @@ RecipesContainer.propTypes = {
   maximumRecipeGrid: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired,
+  searchFilters: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  setFilters: PropTypes.func.isRequired,
+  filters: PropTypes.shape({ filter: '', value: '' }).isRequired,
 };
 
 export default RecipesContainer;

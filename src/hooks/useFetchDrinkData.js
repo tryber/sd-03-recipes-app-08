@@ -4,12 +4,15 @@ import {
   fetchDrinksCategories,
 } from '../services/fetchHandlers';
 
-export default function useFetchDrinkData(searchFilters, categoriesFilter) {
+export default function useFetchDrinkData() {
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState('');
   const [categoriesError, setCategoriesError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [filters, setFilters] = useState({ filter: '', value: '' });
+  const [searchFilters, setSearchFilters] = useState({ filter: '', value: '' });
+  const [categoriesFilter, setCategoriesFilter] = useState('All');
 
   useEffect(() => {
     setLoading(true);
@@ -31,6 +34,16 @@ export default function useFetchDrinkData(searchFilters, categoriesFilter) {
   }, [searchFilters, categoriesFilter]);
 
   return {
-    data, categories, categoriesError, error, loading,
+    data,
+    categories,
+    categoriesError,
+    error,
+    loading,
+    searchFilters,
+    setSearchFilters,
+    categoriesFilter,
+    setCategoriesFilter,
+    filters,
+    setFilters,
   };
 }

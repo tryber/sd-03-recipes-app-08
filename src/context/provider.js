@@ -6,22 +6,14 @@ import { useFetchDrinkData, useFetchMealsData } from '../hooks';
 const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
   const [cocktailsToken, setCocktailsToken] = useState(1);
-  const [searchFilters, setSearchFilters] = useState({ filter: '', value: '' });
-  const [categoriesFilter, setCategoriesFilter] = useState('All');
-
-  const mealsData = useFetchMealsData(searchFilters, categoriesFilter);
-
-  const beverageData = useFetchDrinkData(searchFilters, categoriesFilter);
+  const mealsData = useFetchMealsData();
+  const beverageData = useFetchDrinkData();
 
   const context = {
     mealsToken,
     cocktailsToken,
     setMealsToken,
     setCocktailsToken,
-    searchFilters,
-    setSearchFilters,
-    categoriesFilter,
-    setCategoriesFilter,
     mealsData,
     beverageData,
   };
