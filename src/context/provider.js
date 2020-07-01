@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeAppContext from './context';
 import { getDrinksCategoriesList } from '../services/meals&drinksAPI';
-import requestDrinksData from '../services/requestData';
+import { requestDrinksData, requestFoodsData } from '../services/requestData';
 
 const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
