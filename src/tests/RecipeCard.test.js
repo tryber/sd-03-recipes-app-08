@@ -4,7 +4,7 @@ import renderWithRouter from './helper';
 import RecipeCard from '../components/RecipeCard';
 
 describe('Testes do componente DrinkCard', () => {
-  beforeEach(cleanup);
+  afterEach(cleanup);
 
   test('Card de bebida exibe a imagem e o nome da bebida em elementos que possuem os ids de teste corretos', () => {
     const { queryByTestId, queryAllByRole } = renderWithRouter(

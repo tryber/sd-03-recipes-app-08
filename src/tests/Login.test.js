@@ -5,7 +5,7 @@ import renderWithRouter from './helper';
 import Login from '../pages/Login';
 
 describe('Login component test', () => {
-  beforeEach(cleanup);
+  afterEach(cleanup);
 
   test('Check if title Login exist', () => {
     const { getByText } = renderWithRouter(
