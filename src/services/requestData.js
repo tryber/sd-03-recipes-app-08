@@ -12,28 +12,28 @@ import {
 } from './meals&drinksAPI';
 
 const conditionalDrinksSearchFilters = (object) => {
-  if (object.filter === 'ingredient') return getDrinkByIngredient(object.value);
-  if (object.filter === 'name') return getDrinkByName(object.value);
-  if (object.filter === 'first-letter') return getDrinkByFirstLetter(object.value);
+  if (object.filter === 'ingredient' && object.value !== '') return getDrinkByIngredient(object.value);
+  if (object.filter === 'name' && object.value !== '') return getDrinkByName(object.value);
+  if (object.filter === 'first-letter' && object.value !== '') return getDrinkByFirstLetter(object.value);
   return getDrinkList();
 };
 
 function requestDrinksData(categoriesFilter, searchFilters) {
-  if (categoriesFilter !== 'All') return getFoodByCategory(categoriesFilter);
-  if (categoriesFilter === 'All' && searchFilters === { value: '', filter: '' }) return getDrinkList();
+  if (categoriesFilter !== 'All' && searchFilters.filter === '') return getDrinkByCategory(categoriesFilter);
+  if (categoriesFilter === 'All' && searchFilters.filter === '') return getDrinkList();
   return conditionalDrinksSearchFilters(searchFilters);
 }
 
 const conditionalFoodsSearchFilters = (object) => {
-  if (object.filter === 'ingredient') return getFoodByIngredient(object.value);
-  if (object.filter === 'name') return getFoodByName(object.value);
-  if (object.filter === 'first-letter') getFoodByFirstLetter(object.value);
+  if (object.filter === 'ingredient' && object.value !== '') return getFoodByIngredient(object.value);
+  if (object.filter === 'name' && object.value !== '') return getFoodByName(object.value);
+  if (object.filter === 'first-letter' && object.value !== '') return getFoodByFirstLetter(object.value);
   return getFoodList();
 };
 
 function requestFoodsData(categoriesFilter, searchFilters) {
-  if (categoriesFilter !== 'All') return getDrinkByCategory(categoriesFilter);
-  if (categoriesFilter === 'All' && searchFilters === { value: '', filter: '' }) return getDrinkList();
+  if (categoriesFilter !== 'All' && searchFilters.filter === '') return getFoodByCategory(categoriesFilter);
+  if (categoriesFilter === 'All' && searchFilters.filter === '') return getFoodList();
   return conditionalFoodsSearchFilters(searchFilters);
 }
 
