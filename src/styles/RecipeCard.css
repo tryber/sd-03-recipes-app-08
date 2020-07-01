@@ -1,9 +1,9 @@
 .recipe-card {
   background: white;
   border-radius: 6px;
-  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px 3px rgba(0, 0, 0, 0.25);
+  flex-direction: column-reverse;
   height: 172px;
-  margin: 10px 5px;
   position: relative;
   width: 161px;
 }
@@ -22,7 +22,7 @@
   font-family: Roboto, sans-serif;
   font-size: 18px;
   font-style: normal;
-  font-weight: 100;
+  font-weight: normal;
   height: 21px;
   line-height: 21px;
   position: absolute;

@@ -18,11 +18,11 @@
   align-items: center;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-around;
   margin: 125px 1px;
   max-height: 400px;
   max-width: 460px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
 }
 
