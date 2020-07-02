@@ -39,11 +39,7 @@ const MealsGrid = () => {
           categoriesError={categoriesError}
           data={data}
           onClick={(event) => ((
-            toogleCategories(
-              setCategoriesFilter,
-              categoriesFilter,
-              event.target.value,
-            ),
+            toogleCategories(setCategoriesFilter, categoriesFilter, event.target.value),
             setSearchFilters({ value: '', filter: '' })
           ))}
           maximumCategoriesGrid={maximumCategoriesGrid}
