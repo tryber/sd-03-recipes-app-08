@@ -15,7 +15,7 @@ const renderSearchInput = (callback, object) => (
       if (object.filter !== 'first-letter') {
         return callback({ ...object, value: event.target.value });
       }
-      if (event.target.value.length === 1 && object.filter === 'first-letter') {
+      if (event.target.value.length <= 1 && object.filter === 'first-letter') {
         return callback({ ...object, value: event.target.value });
       }
       return alert('Sua busca deve conter somente 1 (um) caracter');
