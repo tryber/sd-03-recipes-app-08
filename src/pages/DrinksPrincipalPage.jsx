@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { RecipeAppContext } from '../context';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
 import RecipesContainer from '../components/RecipesContainer';
@@ -18,6 +19,7 @@ const DrinksGrid = () => {
       categoriesError,
       error,
       loading,
+      searchFilters,
       setSearchFilters,
       categoriesFilter,
       setCategoriesFilter,
@@ -55,6 +57,7 @@ const DrinksGrid = () => {
       ) : (
         noDataAlert()
       )}
+      {data.length === 1 && searchFilters.value !== '' && <Redirect to={`/bebidas/${data[0].idDrink}`} />}
     </main>
   );
 };
