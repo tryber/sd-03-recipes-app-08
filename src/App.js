@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import DrinksPrincipalPage from './pages/DrinksPrincipalPage';
 import MealsPrincipalPage from './pages/MealsPrincipalPage';
+import Profile from './pages/Profile';
 import Test from './pages/Test';
 import './styles/App.css';
 
@@ -24,7 +25,7 @@ function App() {
           <Route path="/explorar/comidas/ingredientes">{}</Route>
           <Route path="/explorar/bebidas/ingredientes">{}</Route>
           <Route path="/explorar/comidas/area">{}</Route>
-          <Route exact path="/perfil">{Test}</Route>
+          <Route exact path="/perfil" component={Profile} />
           <Route path="/receitas-feitas">{}</Route>
           <Route path="/receitas-favoritas">{}</Route>
           <Route path="*">{}</Route>
