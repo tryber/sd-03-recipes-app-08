@@ -1,8 +1,7 @@
 .recipes-footer {
   background: #c4c4c4;
   height: 58px;
-  position: absolute;
-  top: 582px;
+  position: fixed;
   width: 360px;
 }
 

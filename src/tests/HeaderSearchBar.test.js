@@ -1,15 +1,23 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { RecipeAppProvider as Provider } from '../context';
 import HeaderSearchBar from '../components/HeaderSearchBar';
 
 describe('Testes do componente HeaderSearchBar', () => {
-  beforeEach(cleanup);
+  afterEach(cleanup);
+
+  const setFilters = (object, value) => ({ ...object, value });
+  const setSearchFilters = (object, value) => ({ ...object, value });
+  const filters = { filter: '', value: '' };
 
   test('Elementos obrigatórios estão presentes na página', () => {
     const { getAllByRole, queryByRole, queryByTestId } = render(
       <Provider>
-        <HeaderSearchBar />
+        <HeaderSearchBar
+          searchFilters={setSearchFilters}
+          filters={filters}
+          setFilters={setFilters}
+        />
       </Provider>,
     );
     const requiredSearchInput = queryByTestId('search-input');
@@ -25,7 +33,11 @@ describe('Testes do componente HeaderSearchBar', () => {
   test('Elementos obrigatórios possuem testids corretas', () => {
     const { queryByTestId } = render(
       <Provider>
-        <HeaderSearchBar />
+        <HeaderSearchBar
+          searchFilters={setSearchFilters}
+          filters={filters}
+          setFilters={setFilters}
+        />
       </Provider>,
     );
     const requiredSearchInput = queryByTestId('search-input');
@@ -43,24 +55,5 @@ describe('Testes do componente HeaderSearchBar', () => {
     expect(requiredIngredientSearchSelector).toBeInTheDocument();
     expect(requiredNameSearchSelector).toBeInTheDocument();
     expect(requiredFirstLetterSearchselector).toBeInTheDocument();
-  });
-
-  test('Após a busca o input de texto é limpo', () => {
-    const { queryByTestId } = render(
-      <Provider>
-        <HeaderSearchBar />
-      </Provider>,
-    );
-    const requiredSearchInput = queryByTestId('search-input');
-    const requiredIngredientSearchSelector = queryByTestId(
-      'ingredient-search-radio',
-    );
-    const requiredSubmitButton = queryByTestId('exec-search-btn');
-
-    fireEvent.change(requiredSearchInput, { target: { value: 'o' } });
-    fireEvent.click(requiredIngredientSearchSelector);
-    fireEvent.click(requiredSubmitButton);
-
-    expect(requiredSearchInput.value).toBe('');
   });
 });

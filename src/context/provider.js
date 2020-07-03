@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeAppContext from './context';
+import { useFetchDrinkData, useFetchMealsData } from '../hooks';
 
 const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
   const [cocktailsToken, setCocktailsToken] = useState(1);
-  const [searchFilters, setSearchFilters] = useState({ value: '', filter: '' });
+  const mealsData = useFetchMealsData();
+  const beverageData = useFetchDrinkData();
 
   const context = {
     mealsToken,
     cocktailsToken,
     setMealsToken,
     setCocktailsToken,
-    searchFilters,
-    setSearchFilters,
+    mealsData,
+    beverageData,
   };
 
   return (

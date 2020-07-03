@@ -3,6 +3,7 @@
   border: 1px solid black;
   box-sizing: border-box;
   color: black;
+  font-family: Roboto, sans-serif;
   font-size: 29px;
   height: 58px;
   left: 31px;
@@ -17,6 +18,7 @@
   align-items: flex-end;
   color: black;
   display: flex;
+  font-family: Roboto, sans-serif;
   font-size: 39px;
   height: 46px;
   left: 128px;
@@ -29,6 +31,7 @@
 .login-submit-btn {
   background: #6ce34f;
   color: black;
+  font-family: Roboto, sans-serif;
   font-size: 29px;
   height: 76px;
   left: 11px;
