@@ -7,8 +7,8 @@ import * as requestFunctions from '../services/meals&drinksAPI';
 const initialState = {
   value: '',
   filter: '',
-  idMeal: '',
-  idDrink: '',
+  id: '',
+  choice: 'meal',
 };
 
 const RecipeAppProvider = ({ children }) => {
@@ -20,10 +20,11 @@ const RecipeAppProvider = ({ children }) => {
   const [error, setError] = useState('');
   const [categoriesError, setCategoriesError] = useState('');
   const [categories, setCategories] = useState([]);
-  const [mealID, setMealID] = useState(initialState);
-  const [cocktailID, setCocktailID] = useState(initialState);
-  const [mealDetailData, setMealDetailData] = useState([]);
-  const [drinkDetailData, setDrinkDetailData] = useState([]);
+  const [selectedID, setSelectedID] = useState(initialState.id);
+  const [mealDetailData, setMealDetailData] = useState({ meals: [] });
+  const [drinkDetailData, setDrinkDetailData] = useState({ drinks: [] });
+  const [favorite, setFavorite] = useState(false);
+  const [choice, setChoice] = useState(initialState.choice);
 
   const fetchDrinks = () => {
     requestFunctions.getDrinkList().then(
@@ -77,6 +78,32 @@ const RecipeAppProvider = ({ children }) => {
     );
   };
 
+  const fetchRandomMealID = () => {
+    requestFunctions.getRandomFood().then(
+      (response) => {
+        setMealDetailData(response.meals);
+        setLoading(false);
+      },
+      (response) => {
+        setError(response.message);
+        setLoading(false);
+      },
+    );
+  };
+
+  const fetchRandomDrinkID = () => {
+    requestFunctions.getRandomDrink().then(
+      (response) => {
+        setDrinkDetailData(response.drinks);
+        setLoading(false);
+      },
+      (response) => {
+        setError(response.message);
+        setLoading(false);
+      },
+    );
+  };
+
   const context = {
     mealsToken,
     cocktailsToken,
@@ -96,16 +123,20 @@ const RecipeAppProvider = ({ children }) => {
     categoriesError,
     setCategoriesError,
     fetchDrinksCategories,
-    mealID,
-    setMealID,
-    cocktailID,
-    setCocktailID,
+    selectedID,
+    setSelectedID,
     fetchMealID,
     fetchDrinkID,
     mealDetailData,
     setMealDetailData,
     drinkDetailData,
     setDrinkDetailData,
+    favorite,
+    setFavorite,
+    fetchRandomMealID,
+    fetchRandomDrinkID,
+    choice,
+    setChoice,
   };
 
   return (
