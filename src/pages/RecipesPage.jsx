@@ -9,7 +9,7 @@ import {
   toogleCategories,
   noDataAlert,
 } from '../helpers/dataHandlers';
-import '../styles/DrinksPrincipalPage.css';
+import '../styles/RecipesPage.css';
 
 const uniqueRecipe = (data, location) => {
   const URL = location.pathname;

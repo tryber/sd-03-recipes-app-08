@@ -6,7 +6,7 @@ import RecipeCard from './RecipeCard';
 import CategoriesButtonsGrid from './CategoriesButtonsGrid';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
-import '../styles/DrinksPrincipalPage.css';
+import '../styles/RecipesPage.css';
 
 function RecipesContainer({
   loading,
