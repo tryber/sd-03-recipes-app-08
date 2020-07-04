@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/HeaderSearchBar.css';
 
@@ -15,7 +15,7 @@ const renderSearchInput = (callback, object) => (
       if (object.filter !== 'first-letter') {
         return callback({ ...object, value: event.target.value });
       }
-      if (event.target.value.length <= 1 && object.filter === 'first-letter') {
+      if (event.target.value.length < 2 && object.filter === 'first-letter') {
         return callback({ ...object, value: event.target.value });
       }
       return alert('Sua busca deve conter somente 1 (um) caracter');
@@ -69,25 +69,26 @@ const renderSearchButton = (callback1, callback2, object) => (
     className="search-button"
     disabled={object.value === '' || object.filter === ''}
     onClick={() => ((
-      callback1({ ...object }), callback2({ value: '', filter: '' }))
-    )}
+      callback1({ ...object }), callback2({ value: '', filter: '' })
+    ))}
   >
     Buscar
   </button>
 );
 
-const HeaderSearchBar = ({ searchFilters, filters, setFilters }) => (
-  <section className="search-container">
-    {renderSearchInput(setFilters, filters)}
-    {renderSearchRadioButtons(setFilters, filters)}
-    {renderSearchButton(searchFilters, setFilters, filters)}
-  </section>
-);
+const HeaderSearchBar = ({ searchFilters }) => {
+  const [filters, setFilters] = useState({ filter: '', value: '' });
+  return (
+    <section className="search-container">
+      {renderSearchInput(setFilters, filters)}
+      {renderSearchRadioButtons(setFilters, filters)}
+      {renderSearchButton(searchFilters, setFilters, filters)}
+    </section>
+  );
+};
 
 HeaderSearchBar.propTypes = {
   searchFilters: PropTypes.func.isRequired,
-  setFilters: PropTypes.func.isRequired,
-  filters: PropTypes.shape({ filter: '', value: '' }).isRequired,
 };
 
 export default HeaderSearchBar;

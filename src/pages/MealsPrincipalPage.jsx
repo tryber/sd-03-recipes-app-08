@@ -11,6 +11,8 @@ import {
 } from '../helpers/dataHandlers';
 import '../styles/DrinksPrincipalPage.css';
 
+const uniqueRecipe = (data) => <Redirect to={`/bebidas/${data[0].idMeal}`} />;
+
 const MealsGrid = () => {
   const {
     mealsData: {
@@ -23,15 +25,14 @@ const MealsGrid = () => {
       setSearchFilters,
       categoriesFilter,
       setCategoriesFilter,
-      filters,
-      setFilters,
     },
   } = useContext(RecipeAppContext);
 
+  if (data && data.length === 1 && searchFilters.value !== '') return uniqueRecipe(data);
   return (
     <main>
       <FetchHandlerContainer loading={loading} error={error} />
-      {data !== null ? (
+      {data ? (
         <RecipesContainer
           loading={loading}
           error={error}
@@ -47,13 +48,10 @@ const MealsGrid = () => {
           path="comidas"
           title="Comidas"
           searchFilters={setSearchFilters}
-          filters={filters}
-          setFilters={setFilters}
         />
       ) : (
         noDataAlert()
       )}
-      {data.length === 1 && searchFilters.value !== '' && <Redirect to={`/comidas/${data[0].idMeal}`} />}
     </main>
   );
 };

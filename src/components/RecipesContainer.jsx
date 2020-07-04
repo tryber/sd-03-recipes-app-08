@@ -20,8 +20,6 @@ function RecipesContainer({
   path,
   title,
   searchFilters,
-  filters,
-  setFilters,
 }) {
   return (
     !loading
@@ -33,8 +31,6 @@ function RecipesContainer({
             iconSearch={searchIcon}
             title={title}
             searchFilters={searchFilters}
-            filters={filters}
-            setFilters={setFilters}
           />
         </header>
         {!loading && categoriesError ? (
@@ -100,8 +96,6 @@ RecipesContainer.propTypes = {
   path: PropTypes.string.isRequired,
   searchFilters: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  setFilters: PropTypes.func.isRequired,
-  filters: PropTypes.shape({ filter: '', value: '' }).isRequired,
 };
 
 export default RecipesContainer;
