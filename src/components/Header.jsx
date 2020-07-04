@@ -9,8 +9,6 @@ const Header = ({
   iconSearch,
   title,
   searchFilters,
-  filters,
-  setFilters,
 }) => {
   const [show, setShow] = useState(false);
 
@@ -54,8 +52,6 @@ Header.defaultProps = {
   iconSearch: null,
   title: '',
   searchFilters: undefined,
-  setFilters: undefined,
-  filters: undefined,
 };
 
 Header.propTypes = {
@@ -63,8 +59,6 @@ Header.propTypes = {
   iconSearch: PropTypes.node,
   title: PropTypes.string,
   searchFilters: PropTypes.func,
-  setFilters: PropTypes.func,
-  filters: PropTypes.shape({ filter: '', value: '' }),
 };
 
 export default Header;
