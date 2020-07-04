@@ -7,13 +7,15 @@ import {
   createTitle,
 } from '../helpers/dataHandlers';
 
+const pathToRandom = (location, id) => (location.pathname === '/explorar/comidas' ? `/comidas/${id}` : `/bebidas/${id}`);
+
 function ExploreMealsOrDrinks() {
   const location = useLocation();
   return (
     <main className="explore-container">
       <Header iconProfile={profileIcon} title={`Explorar ${createTitle(location)}`} />
       <section className="explore-by-links-container">
-        <Link to={`/explorar/${location.pathname}/ingredientes`}>
+        <Link to={`${location.pathname}/ingredientes`}>
           <button
             type="button"
             data-testid="explore-by-ingredient"
@@ -22,7 +24,7 @@ function ExploreMealsOrDrinks() {
             Por Ingredientes
           </button>
         </Link>
-        {location.pathname === 'comidas' && (
+        {location.pathname === '/explorar/comidas' && (
         <Link to="/explorar/comidas/area">
           <button
             type="button"
@@ -33,7 +35,7 @@ function ExploreMealsOrDrinks() {
           </button>
         </Link>
         )}
-        <Link to="">
+        <Link to={pathToRandom(location.pathname, _)}>
           <button
             type="button"
             data-testid="explore-surprise"
