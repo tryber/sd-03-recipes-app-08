@@ -1,0 +1,14 @@
+.explore-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+  width: 360px;
+}
+
+.explore-links-container {
+  height: 514px;
+  margin: 210px -60px 210px 60px;
+  position: absolute;
+  width: 360px;
+}

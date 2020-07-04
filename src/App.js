@@ -19,9 +19,9 @@ function App() {
           <Route path="/bebidas/:id" component={Test} />
           <Route path="/comidas/:id/in-progress">{}</Route>
           <Route path="/bebidas/:id/in-progress">{}</Route>
-          <Route path="/explorar" component={Explore} />
-          <Route path="/explorar/comidas">{}</Route>
-          <Route path="/explorar/bebidas">{}</Route>
+          <Route exact path="/explorar" component={Explore} />
+          <Route path="/explorar/comidas" component={Test} />
+          <Route path="/explorar/bebidas" component={Test} />
           <Route path="/explorar/comidas/ingredientes">{}</Route>
           <Route path="/explorar/bebidas/ingredientes">{}</Route>
           <Route path="/explorar/comidas/area">{}</Route>
