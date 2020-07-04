@@ -43,8 +43,6 @@ const Header = ({
         {show && (
           <HeaderSearchBar
             searchFilters={searchFilters}
-            filters={filters}
-            setFilters={setFilters}
           />
         )}
       </div>
