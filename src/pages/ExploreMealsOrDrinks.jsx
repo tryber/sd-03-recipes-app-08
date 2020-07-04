@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import ExploreByPageLinks from '../components/ExploreByPageLinks';
 import profileIcon from '../images/profileIcon.svg';
 import { createTitle } from '../helpers/dataHandlers';
+import '../styles/ExploreMealsOrDrinks.css';
 
 const pathToRandom = (location, id) => (location === '/explorar/comidas' ? `/comidas/${id}` : `/bebidas/${id}`);
 
@@ -15,7 +16,7 @@ function ExploreMealsOrDrinks() {
   const { randomRecipeId } = useRandomRecipeId(pathname);
 
   return (
-    <main className="explore-container">
+    <main className="explore-by-container">
       <Header
         iconProfile={profileIcon}
         title={`Explorar ${createTitle(location)}`}

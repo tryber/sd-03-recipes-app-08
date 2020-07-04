@@ -1,4 +1,4 @@
-.explore-container {
+.explore-by-container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
   width: 360px;
 }
 
-.explore-links-container {
+.explore-by-links-container {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
