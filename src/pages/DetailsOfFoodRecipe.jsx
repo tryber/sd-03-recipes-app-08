@@ -91,7 +91,7 @@ const creatingredientsArr = (detailData) => {
   const ingredients = Object.entries(detailData).filter((elem) => elem.match(/strIngredient/i));
   const measures = Object.entries(detailData).filter((elem) => elem.match(/strMeasure/i));
   const arr = ingredients.reduce((acc, elem, index) => {
-    if (elem !== '' || elem !== null || elem !== undefined) {
+    if (elem !== '' && elem !== null && elem !== undefined) {
       return [...acc, [`- ${elem[1]} - ${measures[index][1]}`]];
     }
     return acc;
@@ -124,7 +124,7 @@ const renderDetailsPage = (
     <div data-testid="instructions" className="instructions">{data.instructions}</div>
     <Suggestions />
     {(choice === 'meal') ? renderVideo(data.video) : null}
-    {(finished.doneDate !== null) ? renderLink(data, choice, finished) : null}
+    {(finished.doneDate === null) ? renderLink(data, choice, finished) : null}
   </div>
 );
 
@@ -191,11 +191,9 @@ const DetailsOfFoodRecipe = () => {
   const ingredientsArr = (choice === 'meal')
     ? creatingredientsArr(mealDetailData)
     : creatingredientsArr(drinkDetailData);
-  const favoritetest = favoriteRecipesArr.sort((elem) => elem.id === dataArr.id);
   const finished = doneRecipesArr.filter((elem) => elem.id === dataArr.id);
 
-  if (favoritetest) setFavorite(true);
-  if (!favoritetest) setFavorite(false);
+  setFavorite(favoriteRecipesArr.some((elem) => elem.id === dataArr.id));
 
   return (
     <div>

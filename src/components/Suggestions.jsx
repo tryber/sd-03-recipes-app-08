@@ -51,7 +51,6 @@ const creatingredientsArr = (choice, detailData) => {
     return (
       {
         id: detailData.idMeal,
-        type: 'meal',
         name: detailData.strMeal,
         image: detailData.strMealThumb,
       }
