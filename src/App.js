@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import RecipesPage from './pages/RecipesPage';
 import Test from './pages/Test';
 import './styles/App.css';
+import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
 
 function App() {
   return (
@@ -20,11 +21,11 @@ function App() {
           <Route path="/comidas/:id/in-progress">{}</Route>
           <Route path="/bebidas/:id/in-progress">{}</Route>
           <Route exact path="/explorar" component={Explore} />
-          <Route path="/explorar/comidas" component={Test} />
-          <Route path="/explorar/bebidas" component={Test} />
-          <Route path="/explorar/comidas/ingredientes">{}</Route>
-          <Route path="/explorar/bebidas/ingredientes">{}</Route>
-          <Route path="/explorar/comidas/area">{}</Route>
+          <Route exact path="/explorar/comidas" component={ExploreMealsOrDrinks} />
+          <Route exact path="/explorar/bebidas" component={ExploreMealsOrDrinks} />
+          <Route path="/explorar/comidas/ingredientes">{Test}</Route>
+          <Route path="/explorar/bebidas/ingredientes">{Test}</Route>
+          <Route path="/explorar/comidas/area">{Test}</Route>
           <Route exact path="/perfil" component={Profile} />
           <Route path="/receitas-feitas">{}</Route>
           <Route path="/receitas-favoritas">{}</Route>

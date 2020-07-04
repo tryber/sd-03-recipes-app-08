@@ -1,6 +1,8 @@
 import {
   getDrinksCategoriesList,
   getFoodsCategoriesList,
+  getRandomFood,
+  getRandomDrink,
 } from './meals&drinksAPI';
 import { requestDrinksData, requestFoodsData } from './requestData';
 
@@ -73,5 +75,19 @@ export const fetchFoodsCategories = (
       setCategoriesError(response.message);
       setLoading(false);
     },
+  );
+};
+
+export const fetchRandomMeal = (setRandomRecipeId, setRandomRecipeIdError) => {
+  getRandomFood().then(
+    (response) => setRandomRecipeId(response.meals[0].idMeal),
+    (response) => setRandomRecipeIdError(response.message),
+  );
+};
+
+export const fetchRandomDrink = (setRandomRecipeId, setRandomRecipeIdError) => {
+  getRandomDrink().then(
+    (response) => setRandomRecipeId(response.drinks[0].idDrink),
+    (response) => setRandomRecipeIdError(response.message),
   );
 };

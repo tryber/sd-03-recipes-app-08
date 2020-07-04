@@ -9,4 +9,4 @@ export const noDataAlert = () => {
   return !message && window.location.reload(true);
 };
 
-export const createTitle = (location) => (location.pathname === '/comidas' ? 'Comidas' : 'Bebidas');
+export const createTitle = (location) => (location.pathname.includes('/comidas') ? 'Comidas' : 'Bebidas');
