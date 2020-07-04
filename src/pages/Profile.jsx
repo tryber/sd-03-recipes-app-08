@@ -8,7 +8,7 @@ import '../styles/Profile.css';
 const Profile = () => {
   const userEmail = JSON.parse(localStorage.getItem('user'));
   return (
-    <div className="profile-container">
+    <main className="profile-container">
       <Header iconProfile={profileIcon} title="Perfil" />
       <h2 className="profile-user-email">{userEmail.email}</h2>
       <div className="profile-links-container">
@@ -34,7 +34,7 @@ const Profile = () => {
       </div>
 
       <Footer />
-    </div>
+    </main>
   );
 };
 
