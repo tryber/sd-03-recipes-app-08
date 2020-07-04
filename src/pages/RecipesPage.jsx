@@ -8,6 +8,7 @@ import {
   maximumCategoriesGrid,
   toogleCategories,
   noDataAlert,
+  createTitle,
 } from '../helpers/dataHandlers';
 import '../styles/RecipesPage.css';
 
@@ -16,8 +17,6 @@ const uniqueRecipe = (data, location) => {
   if (URL === '/comidas') return <Redirect to={`${URL}/${data[0].idDrink}`} />;
   return <Redirect to={`${URL}/${data[0].idMeal}`} />;
 };
-
-const createTitle = (location) => (location.pathname === '/comidas' ? 'Comidas' : 'Bebidas');
 
 const RecipesGrid = () => {
   const location = useLocation();

@@ -8,3 +8,5 @@ export const noDataAlert = () => {
   const message = alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   return !message && window.location.reload(true);
 };
+
+export const createTitle = (location) => (location.pathname === '/comidas' ? 'Comidas' : 'Bebidas');
