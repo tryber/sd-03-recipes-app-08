@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Explore from './pages/Explore';
 import Login from './pages/Login';
-import RecipesPage from './pages/RecipesPage';
 import Profile from './pages/Profile';
+import RecipesPage from './pages/RecipesPage';
 import Test from './pages/Test';
 import './styles/App.css';
 
@@ -18,7 +19,7 @@ function App() {
           <Route path="/bebidas/:id" component={Test} />
           <Route path="/comidas/:id/in-progress">{}</Route>
           <Route path="/bebidas/:id/in-progress">{}</Route>
-          <Route path="/explorar" component={Test} />
+          <Route path="/explorar" component={Explore} />
           <Route path="/explorar/comidas">{}</Route>
           <Route path="/explorar/bebidas">{}</Route>
           <Route path="/explorar/comidas/ingredientes">{}</Route>
