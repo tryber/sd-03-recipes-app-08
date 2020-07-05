@@ -17,8 +17,17 @@ const handleFavorite = (data, favorite, setFavorite) => {
     const newFavoriteRecipesArr = favoriteRecipesArr.map((elem) => elem.id !== data.id);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   } else {
+    const dataToFavoriteRecipe = {
+      id: data.id,
+      type: data.type,
+      area: data.area,
+      category: data.category,
+      alcoholicOrNot: data.alcoholicOrNot,
+      name: data.name,
+      image: data.image,
+    };
     setFavorite(true);
-    const newFavoriteRecipesArr = [...favoriteRecipesArr, data];
+    const newFavoriteRecipesArr = [...favoriteRecipesArr, dataToFavoriteRecipe];
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   }
 };
@@ -88,6 +97,8 @@ const renderVideo = (video) => (
 );
 
 const creatingredientsArr = (detailData) => {
+  console.log(detailData);
+  // if(detailData.)
   const ingredients = Object.entries(detailData).filter((elem) => elem.match(/strIngredient/i));
   const measures = Object.entries(detailData).filter((elem) => elem.match(/strMeasure/i));
   const arr = ingredients.reduce((acc, elem, index) => {
@@ -164,7 +175,7 @@ const creatDataArr = (choice, detailData) => {
   );
 };
 
-const DetailsOfFoodRecipe = () => {
+const RecipeDetails = () => {
   const {
     error,
     loading,
@@ -195,9 +206,9 @@ const DetailsOfFoodRecipe = () => {
 
   setFavorite(favoriteRecipesArr.some((elem) => elem.id === dataArr.id));
 
+  if (loading) return <h1>Loading...</h1>;
   return (
     <div>
-      {loading && <h1>Loading...</h1>}
       {!loading && error && <h4>{error}</h4>}
       {renderDetailsPage(
         dataArr,
@@ -211,4 +222,4 @@ const DetailsOfFoodRecipe = () => {
   );
 };
 
-export default DetailsOfFoodRecipe;
+export default RecipeDetails;

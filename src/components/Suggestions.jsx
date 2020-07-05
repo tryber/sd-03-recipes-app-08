@@ -45,7 +45,6 @@ const CreateDrinkArr = (drinkCall) => {
   return ArrConstructor;
 };
 
-
 const creatingredientsArr = (choice, detailData) => {
   if (choice === 'meal') {
     return (
@@ -77,19 +76,23 @@ const Suggestions = () => {
   const initialSuggestArr = (choice === 'meal')
     ? CreateDrinkArr(fetchRandomDrinkID)
     : CreateFoodArr(fetchRandomMealID);
-  const FinalSuggestArr = creatingredientsArr(choice, initialSuggestArr);
+  // const FinalSuggestArr = creatingredientsArr(choice, initialSuggestArr);
 
   return (
     <div>
-      {FinalSuggestArr.map((elem, index) => SuggestionCard(
-        elem.id,
-        elem.name,
-        elem.thumbnail,
-        index,
-        setSelectedID,
-        choice,
-        setChoice,
-      ))}
+      {initialSuggestArr.map((elem, index) => {
+        const finalArr = creatingredientsArr(choice, elem);
+        return (
+          SuggestionCard(
+            finalArr.id,
+            finalArr.name,
+            finalArr.thumbnail,
+            index,
+            setSelectedID,
+            choice,
+            setChoice,
+          ));
+      })}
     </div>
   );
 };

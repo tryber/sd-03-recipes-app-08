@@ -1,0 +1,78 @@
+.search-container {
+  background: white;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 105px;
+  margin-top: 60px;
+  position: absolute;
+  width: 360px;
+  z-index: 1;
+}
+
+.search-input {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 21px;
+  margin: 10px 30px;
+  position: absolute;
+  width: 296px;
+}
+
+.search-button {
+  background: #c4c4c4;
+  bottom: 5px;
+  left: 300px;
+  position: absolute;
+}
+
+.ingredient-search-label {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 100;
+  left: 2%;
+  line-height: 21px;
+  position: absolute;
+  right: 65%;
+  top: 41.35%;
+}
+
+.name-search-label {
+  align-items: flex-end;
+  bottom: 36.54%;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 100;
+  left: 35%;
+  line-height: 21px;
+  position: absolute;
+  right: 65%;
+  top: 41.35%;
+}
+
+.first-letter-search-label {
+  align-items: flex-end;
+  bottom: 36.54%;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 100;
+  left: 65%;
+  line-height: 21px;
+  position: absolute;
+  right: 65%;
+  top: 41.35%;
+}
