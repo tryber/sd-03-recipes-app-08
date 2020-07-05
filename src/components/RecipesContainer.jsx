@@ -25,14 +25,14 @@ function RecipesContainer({
     !loading
     && !error && data && (
       <div className="recipes-page">
-        <header className="recipes-header">
+        <div className="recipes-header">
           <Header
             iconProfile={profileIcon}
             iconSearch={searchIcon}
             title={title}
             searchFilters={searchFilters}
           />
-        </header>
+        </div>
         {!loading && categoriesError ? (
           <div className="error-container">
             <h4>{categoriesError}</h4>
@@ -69,9 +69,9 @@ function RecipesContainer({
             ),
           )}
         </div>
-        <footer className="recipes-footer">
+        <div className="recipes-footer">
           <Footer />
-        </footer>
+        </div>
       </div>
     )
   );
