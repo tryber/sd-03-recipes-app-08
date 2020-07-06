@@ -6,11 +6,10 @@ import BlackHeart from '../images/blackHeartIcon.svg';
 import WhiteHeart from '../images/whiteHeartIcon.svg';
 
 const favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
-const actualFavorite = favoriteRecipesArr ? true : [];
 
 const handleFavorite = (data, favorite, setFavorite) => {
   if (favorite) {
-    const newFavoriteRecipesArr = actualFavorite.filter((elem) => elem.id !== data.id);
+    const newFavoriteRecipesArr = favoriteRecipesArr.filter((elem) => elem.id !== data.id);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   } else {
     const dataToFavoriteRecipe = {
@@ -22,7 +21,7 @@ const handleFavorite = (data, favorite, setFavorite) => {
       name: data.name,
       image: data.image,
     };
-    const newFavoriteRecipesArr = [...actualFavorite, dataToFavoriteRecipe];
+    const newFavoriteRecipesArr = [...favoriteRecipesArr, dataToFavoriteRecipe];
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   }
   setFavorite(!favorite);
@@ -57,7 +56,7 @@ const FavoriteButton = ({ data }) => {
   const { choice, favorite, setFavorite } = useContext(RecipeAppContext);
   const { id } = useParams();
   useEffect(() => {
-    setFavorite(actualFavorite.some((elem) => elem.id === id));
+    setFavorite(favoriteRecipesArr.some((elem) => elem.id === id));
   }, [choice]);
   return (
     <div>

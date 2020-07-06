@@ -46,21 +46,17 @@ const SuggestionCard = (id, name, thumbnail, index, choice, setChoice) => (
 
 const creatingredientsArr = (choice, detailData) => {
   if (choice === 'meal') {
-    return (
-      {
-        id: detailData.idMeal,
-        name: detailData.strMeal,
-        image: detailData.strMealThumb,
-      }
-    );
+    return ({
+      id: detailData.idMeal,
+      name: detailData.strMeal,
+      image: detailData.strMealThumb,
+    });
   }
-  return (
-    {
-      id: detailData.idDrink,
-      name: detailData.strDrink,
-      image: detailData.strDrinkThumb,
-    }
-  );
+  return ({
+    id: detailData.idDrink,
+    name: detailData.strDrink,
+    image: detailData.strDrinkThumb,
+  });
 };
 
 const Suggestions = () => {
