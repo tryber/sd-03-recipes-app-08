@@ -96,14 +96,14 @@ export const fetchRandomDrink = (setRandomRecipeId, setRandomRecipeIdError) => {
 
 export const fetchFoodIngredients = (setIngredientsList, setIngredientsListError) => {
   getAllFoodIngredients().then(
-    (response) => setIngredientsList(response.drinks[0].idDrink),
+    (response) => setIngredientsList(response.meals),
     (response) => setIngredientsListError(response.message),
   );
 };
 
 export const fetchDrinkIngredients = (setIngredientsList, setIngredientsListError) => {
   getAllDrinkIngredients().then(
-    (response) => setIngredientsList(response.drinks[0].idDrink),
+    (response) => setIngredientsList(response.drinks),
     (response) => setIngredientsListError(response.message),
   );
 };
