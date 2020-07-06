@@ -10,7 +10,9 @@ const Profile = () => {
   return (
     <main className="profile-container">
       <Header iconProfile={profileIcon} title="Perfil" />
-      <h2 className="profile-user-email">{userEmail.email}</h2>
+      <h2 className="profile-user-email" data-testid="profile-email">
+        {userEmail.email}
+      </h2>
       <div className="profile-links-container">
         <Link to="/receitas-feitas">
           <button type="button" data-testid="profile-done-btn">
