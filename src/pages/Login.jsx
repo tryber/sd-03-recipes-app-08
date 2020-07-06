@@ -17,7 +17,7 @@ const emailInput = (userInfo, setUserInfo, handleChange) => {
         id="email"
         onChange={(event) => handleChange(event, setUserInfo, userInfo)}
         value={email}
-        placeholder={memoryEmail ? email : 'email'}
+        placeholder={memoryEmail ? email : 'Email'}
         className="email-input"
       />
     </div>
@@ -34,7 +34,7 @@ const passwordInput = (userInfo, handleChange) => {
         id="password"
         onChange={(e) => handleChange(e)}
         value={password}
-        placeholder="senha"
+        placeholder="Senha"
         className="password-input"
       />
     </div>

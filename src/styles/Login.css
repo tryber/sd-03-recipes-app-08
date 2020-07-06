@@ -1,15 +1,19 @@
 .email-input {
   background: white;
   border: 1px solid black;
+  border-radius: 5px;
   box-sizing: border-box;
   color: black;
+  display: flex;
   font-family: Roboto, sans-serif;
   font-size: 29px;
+  font-style: normal;
+  font-weight: normal;
   height: 58px;
   left: 31px;
   line-height: 34px;
   position: absolute;
-  text-align: center;
+  text-align: start;
   top: 155px;
   width: 293px;
 }
@@ -20,20 +24,27 @@
   display: flex;
   font-family: Roboto, sans-serif;
   font-size: 39px;
+  font-style: normal;
+  font-weight: normal;
   height: 46px;
   left: 128px;
   line-height: 46px;
   position: absolute;
-  top: 79px;
+  top: 59px;
   width: 97px;
 }
 
 .login-submit-btn {
+  align-items: flex-end ;
   background: #6ce34f;
+  border-radius: 5px;
   color: black;
   font-family: Roboto, sans-serif;
   font-size: 29px;
+  font-style: normal;
+  font-weight: normal;
   height: 76px;
+  justify-content: space-around;
   left: 11px;
   line-height: 34px;
   position: absolute;
@@ -45,14 +56,18 @@
 .password-input {
   background: white;
   border: 1px solid black;
+  border-radius: 5px;
   box-sizing: border-box;
   color: black;
+  display: flex;
   font-size: 29px;
+  font-style: normal;
+  font-weight: normal;
   height: 58px;
   left: 30px;
   line-height: 34px;
   position: absolute;
-  text-align: center;
+  text-align: start;
   top: 243px;
   width: 293px;
 }
