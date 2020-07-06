@@ -21,7 +21,7 @@ const ingredientSwitch = (
 
 const pathSwitch = (location) => (location.pathname.includes('/explorar/comidas/ingredientes')
   ? '/comidas'
-  : 'bebidas');
+  : '/bebidas');
 
 function ExploreByIngredients() {
   const location = useLocation();
