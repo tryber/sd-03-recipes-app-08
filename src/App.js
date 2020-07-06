@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import RecipesPage from './pages/RecipesPage';
 import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
 import ExploreByIngredients from './pages/ExploreByIngredient';
+import NotFound from './pages/NotFound';
 import Test from './pages/Test';
 import './styles/App.css';
 
@@ -30,7 +31,7 @@ function App() {
           <Route exact path="/perfil" component={Profile} />
           <Route path="/receitas-feitas">{}</Route>
           <Route path="/receitas-favoritas">{}</Route>
-          <Route path="*">{}</Route>
+          <Route path="*" component={NotFound} />
         </Switch>
       </Router>
     </div>
