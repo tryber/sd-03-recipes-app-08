@@ -6,7 +6,7 @@ import BlackHeart from '../images/blackHeartIcon.svg';
 import WhiteHeart from '../images/whiteHeartIcon.svg';
 
 const favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
-const actualFavorite = (favoriteRecipesArr) ? favoriteRecipesArr : [];
+const actualFavorite = favoriteRecipesArr ? true : [];
 
 const handleFavorite = (data, favorite, setFavorite) => {
   if (favorite) {
