@@ -14,8 +14,8 @@ import '../styles/RecipesPage.css';
 
 const uniqueRecipe = (data, location) => {
   const URL = location.pathname;
-  if (URL === '/comidas') return <Redirect to={`${URL}/${data[0].idDrink}`} />;
-  return <Redirect to={`${URL}/${data[0].idMeal}`} />;
+  if (URL === '/comidas') return <Redirect to={`${URL}/${data[0].idMeal}`} />;
+  return <Redirect to={`${URL}/${data[0].idDrink}`} />;
 };
 
 const RecipesGrid = () => {

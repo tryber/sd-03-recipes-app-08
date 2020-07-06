@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { RecipeAppContext } from '../context';
 
-export default function useBeverageorMealsContext({ pathname }) {
+export default function useBeverageorMealsContext(location) {
   const { mealsData, beverageData } = useContext(RecipeAppContext);
 
-  if (pathname === '/comidas') return mealsData;
+  if (location.pathname === '/comidas') return mealsData;
   return beverageData;
 }
