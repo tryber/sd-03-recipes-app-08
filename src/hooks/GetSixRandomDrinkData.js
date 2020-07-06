@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   fetchRandomMealID,
   fetchRandomDrinkID,
 } from '../services/fatchRandom';
 
-export default function getSixRandomDrinkData() {
+export default function GetSixRandomDrinkData() {
   const [arrIndex, setArrIndex] = useState([]);
   const [randomData, setRandomData] = useState([]);
   const [randomSuggest, setRandomSuggest] = useState([]);
@@ -37,11 +37,10 @@ export default function getSixRandomDrinkData() {
     setRandomSuggest(ArrConstructor);
   };
 
-  const fatchRandoCall = (choice) => {
+  function fatchRandoCall(choice) {
     if (choice === 'meal') drinkCall();
     if (choice === 'drink') foodCall();
-  };
-
+  }
 
   return {
     randomSuggest,

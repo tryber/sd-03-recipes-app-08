@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeAppContext from './context';
-import { useFetchDrinkData, useFetchMealsData } from '../hooks';
+import { useFetchDrinkData, useFetchMealsData, GetSixRandomDrinkData } from '../hooks';
 import * as requestFunctions from '../services/meals&drinksAPI';
 
 const initialState = {
@@ -47,7 +47,7 @@ const RecipeAppProvider = ({ children }) => {
 
   const mealsData = useFetchMealsData();
   const beverageData = useFetchDrinkData();
-  // const randomDataCall = getSixRandomDrinkData();
+  const randomDataCall = GetSixRandomDrinkData();
 
   const context = {
     mealsToken,
@@ -70,7 +70,7 @@ const RecipeAppProvider = ({ children }) => {
     setChoice,
     mealsData,
     beverageData,
-    // randomDataCall,
+    randomDataCall,
   };
 
   return (

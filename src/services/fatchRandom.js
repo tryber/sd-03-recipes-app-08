@@ -4,6 +4,7 @@ function fetchRandomMealID(setRandomData, setRandomError) {
   requestFunctions.getRandomFood().then(
     (response) => {
       setRandomData(response.meals);
+      console.log(response);
     },
     (response) => {
       setRandomError(response.message);
@@ -14,7 +15,7 @@ function fetchRandomMealID(setRandomData, setRandomError) {
 function fetchRandomDrinkID(setRandomData, setRandomError) {
   requestFunctions.getRandomFood().then(
     (response) => {
-      setRandomData(response.meals);
+      setRandomData(response.drinks);
     },
     (response) => {
       setRandomError(response.message);

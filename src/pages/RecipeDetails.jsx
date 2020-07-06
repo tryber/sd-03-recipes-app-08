@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { RecipeAppContext } from '../context';
-// import Suggestions from '../components/Suggestions';
+import Suggestions from '../components/Suggestions';
 import FavoriteButton from '../components/FavoriteButton';
 import Clipboard from '../components/Clipboard';
 import dataDealer from '../helpers/dataDealer';
@@ -71,7 +71,7 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
     </div>
     <div className="intructions-title">Instructions</div>
     <div data-testid="instructions" className="instructions">{data.instructions}</div>
-    {/* <Suggestions /> */}
+    <Suggestions />
     {(choice === 'meal') ? renderVideo(data.video) : null}
     {(finished.doneDate !== null || !started) ? renderLink(data, choice, started) : null}
   </div>
