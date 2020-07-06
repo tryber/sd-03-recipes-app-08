@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/perfil" component={Profile} />
           <Route path="/receitas-feitas">{}</Route>
           <Route path="/receitas-favoritas">{}</Route>
-          <Route path="*" component={NotFound} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </div>
