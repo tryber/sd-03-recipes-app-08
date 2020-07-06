@@ -7,11 +7,11 @@ const Clipboard = ({ id, choice }) => {
 
   const IconFunction = () => {
     if (choice === 'meal') {
-      const linkMeal = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+      const linkMeal = `http://localhost:3000/comidas/${id}`;
       navigator.clipboard.writeText(linkMeal);
     }
     if (choice === 'drink') {
-      const linkDrink = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+      const linkDrink = `http://localhost:3000/bebidas/${id}`;
       navigator.clipboard.writeText(linkDrink);
     }
     setIconText('Link copiado!');

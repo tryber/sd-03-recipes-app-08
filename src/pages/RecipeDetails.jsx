@@ -5,6 +5,8 @@ import { RecipeAppContext } from '../context';
 // import Suggestions from '../components/Suggestions';
 import FavoriteButton from '../components/FavoriteButton';
 import Clipboard from '../components/Clipboard';
+import dataDealer from '../helpers/dataDealer';
+import listIngredients from '../helpers/listIngredients';
 
 const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
 
@@ -48,21 +50,7 @@ const renderVideo = (video) => (
   </div>
 );
 
-const creatingredientsArr = (detailData) => {
-  const ingredients = Object.entries(detailData[0]).filter((elem) => elem[0].match(/strIngredient/i));
-  const measures = Object.entries(detailData[0]).filter((elem) => elem[0].match(/strMeasure/i));
-  const arr = ingredients.reduce((acc, elem, index) => {
-    if (elem[1]) {
-      return [...acc, `- ${elem[1]} - ${measures[index][1]}`];
-    }
-    return acc;
-  }, []);
-  return arr;
-};
-
-const renderDetailsPage = (
-  data, choice, ingredients, favorite, setFavorite, finished, started,
-) => (
+const renderDetailsPage = (data, choice, ingredients, finished, started) => (
   <div>
     <img data-testid="recipe-photo" src={data.image} alt="recipe" className="recipe-photo" />
     <title data-testid="recipe-title" className="recipe-title">{data.name}</title>
@@ -89,45 +77,10 @@ const renderDetailsPage = (
   </div>
 );
 
-const creatDataArr = (choice, detailData) => {
-  if (choice === 'meal') {
-    return (
-      {
-        id: detailData[0].idMeal,
-        type: 'meal',
-        area: detailData[0].strArea,
-        category: detailData[0].strCategory,
-        alcoholicOrNot: false,
-        name: detailData[0].strMeal,
-        image: detailData[0].strMealThumb,
-        instructions: detailData[0].strInstructions,
-        video: detailData[0].strYoutube,
-        doneDate: null,
-        tags: detailData[0].strTags,
-      }
-    );
-  }
-  return (
-    {
-      id: detailData[0].idDrink,
-      type: 'drink',
-      area: null,
-      category: detailData[0].strCategory,
-      alcoholicOrNot: (detailData[0].strAlcoholic === 'Alcoholic'),
-      name: detailData[0].strDrink,
-      image: detailData.strDrinkThumb,
-      instructions: detailData[0].strInstructions,
-      video: null,
-      doneDate: null,
-      tags: detailData[0].strTags,
-    }
-  );
-};
-
 const RecipeDetails = () => {
   const {
     error, loading, setLoading, fetchMealID, fetchDrinkID,
-    mealDetailData, drinkDetailData, choice, favorite, setFavorite,
+    mealDetailData, drinkDetailData, choice,
   } = useContext(RecipeAppContext);
   const { id } = useParams();
   useEffect(() => {
@@ -136,24 +89,23 @@ const RecipeDetails = () => {
     if (choice === 'drink') fetchDrinkID(id);
   }, [choice]);
   if (mealDetailData.length === 0 && drinkDetailData.length === 0) return <h1>Loading...</h1>;
+  const dataHelper = (choice === 'meal')
+    ? mealDetailData
+    : drinkDetailData;
+  const dataArr = dataDealer(choice, dataHelper);
+  const ingredientsArr = listIngredients(dataHelper);
+
   let finished = { doneDate: null };
   let started = false;
-  const dataArr = (choice === 'meal')
-    ? creatDataArr(choice, mealDetailData)
-    : creatDataArr(choice, drinkDetailData);
   if (doneRecipesArr) {
     finished = doneRecipesArr.filter((elem) => elem.id === dataArr.id);
     started = doneRecipesArr.filter((elem) => elem.id === dataArr.id);
   }
-  const ingredientsArr = (choice === 'meal')
-    ? creatingredientsArr(mealDetailData)
-    : creatingredientsArr(drinkDetailData);
+
   return (
     <div>
       {!loading && error && <h4>{error}</h4>}
-      {renderDetailsPage(
-        dataArr, choice, ingredientsArr, favorite, setFavorite, finished, started,
-      )}
+      {renderDetailsPage(dataArr, choice, ingredientsArr, finished, started)}
     </div>
   );
 };
