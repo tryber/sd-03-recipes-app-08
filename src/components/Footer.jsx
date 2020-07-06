@@ -17,7 +17,7 @@ const Footer = () => {
           alt="link para lista de bebidas"
           className="drinks-icon"
           data-testid="drinks-bottom-btn"
-          onClick={setChoice('drink')}
+          onClick={() => setChoice('drink')}
         />
       </Link>
       <Link to="/explorar">
@@ -35,7 +35,7 @@ const Footer = () => {
           alt="link para lista de comidas"
           className="food-icon"
           data-testid="food-bottom-btn"
-          onClick={setChoice('meal')}
+          onClick={() => setChoice('meal')}
         />
       </Link>
     </footer>

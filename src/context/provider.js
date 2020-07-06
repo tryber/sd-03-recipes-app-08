@@ -14,10 +14,9 @@ const RecipeAppProvider = ({ children }) => {
   const [cocktailsToken, setCocktailsToken] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [selectedID, setSelectedID] = useState(initialState.id);
-  const [mealDetailData, setMealDetailData] = useState({ meals: [] });
-  const [drinkDetailData, setDrinkDetailData] = useState({ drinks: [] });
-  const [favorite, setFavorite] = useState(false);
+  const [mealDetailData, setMealDetailData] = useState([]);
+  const [drinkDetailData, setDrinkDetailData] = useState([]);
+  const [favorite, setFavorite] = useState();
   const [choice, setChoice] = useState(initialState.choice);
 
   const fetchMealID = (elem) => {
@@ -46,33 +45,9 @@ const RecipeAppProvider = ({ children }) => {
     );
   };
 
-  const fetchRandomMealID = () => {
-    requestFunctions.getRandomFood().then(
-      (response) => {
-        setMealDetailData(response.meals);
-        setLoading(false);
-      },
-      (response) => {
-        setError(response.message);
-        setLoading(false);
-      },
-    );
-  };
-
-  const fetchRandomDrinkID = () => {
-    requestFunctions.getRandomDrink().then(
-      (response) => {
-        setDrinkDetailData(response.drinks);
-        setLoading(false);
-      },
-      (response) => {
-        setError(response.message);
-        setLoading(false);
-      },
-    );
-  };
   const mealsData = useFetchMealsData();
   const beverageData = useFetchDrinkData();
+  // const randomDataCall = getSixRandomDrinkData();
 
   const context = {
     mealsToken,
@@ -83,8 +58,6 @@ const RecipeAppProvider = ({ children }) => {
     setError,
     loading,
     setLoading,
-    selectedID,
-    setSelectedID,
     fetchMealID,
     fetchDrinkID,
     mealDetailData,
@@ -93,12 +66,11 @@ const RecipeAppProvider = ({ children }) => {
     setDrinkDetailData,
     favorite,
     setFavorite,
-    fetchRandomMealID,
-    fetchRandomDrinkID,
     choice,
     setChoice,
     mealsData,
     beverageData,
+    // randomDataCall,
   };
 
   return (

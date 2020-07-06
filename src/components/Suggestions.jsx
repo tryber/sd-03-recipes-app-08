@@ -1,17 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { RecipeAppContext } from '../context';
 
-const changeContext = (id, setSelectedID, choice, setChoice) => {
-  setSelectedID(id);
+const changeContext = (choice, setChoice) => {
   if (choice === 'meal') setChoice('drink');
   if (choice === 'drink') setChoice('meal');
 };
 
-const SuggestionCard = (id, name, thumbnail, index, setSelectedID, choice, setChoice) => (
+const SuggestionCard = (id, name, thumbnail, index, choice, setChoice) => (
   <Link
     to={(choice === 'meal') ? `/bebidas/${id}` : `/comidas/${id}`}
-    onClick={changeContext(id, setSelectedID, choice, setChoice)}
+    onClick={() => changeContext(id, choice, setChoice)}
   >
     <div data-testid={`${index}-recomendation-card`} className="recomendation-card">
       <img
@@ -27,23 +26,23 @@ const SuggestionCard = (id, name, thumbnail, index, setSelectedID, choice, setCh
   </Link>
 );
 
-const CreateFoodArr = (foodCall) => {
-  const ArrConstructor = [];
-  for (let i = 0; i < 6; i += 1) {
-    const constructor = foodCall();
-    ArrConstructor.push(constructor);
-  }
-  return ArrConstructor;
-};
+// const CreateFoodArr = (foodCall, data) => {
+//   let ArrConstructor = [];
+//   for (let i = 0; i < 6; i += 1) {
+//     foodCall();
+//     ArrConstructor = [...ArrConstructor, data];
+//   }
+//   return ArrConstructor;
+// };
 
-const CreateDrinkArr = (drinkCall) => {
-  const ArrConstructor = [];
-  for (let i = 0; i < 6; i += 1) {
-    const constructor = drinkCall();
-    ArrConstructor.push(constructor);
-  }
-  return ArrConstructor;
-};
+// const CreateDrinkArr = (drinkCall, data) => {
+//   const ArrConstructor = [];
+//   for (let i = 0; i < 6; i += 1) {
+//     drinkCall();
+//     ArrConstructor.push(data);
+//   }
+//   return ArrConstructor;
+// };
 
 const creatingredientsArr = (choice, detailData) => {
   if (choice === 'meal') {
@@ -66,17 +65,24 @@ const creatingredientsArr = (choice, detailData) => {
 
 const Suggestions = () => {
   const {
-    setSelectedID,
     fetchRandomMealID,
     fetchRandomDrinkID,
     choice,
     setChoice,
+    randomData,
+    // fatchRandoCall,
   } = useContext(RecipeAppContext);
 
-  const initialSuggestArr = (choice === 'meal')
-    ? CreateDrinkArr(fetchRandomDrinkID)
-    : CreateFoodArr(fetchRandomMealID);
-  // const FinalSuggestArr = creatingredientsArr(choice, initialSuggestArr);
+  useEffect(() => {
+    // fatchRandoCall(choice);
+  }, [choice]);
+
+  const initialSuggestArr = [];
+  for (let i = 0; i < 6; i += 1) {
+    if (choice === 'meal') fetchRandomDrinkID();
+    if (choice === 'drink') fetchRandomMealID();
+    initialSuggestArr.push(randomData);
+  }
 
   return (
     <div>
@@ -88,7 +94,6 @@ const Suggestions = () => {
             finalArr.name,
             finalArr.thumbnail,
             index,
-            setSelectedID,
             choice,
             setChoice,
           ));
