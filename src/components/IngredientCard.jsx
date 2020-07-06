@@ -5,7 +5,7 @@ import { useBeverageOrMealsContext } from '../hooks';
 import '../styles/RecipeCard.css';
 
 const srcSwitch = (path, name) => (path === '/comidas'
-  ? `https://www.themealdb.com/images/ingredients/${name}.png`
+  ? `https://www.themealdb.com/images/ingredients/${name}-Small.png`
   : `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`);
 
 const convertPath = (path) => {
