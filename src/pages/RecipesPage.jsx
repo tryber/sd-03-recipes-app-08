@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
-import { useBeverageorMealsContext } from '../hooks';
+import { useBeverageOrMealsContext } from '../hooks';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
 import RecipesContainer from '../components/RecipesContainer';
 import {
@@ -20,7 +20,7 @@ const uniqueRecipe = (data, location) => {
 
 const RecipesGrid = () => {
   const location = useLocation();
-  const recipes = useBeverageorMealsContext(location);
+  const recipes = useBeverageOrMealsContext(location);
 
   if (
     recipes.data

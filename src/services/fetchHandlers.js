@@ -3,6 +3,8 @@ import {
   getFoodsCategoriesList,
   getRandomFood,
   getRandomDrink,
+  getAllFoodIngredients,
+  getAllDrinkIngredients,
 } from './meals&drinksAPI';
 import { requestDrinksData, requestFoodsData } from './requestData';
 
@@ -89,5 +91,19 @@ export const fetchRandomDrink = (setRandomRecipeId, setRandomRecipeIdError) => {
   getRandomDrink().then(
     (response) => setRandomRecipeId(response.drinks[0].idDrink),
     (response) => setRandomRecipeIdError(response.message),
+  );
+};
+
+export const fetchFoodIngredients = (setIngredientsList, setIngredientsListError) => {
+  getAllFoodIngredients().then(
+    (response) => setIngredientsList(response.drinks[0].idDrink),
+    (response) => setIngredientsListError(response.message),
+  );
+};
+
+export const fetchDrinkIngredients = (setIngredientsList, setIngredientsListError) => {
+  getAllDrinkIngredients().then(
+    (response) => setIngredientsList(response.drinks[0].idDrink),
+    (response) => setIngredientsListError(response.message),
   );
 };
