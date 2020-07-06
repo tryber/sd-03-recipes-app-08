@@ -4,9 +4,10 @@ import Explore from './pages/Explore';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import RecipesPage from './pages/RecipesPage';
+import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
+import ExploreByIngredients from './pages/ExploreByIngredient';
 import Test from './pages/Test';
 import './styles/App.css';
-import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
 
 function App() {
   return (
@@ -23,8 +24,8 @@ function App() {
           <Route exact path="/explorar" component={Explore} />
           <Route exact path="/explorar/comidas" component={ExploreMealsOrDrinks} />
           <Route exact path="/explorar/bebidas" component={ExploreMealsOrDrinks} />
-          <Route path="/explorar/comidas/ingredientes">{Test}</Route>
-          <Route path="/explorar/bebidas/ingredientes">{Test}</Route>
+          <Route path="/explorar/comidas/ingredientes" component={ExploreByIngredients} />
+          <Route path="/explorar/bebidas/ingredientes" component={ExploreByIngredients} />
           <Route path="/explorar/comidas/area">{Test}</Route>
           <Route exact path="/perfil" component={Profile} />
           <Route path="/receitas-feitas">{}</Route>

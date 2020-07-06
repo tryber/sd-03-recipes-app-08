@@ -4,18 +4,23 @@ import PropTypes from 'prop-types';
 import { useBeverageOrMealsContext } from '../hooks';
 import '../styles/RecipeCard.css';
 
-const srcSwitch = (path, name) => (path === '/comidas' ? `https://www.themealdb.com/images/ingredients/${name}.png` : `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`);
+const srcSwitch = (path, name) => (path === '/comidas'
+  ? `https://www.themealdb.com/images/ingredients/${name}.png`
+  : `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`);
 
-const IngredientCard = ({
-  name, index, path,
-}) => {
-  const setIngredient = useBeverageOrMealsContext(path);
+const convertPath = (path) => {
+  const convertedPath = { pathname: path };
+  return convertedPath;
+};
+
+const IngredientCard = ({ name, index, path }) => {
+  const setIngredient = useBeverageOrMealsContext(convertPath(path));
   return (
     <Link
       to={`${path}`}
       onClick={() => setIngredient.setSearchFilters(() => ({
         filter: 'ingredient',
-        value: { name },
+        value: name,
       }))}
     >
       <div data-testid={`${index}-ingredient-card`} className="recipe-card">

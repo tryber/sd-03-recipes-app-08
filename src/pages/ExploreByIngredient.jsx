@@ -26,7 +26,7 @@ const pathSwitch = (location) => (location.pathname.includes('/explorar/comidas/
 function ExploreByIngredients() {
   const location = useLocation();
   const [ingredientsList, setIngredientsList] = useState([]);
-  const [ingredientsListError, setIngredientsListError] = useState([]);
+  const [ingredientsListError, setIngredientsListError] = useState('');
 
   useEffect(() => {
     ingredientSwitch(location, setIngredientsList, setIngredientsListError);
