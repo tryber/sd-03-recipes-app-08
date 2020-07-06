@@ -30,7 +30,7 @@ const ExploreByPageLinks = ({ location, callback, id }) => (
         data-testid="explore-surprise"
         className="explore-surprise"
       >
-        Me Surpreenda
+        Me Surpreenda!
       </button>
     </Link>
   </div>
