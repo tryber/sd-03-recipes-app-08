@@ -66,14 +66,19 @@ const creatingredientsArr = (choice, detailData) => {
 const Suggestions = () => {
   const {
     choice,
-    // setChoice,
-    // randomData,
-    fatchRandoCall,
+    setChoice,
+    randomDataCall: {
+      // randomData = [],
+      fetchRandomCall,
+      randomSuggest,
+    },
   } = useContext(RecipeAppContext);
 
-  fatchRandoCall(choice);
+  useEffect(() => {
+    fetchRandomCall(choice);
+  }, [randomSuggest]);
 
-  // const initialSuggestArr = randomData;
+
   // const initialSuggestArr = [];
   // for (let i = 0; i < 6; i += 1) {
   //   if (choice === 'meal') fetchRandomDrinkID();
@@ -83,8 +88,7 @@ const Suggestions = () => {
 
   return (
     <div>
-      teste
-      {/* {initialSuggestArr.map((elem, index) => {
+      {randomSuggest.map((elem, index) => {
         const finalArr = creatingredientsArr(choice, elem);
         return (
           SuggestionCard(
@@ -95,7 +99,7 @@ const Suggestions = () => {
             choice,
             setChoice,
           ));
-      })} */}
+      })}
     </div>
   );
 };

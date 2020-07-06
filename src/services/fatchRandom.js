@@ -1,9 +1,9 @@
 import * as requestFunctions from './meals&drinksAPI';
 
-function fetchRandomMealID(setRandomData, setRandomError) {
+function fetchRandomMealID(randomData, setRandomData, setRandomError) {
   requestFunctions.getRandomFood().then(
     (response) => {
-      setRandomData(response.meals);
+      setRandomData([...randomData, response.meals]);
       console.log(response);
     },
     (response) => {
@@ -12,10 +12,10 @@ function fetchRandomMealID(setRandomData, setRandomError) {
   );
 }
 
-function fetchRandomDrinkID(setRandomData, setRandomError) {
+function fetchRandomDrinkID(randomData, setRandomData, setRandomError) {
   requestFunctions.getRandomFood().then(
     (response) => {
-      setRandomData(response.drinks);
+      setRandomData([...randomData, response.meals]);
     },
     (response) => {
       setRandomError(response.message);

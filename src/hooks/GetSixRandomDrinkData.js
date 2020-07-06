@@ -1,51 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   fetchRandomMealID,
   fetchRandomDrinkID,
 } from '../services/fatchRandom';
 
+
+const drinkCall = (randomData, setRandomData, setRandomError, setRandomSuggest) => {
+  // let ArrConstructor = [];
+  for (let i = 0; i < 6; i += 1) {
+    fetchRandomDrinkID(randomData, setRandomData, setRandomError);
+    // setArrIndex(randomData);
+    // ArrConstructor = [...ArrConstructor, arrIndex];
+    // console.log(randomData);
+  }
+  setRandomSuggest(randomData);
+};
+
+const foodCall = (randomData, setRandomData, setRandomError, setRandomSuggest) => {
+  // let ArrConstructor = [];
+  for (let i = 0; i < 6; i += 1) {
+    fetchRandomMealID(randomData, setRandomData, setRandomError);
+    // setArrIndex(randomData);
+    // ArrConstructor = [...ArrConstructor, arrIndex];
+  }
+  setRandomSuggest(randomData);
+};
+
 export default function GetSixRandomDrinkData() {
-  const [arrIndex, setArrIndex] = useState([]);
+  // const [arrIndex, setArrIndex] = useState([]);
   const [randomData, setRandomData] = useState([]);
   const [randomSuggest, setRandomSuggest] = useState([]);
   const [randomError, setRandomError] = useState('');
 
-  useEffect(() => {
-    fetchRandomDrinkID(setRandomData, setRandomError);
-    fetchRandomMealID(setRandomData, setRandomError);
-  }, [randomError]);
-
-  const drinkCall = () => {
-    let ArrConstructor = [];
-    for (let i = 0; i < 6; i += 1) {
-      fetchRandomDrinkID(setRandomData, setRandomError);
-      setArrIndex(randomData);
-      ArrConstructor = [...ArrConstructor, arrIndex];
-      setRandomSuggest(ArrConstructor);
-    }
-    setRandomSuggest(ArrConstructor);
-  };
-
-  const foodCall = () => {
-    let ArrConstructor = [];
-    for (let i = 0; i < 6; i += 1) {
-      fetchRandomMealID(setRandomData, setRandomError);
-      setArrIndex(randomData);
-      ArrConstructor = [...ArrConstructor, arrIndex];
-      setRandomSuggest(ArrConstructor);
-    }
-    setRandomSuggest(ArrConstructor);
-  };
-
-  function fatchRandoCall(choice) {
-    if (choice === 'meal') drinkCall();
-    if (choice === 'drink') foodCall();
+  function fetchRandomCall(choice) {
+    if (choice === 'meal') drinkCall(randomData, setRandomData, setRandomError, setRandomSuggest);
+    if (choice === 'drink') foodCall(randomData, setRandomData, setRandomError, setRandomSuggest);
   }
 
   return {
     randomSuggest,
     setRandomSuggest,
     randomError,
-    fatchRandoCall,
+    fetchRandomCall,
   };
 }
