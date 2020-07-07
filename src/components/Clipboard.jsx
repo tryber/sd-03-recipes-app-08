@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from '../images/shareIcon.svg';
 
 const Clipboard = ({ id, choice }) => {
-  const [iconText, setIconText] = useState('Copiar link');
+  const [iconUsed, setIconUsed] = useState(false);
 
   const IconFunction = () => {
     if (choice === 'meal') {
@@ -14,7 +14,7 @@ const Clipboard = ({ id, choice }) => {
       const linkDrink = `http://localhost:3000/bebidas/${id}`;
       navigator.clipboard.writeText(linkDrink);
     }
-    setIconText('Link copiado!');
+    setIconUsed('Link copiado!');
   };
 
   return (
@@ -22,10 +22,9 @@ const Clipboard = ({ id, choice }) => {
       <button
         type="button"
         onClick={IconFunction}
-        data-testid="share-btn"
       >
-        <span>{iconText}</span>
-        <img alt="share-icon" src={Icon} />
+        <img data-testid="share-btn" alt="share-icon" src={Icon} />
+        {iconUsed && <span>Link copiado!</span>}
       </button>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeAppContext from './context';
-import { useFetchDrinkData, useFetchMealsData, GetSixRandomDrinkData } from '../hooks';
+import { useFetchDrinkData, useFetchMealsData } from '../hooks';
 import * as requestFunctions from '../services/meals&drinksAPI';
 
 const initialState = {
@@ -18,6 +18,34 @@ const RecipeAppProvider = ({ children }) => {
   const [drinkDetailData, setDrinkDetailData] = useState([]);
   const [favorite, setFavorite] = useState();
   const [choice, setChoice] = useState(initialState.choice);
+  const [basicMealData, setBasicMealData] = useState([]);
+  const [basicDrikData, setBasicDrikData] = useState([]);
+
+  const fetchBasicMeal = () => {
+    requestFunctions.getFoodList().then(
+      (response) => {
+        setBasicMealData(response.meals);
+        setLoading(false);
+      },
+      (response) => {
+        setError(response.message);
+        setLoading(false);
+      },
+    );
+  };
+
+  const fetchBasicDrink = () => {
+    requestFunctions.getDrinkList().then(
+      (response) => {
+        setBasicDrikData(response.drinks);
+        setLoading(false);
+      },
+      (response) => {
+        setError(response.message);
+        setLoading(false);
+      },
+    );
+  };
 
   const fetchMealID = (elem) => {
     requestFunctions.getFoodByID(elem).then(
@@ -47,7 +75,7 @@ const RecipeAppProvider = ({ children }) => {
 
   const mealsData = useFetchMealsData();
   const beverageData = useFetchDrinkData();
-  const randomDataCall = GetSixRandomDrinkData();
+  // const randomDataCall = GetSixRandomDrinkData();
 
   const context = {
     mealsToken,
@@ -70,7 +98,13 @@ const RecipeAppProvider = ({ children }) => {
     setChoice,
     mealsData,
     beverageData,
-    randomDataCall,
+    // randomDataCall,
+    basicMealData,
+    setBasicMealData,
+    basicDrikData,
+    setBasicDrikData,
+    fetchBasicMeal,
+    fetchBasicDrink,
   };
 
   return (

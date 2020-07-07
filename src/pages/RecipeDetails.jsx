@@ -2,13 +2,20 @@ import React, { useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { RecipeAppContext } from '../context';
-// import Suggestions from '../components/Suggestions';
+import Suggestions from '../components/Suggestions';
 import FavoriteButton from '../components/FavoriteButton';
 import Clipboard from '../components/Clipboard';
 import dataDealer from '../helpers/dataDealer';
 import listIngredients from '../helpers/listIngredients';
 
 const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
+const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+let today = new Date();
+const day = String(today.getDate()).padStart(2, '0');
+const month = String(today.getMonth() + 1).padStart(2, '0');
+const year = today.getFullYear();
+today = `${day} / ${month} / ${year}`;
 
 const buttonClick = (data) => {
   const newObj = {
@@ -19,7 +26,7 @@ const buttonClick = (data) => {
     alcoholicOrNot: data.alcoholicOrNot,
     name: data.name,
     image: data.image,
-    doneDate: data.doneDate,
+    doneDate: today,
     tags: data.tags,
   };
   const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [];
@@ -34,9 +41,7 @@ const renderLink = (data, choice, started) => (
   >
     <button
       type="button"
-      onClick={() => buttonClick(data)}
-      data-testid="start-recipe-btn"
-      className="start-recipe-btn"
+      onClick={() => buttonClick(data, choice, started)}
     >
       {(started) ? 'Continuar Receita' : 'Iniciar Receita'}
     </button>
@@ -71,22 +76,33 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
     </div>
     <div className="intructions-title">Instructions</div>
     <div data-testid="instructions" className="instructions">{data.instructions}</div>
-    {/* <Suggestions /> */}
+    <Suggestions />
     {(choice === 'meal') ? renderVideo(data.video) : null}
-    {(finished.doneDate !== null || !started) ? renderLink(data, choice, started) : null}
+    {(finished) ? null : renderLink(data, choice, started)}
   </div>
 );
+
+const checkStarted = (id, choice) => {
+  if (choice === 'meal') {
+    const test = inProgressRecipes.filter((elem) => elem.meals === id);
+    return test;
+  }
+  const test = inProgressRecipes.filter((elem) => elem.cocktails === id);
+  return test;
+};
 
 const RecipeDetails = () => {
   const {
     error, loading, setLoading, fetchMealID, fetchDrinkID,
-    mealDetailData, drinkDetailData, choice,
+    mealDetailData, drinkDetailData, choice, fetchBasicMeal, fetchBasicDrink,
   } = useContext(RecipeAppContext);
   const { id } = useParams();
   useEffect(() => {
     setLoading(true);
     if (choice === 'meal') fetchMealID(id);
     if (choice === 'drink') fetchDrinkID(id);
+    fetchBasicDrink();
+    fetchBasicMeal();
   }, [choice]);
   if (mealDetailData.length === 0 && drinkDetailData.length === 0) return <h1>Loading...</h1>;
   const dataHelper = (choice === 'meal')
@@ -95,11 +111,13 @@ const RecipeDetails = () => {
   const dataArr = dataDealer(choice, dataHelper);
   const ingredientsArr = listIngredients(dataHelper);
 
-  let finished = { doneDate: null };
+  let finished = false;
   let started = false;
   if (doneRecipesArr) {
-    finished = doneRecipesArr.filter((elem) => elem.id === dataArr.id);
-    started = doneRecipesArr.filter((elem) => elem.id === dataArr.id);
+    finished = doneRecipesArr.some((elem) => elem.id === dataArr.id);
+  }
+  if (inProgressRecipes) {
+    started = checkStarted(dataArr.id, choice);
   }
 
   return (

@@ -7,6 +7,7 @@ import WhiteHeart from '../images/whiteHeartIcon.svg';
 
 const favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
+
 const handleFavorite = (data, favorite, setFavorite) => {
   if (favorite) {
     const newFavoriteRecipesArr = favoriteRecipesArr.filter((elem) => elem.id !== data.id);
@@ -36,7 +37,7 @@ const renderFavorite = (data, favorite, setFavorite) => {
         data-testid="favorite-btn"
         className="favorite-btn"
       >
-        <img alt="white-heart" src={WhiteHeart} />
+        <img alt="black-heart" src={BlackHeart} />
       </button>
     );
   }
@@ -47,7 +48,7 @@ const renderFavorite = (data, favorite, setFavorite) => {
       data-testid="favorite-btn"
       className="favorite-btn"
     >
-      <img alt="black-heart" src={BlackHeart} />
+      <img alt="white-heart" src={WhiteHeart} />
     </button>
   );
 };
