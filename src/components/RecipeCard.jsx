@@ -6,10 +6,10 @@ import '../styles/RecipeCard.css';
 const RecipeCard = ({
   thumbnail, name, index, id, path,
 }) => (
-  <Link
-    to={`/${path}/${id}`}
-  >
-    <div data-testid={`${index}-recipe-card`} className="recipe-card">
+  <div data-testid={`${index}-recipe-card`} className="recipe-card">
+    <Link
+      to={`/${path}/${id}`}
+    >
       <img
         src={thumbnail}
         alt={name}
@@ -19,8 +19,8 @@ const RecipeCard = ({
       <h5 data-testid={`${index}-card-name`} className="recipe-title">
         {name}
       </h5>
-    </div>
-  </Link>
+    </Link>
+  </div>
 );
 
 RecipeCard.propTypes = {

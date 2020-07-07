@@ -44,14 +44,17 @@ const Suggestions = () => {
   return (
     <div>
       {finalData.map((elem, index) => (
-        <SuggestionCard
-          key={elem.id}
-          thumbnail={elem.image}
-          name={elem.name}
-          index={index}
-          id={elem.id}
-          path={path}
-        />
+        <div>
+          <h2>Recomendações</h2>
+          <SuggestionCard
+            key={elem.id}
+            thumbnail={elem.image}
+            name={elem.name}
+            index={index}
+            id={elem.id}
+            path={path}
+          />
+        </div>
       ))}
     </div>
   );

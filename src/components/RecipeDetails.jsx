@@ -14,10 +14,6 @@ let finishedArr = [{ id: 'nothing' }];
 if (doneRecipesArr) {
   finishedArr = doneRecipesArr;
 }
-let startedArr = [{ id: 'nothing' }];
-if (inProgressRecipes) {
-  startedArr = inProgressRecipes;
-}
 
 let today = new Date();
 const day = String(today.getDate()).padStart(2, '0');
@@ -42,23 +38,25 @@ const buttonClick = (data) => {
 };
 
 const renderLink = (data, choice, started) => (
-  <Link
-    to={(choice === 'meal')
-      ? `/comidas/${data.id}/in-progress`
-      : `/bebidas/${data.id}/in-progress`}
-  >
-    <button
-      type="button"
-      onClick={() => buttonClick(data, choice, started)}
+  <div>
+    <Link
+      to={(choice === 'meal')
+        ? `/comidas/${data.id}/in-progress`
+        : `/bebidas/${data.id}/in-progress`}
     >
-      {(started) ? 'Continuar Receita' : 'Iniciar Receita'}
-    </button>
-  </Link>
+      <button
+        type="button"
+        onClick={() => buttonClick(data, choice, started)}
+      >
+        {(started) ? 'Continuar Receita' : 'Iniciar Receita'}
+      </button>
+    </Link>
+  </div>
 );
 
 const renderVideo = (video) => (
   <div data-testid="video" className="video">
-    <div className="video-title">Video</div>
+    <h2 className="video-title">Video</h2>
     <ReactPlayer url={video} width={400} height={200} />
   </div>
 );
@@ -66,24 +64,28 @@ const renderVideo = (video) => (
 const renderDetailsPage = (data, choice, ingredients, finished, started) => (
   <div>
     <img data-testid="recipe-photo" src={data.image} alt="recipe" className="recipe-photo" />
-    <title data-testid="recipe-title" className="recipe-title">{data.name}</title>
+    <h1 data-testid="recipe-title" className="recipe-title">{data.name}</h1>
+    <p data-testid="recipe-category" className="recipe-category">
+      {(choice === 'meal') ? data.category : data.alcoholicOrNot}
+    </p>
     <Clipboard id={data.id} choice={choice} />
     <FavoriteButton data={data} />
-    <div data-testid="recipe-category" className="recipe-category">{data.category}</div>
-    <div className="ingredients-title">Ingredients</div>
-    <div className="ingredients-card">
+    <h2 className="ingredients-title">Ingredients</h2>
+    <ul className="ingredients-card">
       {ingredients.map((elem, index) => (
-        <div
+        <li
           data-testid={`${index}-ingredient-name-and-measure`}
           key={elem}
           className="ingredient-name-and-measure"
         >
           {elem}
-        </div>
+        </li>
       ))}
+    </ul>
+    <h2 className="intructions-title">Instructions</h2>
+    <div className="instructions">
+      <p data-testid="instructions">{data.instructions}</p>
     </div>
-    <div className="intructions-title">Instructions</div>
-    <div data-testid="instructions" className="instructions">{data.instructions}</div>
     <Suggestions />
     {(choice === 'meal') ? renderVideo(data.video) : null}
     {(finished) ? null : renderLink(data, choice, started)}
@@ -91,6 +93,10 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
 );
 
 const checkStarted = (id, choice) => {
+  let startedArr = [{ id: 'nothing' }];
+  if (inProgressRecipes) {
+    startedArr = inProgressRecipes;
+  }
   if (choice === 'meal') {
     const test = startedArr.some((elem) => elem.meals === id);
     return test;
@@ -116,7 +122,6 @@ const RecipeDetails = () => {
   const ingredientsArr = listIngredients(dataHelper);
 
   const finished = finishedArr.some((elem) => elem.id === dataArr.id);
-
   const started = checkStarted(dataArr.id, choice);
 
   return (

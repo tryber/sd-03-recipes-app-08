@@ -34,10 +34,13 @@ const renderFavorite = (data, favorite, setFavorite) => {
       <button
         type="button"
         onClick={() => handleFavorite(data, favorite, setFavorite)}
-        data-testid="favorite-btn"
-        className="favorite-btn"
       >
-        <img alt="black-heart" src={BlackHeart} />
+        <img
+          alt="black-heart"
+          src={BlackHeart}
+          data-testid="favorite-btn"
+          className="favorite-btn"
+        />
       </button>
     );
   }
@@ -45,10 +48,13 @@ const renderFavorite = (data, favorite, setFavorite) => {
     <button
       type="button"
       onClick={() => handleFavorite(data, favorite, setFavorite)}
-      data-testid="favorite-btn"
-      className="favorite-btn"
     >
-      <img alt="white-heart" src={WhiteHeart} />
+      <img
+        alt="white-heart"
+        src={WhiteHeart}
+        data-testid="favorite-btn"
+        className="favorite-btn"
+      />
     </button>
   );
 };
