@@ -5,6 +5,7 @@ import {
   getRandomDrink,
   getAllFoodIngredients,
   getAllDrinkIngredients,
+  getAllFoodAreas,
 } from './meals&drinksAPI';
 import { requestDrinksData, requestFoodsData } from './requestData';
 
@@ -94,16 +95,29 @@ export const fetchRandomDrink = (setRandomRecipeId, setRandomRecipeIdError) => {
   );
 };
 
-export const fetchFoodIngredients = (setIngredientsList, setIngredientsListError) => {
+export const fetchFoodIngredients = (
+  setIngredientsList,
+  setIngredientsListError,
+) => {
   getAllFoodIngredients().then(
     (response) => setIngredientsList(response.meals),
     (response) => setIngredientsListError(response.message),
   );
 };
 
-export const fetchDrinkIngredients = (setIngredientsList, setIngredientsListError) => {
+export const fetchDrinkIngredients = (
+  setIngredientsList,
+  setIngredientsListError,
+) => {
   getAllDrinkIngredients().then(
     (response) => setIngredientsList(response.drinks),
     (response) => setIngredientsListError(response.message),
+  );
+};
+
+export const fetchAllFoodAreas = (setFoodAreas, setFoodAreasError) => {
+  getAllFoodAreas().then(
+    (response) => setFoodAreas(response.meals),
+    (response) => setFoodAreasError(response.message),
   );
 };
