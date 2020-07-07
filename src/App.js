@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import DrinksPrincipalPage from './pages/DrinksPrincipalPage';
 import MealsPrincipalPage from './pages/MealsPrincipalPage';
-import RecipeDetails from './pages/RecipeDetails';
 import Test from './pages/Test';
 import './styles/App.css';
+import MealDetailPage from './pages/MealDetailPage';
+import DrinkDetailPage from './pages/DrinkDetailPage';
 
 function App() {
   return (
@@ -15,8 +16,8 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/comidas" component={MealsPrincipalPage} />
           <Route exact path="/bebidas" component={DrinksPrincipalPage} />
-          <Route exact path="/comidas/:id" component={RecipeDetails} />
-          <Route exact path="/bebidas/:id" component={RecipeDetails} />
+          <Route exact path="/comidas/:id" component={MealDetailPage} />
+          <Route exact path="/bebidas/:id" component={DrinkDetailPage} />
           <Route path="/comidas/:id/in-progress">{}</Route>
           <Route path="/bebidas/:id/in-progress">{}</Route>
           <Route path="/explorar" component={Test} />

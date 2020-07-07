@@ -1,15 +1,23 @@
 import React, { useEffect, useContext } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { RecipeAppContext } from '../context';
-import Suggestions from '../components/Suggestions';
-import FavoriteButton from '../components/FavoriteButton';
-import Clipboard from '../components/Clipboard';
+import Suggestions from './Suggestions';
+import FavoriteButton from './FavoriteButton';
+import Clipboard from './Clipboard';
 import dataDealer from '../helpers/dataDealer';
 import listIngredients from '../helpers/listIngredients';
 
 const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
 const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+let finishedArr = [{ id: 'nothing' }];
+if (doneRecipesArr) {
+  finishedArr = doneRecipesArr;
+}
+let startedArr = [{ id: 'nothing' }];
+if (inProgressRecipes) {
+  startedArr = inProgressRecipes;
+}
 
 let today = new Date();
 const day = String(today.getDate()).padStart(2, '0');
@@ -84,41 +92,32 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
 
 const checkStarted = (id, choice) => {
   if (choice === 'meal') {
-    const test = inProgressRecipes.filter((elem) => elem.meals === id);
+    const test = startedArr.some((elem) => elem.meals === id);
     return test;
   }
-  const test = inProgressRecipes.filter((elem) => elem.cocktails === id);
+  const test = startedArr.some((elem) => elem.cocktails === id);
   return test;
 };
 
 const RecipeDetails = () => {
   const {
-    error, loading, setLoading, fetchMealID, fetchDrinkID,
-    mealDetailData, drinkDetailData, choice, fetchBasicMeal, fetchBasicDrink,
+    error, loading, setLoading, mealDetailData, drinkDetailData, choice,
   } = useContext(RecipeAppContext);
-  const { id } = useParams();
   useEffect(() => {
     setLoading(true);
-    if (choice === 'meal') fetchMealID(id);
-    if (choice === 'drink') fetchDrinkID(id);
-    fetchBasicDrink();
-    fetchBasicMeal();
   }, [choice]);
+
   if (mealDetailData.length === 0 && drinkDetailData.length === 0) return <h1>Loading...</h1>;
+
   const dataHelper = (choice === 'meal')
     ? mealDetailData
     : drinkDetailData;
   const dataArr = dataDealer(choice, dataHelper);
   const ingredientsArr = listIngredients(dataHelper);
 
-  let finished = false;
-  let started = false;
-  if (doneRecipesArr) {
-    finished = doneRecipesArr.some((elem) => elem.id === dataArr.id);
-  }
-  if (inProgressRecipes) {
-    started = checkStarted(dataArr.id, choice);
-  }
+  const finished = finishedArr.some((elem) => elem.id === dataArr.id);
+
+  const started = checkStarted(dataArr.id, choice);
 
   return (
     <div>
