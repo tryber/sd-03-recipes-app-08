@@ -11,59 +11,61 @@ import '../styles/RecipeDetails.css';
 
 const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
 let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-console.log(inProgressRecipes);
+// console.log(inProgressRecipes);
 let finishedArr = [{ id: 'nothing', doneDate: '' }];
 if (doneRecipesArr) {
   finishedArr = doneRecipesArr;
 }
 
-let today = new Date();
-const day = String(today.getDate()).padStart(2, '0');
-const month = String(today.getMonth() + 1).padStart(2, '0');
-const year = today.getFullYear();
-today = `${day} / ${month} / ${year}`;
+// let today = new Date();
+// const day = String(today.getDate()).padStart(2, '0');
+// const month = String(today.getMonth() + 1).padStart(2, '0');
+// const year = today.getFullYear();
+// today = `${day} / ${month} / ${year}`;
 
-const buttonClick = (data) => {
-  const newObj = {
-    id: data.id,
-    type: data.type,
-    area: data.area,
-    category: data.category,
-    alcoholicOrNot: data.alcoholicOrNot,
-    name: data.name,
-    image: data.image,
-    doneDate: today,
-    tags: data.tags,
-  };
-  const newDoneRecipesArr = doneRecipesArr
-    ? [...doneRecipesArr, newObj]
-    : [newObj];
-  localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
-};
-
-// const buttonClick = (data, choice, started) => {
-//   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-//   const initialProcess = { meals: {}, cocktails: {} };
-//   const key = (choice === 'meal') ? 'meals' : 'cocktails';
-//   if (started) {
-//     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
-//     return;
-//   }
+// const buttonClick = (data) => {
 //   const newObj = {
-//     [data.id]: [],
+//     id: data.id,
+//     type: data.type,
+//     area: data.area,
+//     category: data.category,
+//     alcoholicOrNot: data.alcoholicOrNot,
+//     name: data.name,
+//     image: data.image,
+//     doneDate: today,
+//     tags: data.tags,
 //   };
-//   if (inProgressRecipes) {
-//     const newInProgressRecipes = (choice === 'meal')
-//       ? [...inProgressRecipes.meal, { [key]: newObj }]
-//       : [...inProgressRecipes.cocktails, { [key]: newObj }];
-//     localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgressRecipes));
-//     return;
-//   }
-//   const newInProgressRecipes = (choice === 'meal')
-//     ? [...initialProcess.meal, { [key]: newObj }]
-//     : [...initialProcess.cocktails, { [key]: newObj }];
-//   localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgressRecipes));
+//   const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [newObj];
+//   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
 // };
+
+const buttonClick = (data, choice, started) => {
+  inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  const initialProcess = { meals: {}, cocktails: {} };
+  // const key = (choice === 'meal') ? 'meals' : 'cocktails';
+  if (started) {
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    return;
+  }
+  // const newObj = {
+  //   [data.id]: [],
+  // };
+  if (inProgressRecipes) {
+    if (choice === 'meal') {
+      inProgressRecipes.meals[data.id] = [];
+    } else {
+      inProgressRecipes.cocktails[data.id] = [];
+    }
+    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    return;
+  }
+  if (choice === 'meal') {
+    initialProcess.meals[data.id] = [];
+  } else {
+    initialProcess.cocktails[data.id] = [];
+  }
+  localStorage.setItem('inProgressRecipes', JSON.stringify(initialProcess));
+};
 
 const renderLink = (data, choice, started) => (
   <div>
@@ -142,15 +144,18 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
 
 const checkStarted = (id, choice) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  let startedArr = [{ meals: { id: 'nothing' }, cocktails: { id: 'nothing' } }];
+  let startedArr = { meals: { id: 'nothing' }, cocktails: { id: 'nothing' } };
   if (inProgressRecipes) {
     startedArr = inProgressRecipes;
+    console.log(inProgressRecipes);
   }
   if (choice === 'meal') {
-    const test = startedArr.some((elem) => elem.meals === id);
+    const test = startedArr.meals[id];
+    // some((elem) => elem.meals === id);
     return test;
   }
-  const test = startedArr.some((elem) => elem.cocktails === id);
+  const test = startedArr.cocktails[id];
+  // some((elem) => elem.cocktails === id);
   return test;
 };
 

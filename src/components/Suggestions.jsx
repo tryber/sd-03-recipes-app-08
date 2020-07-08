@@ -40,7 +40,7 @@ const Suggestions = () => {
   const finalData = data.map((elem) => creatingredientsArr(choice, elem));
   const path = (choice === 'meal') ? 'bebidas' : 'comidas';
 
-  console.log(finalData);
+  // console.log(finalData);
 
   return (
     <div>
