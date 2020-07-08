@@ -8,14 +8,10 @@ import '../styles/RecipeDetails.css';
 
 const favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
-
 const handleFavorite = (data, favorite, setFavorite) => {
-  let favoriteArr2 = [{ id: data.id }];
-  if (favoriteRecipesArr) {
-    favoriteArr2 = favoriteRecipesArr;
-  }
+  const revisedFavoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (favorite) {
-    const newFavoriteRecipesArr = favoriteArr2.filter((elem) => elem.id !== data.id);
+    const newFavoriteRecipesArr = revisedFavoriteRecipesArr.filter((elem) => elem.id !== data.id);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   } else {
     const dataToFavoriteRecipe = {
@@ -29,7 +25,7 @@ const handleFavorite = (data, favorite, setFavorite) => {
     };
     const newFavoriteRecipesArr = (favoriteRecipesArr)
       ? [...favoriteRecipesArr, dataToFavoriteRecipe]
-      : dataToFavoriteRecipe;
+      : [dataToFavoriteRecipe];
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   }
   setFavorite(!favorite);

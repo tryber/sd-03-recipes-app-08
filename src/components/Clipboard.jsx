@@ -8,21 +8,20 @@ const Clipboard = ({ id, choice }) => {
 
   const IconFunction = () => {
     if (choice === 'meal') {
-      const linkMeal = `http://localhost:3000/comidas/${id}`;
-      navigator.clipboard.writeText(linkMeal);
+      navigator.clipboard.writeText(`${window.location.origin}/comidas/${id}`);
     }
     if (choice === 'drink') {
-      const linkDrink = `http://localhost:3000/bebidas/${id}`;
-      navigator.clipboard.writeText(linkDrink);
+      navigator.clipboard.writeText(`${window.location.origin}/bebidas/${id}`);
     }
     setIconUsed(true);
+    setTimeout(() => setIconUsed(false), 2000);
   };
 
   return (
     <div>
       <button
         type="button"
-        onClick={IconFunction}
+        onClick={() => IconFunction()}
         className="share-icon"
       >
         <img data-testid="share-btn" alt="share-icon" src={Icon} />
