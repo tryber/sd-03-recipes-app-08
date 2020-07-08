@@ -1,9 +1,9 @@
 .recipe-photo {
-    width: 100
+  width: 100
 }
 
 .details-conteiner {
-  margin: 10px 10px 30px 10px;
+  margin: 10px 10px 30px;
 }
 
 .details-header {
@@ -46,32 +46,34 @@
 }
 
 .ingredients-title {
-    color: black;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: normal;
-    margin: 10px 10px 30px 10px;
+  color: black;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: normal;
+  margin: 10px 10px 30px;
 }
 
-.ingredients-conteiner{
+.ingredients-conteiner {
   background: lavender;
   border-radius: 4px;
 }
 
-/* .ingredients-card {
-    text-align: justify;
+/* 
+.ingredients-card {
+  text-align: justify;
 } */
 
 .ingredient-name-and-measure {
-    color: black;
-    display: flex;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 25px;
+  color: black;
+  display: flex;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 25px;
 }
 
-/* .intructions-title {
+/* 
+.intructions-title {
   align-items: flex-end;
   color: black;
   display: flex;    
@@ -95,7 +97,8 @@
   width: 341px; */
 }
 
-/* .instructions {
+/* 
+.instructions {
   align-items: flex-end;
   color: black;
   display: flex;
@@ -114,9 +117,10 @@
   font-weight: normal;
   letter-spacing: 0.03em;
   line-height: 30px;
-} */
+}*/
 
-/* .recomendation-title {
+/*
+.recomendation-title {
   align-items: flex-end;
   color: #000000;
   display: flex;
@@ -125,22 +129,22 @@
   font-weight: normal;
   letter-spacing: 0.03em;
   line-height: 30px;    
-} */
+}*/
 
 .suggestion-container {
-    display: flex;
-    padding: 0;
-    width: 100%;
-    overflow: auto;
+  display: flex;
+  overflow: auto;
+  padding: 0;
+  width: 100%;
 }
 
 .recomendation-card {
   height: 172px;
-  width: 161px;
   text-align: center;
+  width: 161px;
 }
 
-.start-recipe-btn{
+.start-recipe-btn {
   bottom: 0;
   position: fixed;
 }
