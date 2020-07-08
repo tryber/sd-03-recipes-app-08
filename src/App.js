@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import RecipesPage from './pages/RecipesPage';
 import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
 import ExploreByIngredients from './pages/ExploreByIngredient';
+import ExploreByArea from './pages/ExploreByArea';
 import NotFound from './pages/NotFound';
 import Test from './pages/Test';
 import './styles/App.css';
@@ -27,7 +28,7 @@ function App() {
           <Route exact path="/explorar/bebidas" component={ExploreMealsOrDrinks} />
           <Route path="/explorar/comidas/ingredientes" component={ExploreByIngredients} />
           <Route path="/explorar/bebidas/ingredientes" component={ExploreByIngredients} />
-          <Route path="/explorar/comidas/area">{Test}</Route>
+          <Route path="/explorar/comidas/area" component={ExploreByArea} />
           <Route exact path="/perfil" component={Profile} />
           <Route path="/receitas-feitas">{}</Route>
           <Route path="/receitas-favoritas">{}</Route>

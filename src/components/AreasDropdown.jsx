@@ -1,21 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { RecipeAppContext } from '../context';
-import { fetchAllFoodAreas } from '../services/fetchHandlers';
 
-function AreasDropdown() {
+function AreasDropdown({ foodAreas, foodAreasError }) {
   const { foodAreaFilter, setFoodAreaFilter } = useContext(RecipeAppContext);
-  const [foodAreas, setFoodAreas] = useState([]);
-  const [foodAreasError, setFoodAreasError] = useState('');
 
-  useEffect(() => {
-    fetchAllFoodAreas(setFoodAreas, setFoodAreasError);
-    return () => {
-      setFoodAreas([]);
-      setFoodAreasError('');
-    };
-  }, []);
-
-  if (foodAreasError) return (<h4>{foodAreasError}</h4>);
+  if (foodAreasError) return <h4>{foodAreasError}</h4>;
   return (
     <div>
       <select
@@ -25,10 +15,24 @@ function AreasDropdown() {
         onChange={(event) => setFoodAreaFilter(event.target.value)}
       >
         <option value="">All</option>
-        {foodAreas.map((area) => <option value={area} key={area}>{area}</option>)}
+        {foodAreas.map(({ strArea }) => (
+          <option value={strArea} key={strArea}>
+            {strArea}
+          </option>
+        ))}
       </select>
     </div>
   );
 }
+
+AreasDropdown.defaultProps = {
+  foodAreas: [],
+  foodAreasError: '',
+};
+
+AreasDropdown.propTypes = {
+  foodAreas: PropTypes.arrayOf(PropTypes.obj),
+  foodAreasError: PropTypes.string,
+};
 
 export default AreasDropdown;

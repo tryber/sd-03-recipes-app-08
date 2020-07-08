@@ -6,6 +6,7 @@ import {
   getAllFoodIngredients,
   getAllDrinkIngredients,
   getAllFoodAreas,
+  getFoodByArea,
 } from './meals&drinksAPI';
 import { requestDrinksData, requestFoodsData } from './requestData';
 
@@ -115,9 +116,33 @@ export const fetchDrinkIngredients = (
   );
 };
 
-export const fetchAllFoodAreas = (setFoodAreas, setFoodAreasError) => {
+export const fetchAllFoodAreas = (setFoodAreas, setFoodAreasError, setLoading) => {
   getAllFoodAreas().then(
-    (response) => setFoodAreas(response.meals),
-    (response) => setFoodAreasError(response.message),
+    (response) => {
+      setFoodAreas(response.meals);
+      setLoading(false);
+    },
+    (response) => {
+      setFoodAreasError(response.message);
+      setLoading(false);
+    },
+  );
+};
+
+export const fetchFoodByArea = (
+  area,
+  setFoodsByArea,
+  setFoodsByAreasError,
+  setLoading,
+) => {
+  getFoodByArea(area).then(
+    (response) => {
+      setFoodsByArea(response.meals);
+      setLoading(false);
+    },
+    (response) => {
+      setFoodsByAreasError(response.message);
+      setLoading(false);
+    },
   );
 };
