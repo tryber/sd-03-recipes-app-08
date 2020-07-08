@@ -35,7 +35,9 @@ const buttonClick = (data) => {
     doneDate: today,
     tags: data.tags,
   };
-  const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [newObj];
+  const newDoneRecipesArr = doneRecipesArr
+    ? [...doneRecipesArr, newObj]
+    : [newObj];
   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
 };
 
@@ -66,17 +68,16 @@ const buttonClick = (data) => {
 const renderLink = (data, choice, started) => (
   <div>
     <Link
-      to={(choice === 'meal')
-        ? `/comidas/${data.id}/in-progress`
-        : `/bebidas/${data.id}/in-progress`}
+      to={
+        choice === 'meal'
+          ? `/comidas/${data.id}/in-progress`
+          : `/bebidas/${data.id}/in-progress`
+      }
       data-testid="start-recipe-btn"
       className="start-recipe-btn"
     >
-      <button
-        type="button"
-        onClick={() => buttonClick(data, choice, started)}
-      >
-        {(started) ? 'Continuar Receita' : 'Iniciar Receita'}
+      <button type="button" onClick={() => buttonClick(data, choice, started)}>
+        {started ? 'Continuar Receita' : 'Iniciar Receita'}
       </button>
     </Link>
   </div>
@@ -90,23 +91,30 @@ const renderVideo = (video) => (
 );
 
 const renderDetailsPage = (data, choice, ingredients, finished, started) => (
-  <div>
-    <img data-testid="recipe-photo" src={data.image} alt="recipe" className="recipe-photo" />
+  <div className="recipe-details-page">
     <div className="details-conteiner">
-      <div className="details-header">
+      <header className="details-header">
+        <img
+          data-testid="recipe-photo"
+          src={data.image}
+          alt="recipe"
+          className="recipe-photo"
+        />
         <div className="details-header-text">
-          <h1 data-testid="recipe-title" className="recipe-title">{data.name}</h1>
+          <h1 data-testid="recipe-title" className="recipe-title">
+            {data.name}
+          </h1>
           <span data-testid="recipe-category" className="recipe-category">
-            {(choice === 'meal') ? data.category : data.alcoholicOrNot}
+            {choice === 'meal' ? data.category : data.alcoholicOrNot}
           </span>
         </div>
         <div className="details-header-button">
           <Clipboard id={data.id} choice={choice} />
           <FavoriteButton data={data} />
         </div>
-      </div>
-      <h2 className="ingredients-title">Ingredients</h2>
+      </header>
       <div className="ingredients-conteiner">
+        <h2 className="ingredients-title">Ingredients</h2>
         <ul className="ingredients-card">
           {ingredients.map((elem, index) => (
             <li
@@ -126,9 +134,9 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
         </p>
       </div>
     </div>
-    {(choice === 'meal') ? renderVideo(data.video) : null}
+    {choice === 'meal' ? renderVideo(data.video) : null}
     <Suggestions />
-    {(finished) ? null : renderLink(data, choice, started)}
+    {finished ? null : renderLink(data, choice, started)}
   </div>
 );
 
@@ -148,7 +156,12 @@ const checkStarted = (id, choice) => {
 
 const RecipeDetails = () => {
   const {
-    error, loading, setLoading, mealDetailData, drinkDetailData, choice,
+    error,
+    loading,
+    setLoading,
+    mealDetailData,
+    drinkDetailData,
+    choice,
   } = useContext(RecipeAppContext);
   useEffect(() => {
     setLoading(true);
@@ -156,9 +169,7 @@ const RecipeDetails = () => {
 
   if (mealDetailData.length === 0 && drinkDetailData.length === 0) return <h1>Loading...</h1>;
 
-  const dataHelper = (choice === 'meal')
-    ? mealDetailData
-    : drinkDetailData;
+  const dataHelper = choice === 'meal' ? mealDetailData : drinkDetailData;
   const dataArr = dataDealer(choice, dataHelper);
   const ingredientsArr = listIngredients(dataHelper);
 
