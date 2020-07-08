@@ -94,7 +94,7 @@
 .ingredients-conteiner {
   background: lavender;
   border-radius: 4px;
-  height: 400px;
+  height: 350px;
   overflow-y: scroll ;
   overflow-x: hidden;
   position: absolute;
@@ -135,41 +135,52 @@
 .instructions-conteiner {
   background: lavender;
   border-radius: 4px;
-  max-height: 300px;
+  max-height: 250px;
   overflow-y: scroll ;
   overflow-x: hidden;
   position: absolute;
-  top: 615px;
+  top: 568px;
   width: 360px;
 }
 
 .video {
 position: absolute;
-top: 915px;
+top: 815px;
 }
 
 .recipes-suggestion-container {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   flex-flow: column wrap;
-  top: 1075px;
+  position: absolute;
+  top: 1095px;
 }
 
 .suggestion-container {
-  height: 345px;
+  display: flex;
+  height: 255px;
+  margin: 5px 5px;
   overflow-x: scroll;
-  position: absolute;
+  position: relative;
   width: 360px;
 }
 
 .recomendation-card {
-  height: 172px;
-  margin: 10px 15px;
-  width: 161px;
+  height: 152px;
+  margin: 10px 20px;
+  width: 141px;
+}
+
+.recomendation-image {
+  width: 155px;
 }
 
 .start-recipe-btn {
-  bottom: 20px;
+  bottom: 40px;
+  height: 60px;
+  margin: 30px -175px;
+  padding: 15px;
   position: absolute;
   top: 1463px;
+  width: 350px;
 }

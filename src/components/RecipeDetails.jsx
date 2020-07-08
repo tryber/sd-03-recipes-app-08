@@ -76,9 +76,12 @@ const renderLink = (data, choice, started) => (
           : `/bebidas/${data.id}/in-progress`
       }
       data-testid="start-recipe-btn"
-      className="start-recipe-btn"
     >
-      <button type="button" onClick={() => buttonClick(data, choice, started)}>
+      <button
+        type="button"
+        onClick={() => buttonClick(data, choice, started)}
+        className="start-recipe-btn"
+      >
         {started ? 'Continuar Receita' : 'Iniciar Receita'}
       </button>
     </Link>
