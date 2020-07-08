@@ -69,7 +69,7 @@ export const getAllFoodAreas = async () => {
 };
 
 export const getFoodByArea = async (area) => {
-  const foodByArea = (area !== '' ? `https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}` : 'https://www.themealdb.com/api/json/v1/1/search.php?s=');
+  const foodByArea = (`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
   const response = await fetch(foodByArea);
   const json = await response.json();
   const data = await (response.ok

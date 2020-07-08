@@ -31,7 +31,7 @@ AreasDropdown.defaultProps = {
 };
 
 AreasDropdown.propTypes = {
-  foodAreas: PropTypes.arrayOf(PropTypes.obj),
+  foodAreas: PropTypes.arrayOf(PropTypes.object),
   foodAreasError: PropTypes.string,
 };
 

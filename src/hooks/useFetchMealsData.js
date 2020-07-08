@@ -4,13 +4,12 @@ import {
   fetchFoodsCategories,
 } from '../services/fetchHandlers';
 
-export default function useFetchMealsData() {
+export default function useFetchMealsData(searchFilters) {
   const [data, setData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState('');
   const [categoriesError, setCategoriesError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [searchFilters, setSearchFilters] = useState({ filter: '', value: '' });
   const [categoriesFilter, setCategoriesFilter] = useState('All');
 
   useEffect(() => {
@@ -38,8 +37,6 @@ export default function useFetchMealsData() {
     categoriesError,
     error,
     loading,
-    searchFilters,
-    setSearchFilters,
     categoriesFilter,
     setCategoriesFilter,
   };

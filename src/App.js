@@ -30,8 +30,8 @@ function App() {
           <Route path="/explorar/bebidas/ingredientes" component={ExploreByIngredients} />
           <Route path="/explorar/comidas/area" component={ExploreByArea} />
           <Route exact path="/perfil" component={Profile} />
-          <Route path="/receitas-feitas">{}</Route>
-          <Route path="/receitas-favoritas">{}</Route>
+          <Route path="/receitas-feitas">{Test}</Route>
+          <Route path="/receitas-favoritas">{Test}</Route>
           <Route component={NotFound} />
         </Switch>
       </Router>

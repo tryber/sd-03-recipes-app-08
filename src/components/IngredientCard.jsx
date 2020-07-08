@@ -1,24 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useBeverageOrMealsContext } from '../hooks';
+import { RecipeAppContext } from '../context';
 import '../styles/RecipeCard.css';
 
 const srcSwitch = (path, name) => (path === '/comidas'
   ? `https://www.themealdb.com/images/ingredients/${name}-Small.png`
   : `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`);
 
-const convertPath = (path) => {
-  const convertedPath = { pathname: path };
-  return convertedPath;
-};
-
 const IngredientCard = ({ name, index, path }) => {
-  const setIngredient = useBeverageOrMealsContext(convertPath(path));
+  const { setSearchFilters } = useContext(RecipeAppContext);
   return (
     <Link
       to={`${path}`}
-      onClick={() => setIngredient.setSearchFilters(() => ({
+      onClick={() => setSearchFilters(() => ({
         filter: 'ingredient',
         value: name,
       }))}
