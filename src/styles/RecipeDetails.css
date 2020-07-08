@@ -1,5 +1,5 @@
 .recipe-photo {
-  width: 100
+  width: 100;
 }
 
 .details-conteiner {
@@ -46,7 +46,6 @@
   color: black;
   font-size: 26px;
   font-style: normal;
-  font-weight: normal;
   margin: 10px 10px 30px;
 }
 
@@ -60,7 +59,6 @@
   display: flex;
   font-size: 21px;
   font-style: normal;
-  font-weight: normal;
   line-height: 25px;
 }
 
