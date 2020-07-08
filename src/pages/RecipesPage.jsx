@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
 import { RecipeAppContext } from '../context';
 import { useBeverageOrMealsContext } from '../hooks';
@@ -24,11 +24,14 @@ const RecipesGrid = () => {
   const recipes = useBeverageOrMealsContext(location);
   const { searchFilters, setSearchFilters } = useContext(RecipeAppContext);
 
-  if (
-    recipes.data
-    && recipes.data.length === 1
-    && searchFilters.value !== ''
-  ) return uniqueRecipe(recipes.data, location);
+  useEffect(() => {
+    setSearchFilters(() => ({ ...searchFilters, filter: '', value: '' }));
+    return () => {
+      setSearchFilters(() => ({ ...searchFilters, filter: '', value: '' }));
+    };
+  }, [location]);
+
+  if (recipes.data && recipes.data.length === 1 && searchFilters.value !== '') return uniqueRecipe(recipes.data, location);
   return (
     <main>
       <FetchHandlerContainer loading={recipes.loading} error={recipes.error} />
@@ -39,14 +42,14 @@ const RecipesGrid = () => {
           categories={recipes.categories}
           categoriesError={recipes.categoriesError}
           data={recipes.data}
-          onClick={(event) => ((
+          onClick={(event) => (
             toogleCategories(
               recipes.setCategoriesFilter,
               recipes.categoriesFilter,
               event.target.value,
             ),
             setSearchFilters({ value: '', filter: '' })
-          ))}
+          )}
           maximumCategoriesGrid={maximumCategoriesGrid}
           maximumRecipeGrid={maximumRecipeGrid}
           path={location.pathname}
