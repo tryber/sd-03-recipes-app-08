@@ -11,12 +11,13 @@ function AreasDropdown({ foodAreas, foodAreasError }) {
       <select
         name="food-area-selector"
         id="food-area-selector"
+        data-testid="explore-by-area-dropdown"
         value={foodAreaFilter}
         onChange={(event) => setFoodAreaFilter(event.target.value)}
       >
         <option value="">All</option>
         {foodAreas.map(({ strArea }) => (
-          <option value={strArea} key={strArea}>
+          <option value={strArea} key={strArea} data-testid={`${strArea}-option`}>
             {strArea}
           </option>
         ))}
