@@ -78,12 +78,12 @@ function Login() {
   };
 
   return (
-    <div>
+    <main>
       <h1 className="Login">Login</h1>
       {emailInput(userInfo, setUserInfo, handleChange)}
       {passwordInput(userInfo, handleChange)}
       {enterButton(userInfo, clickToEnter, isDisabled)}
-    </div>
+    </main>
   );
 }
 

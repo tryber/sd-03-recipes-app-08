@@ -1,0 +1,18 @@
+.explore-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+  width: 360px;
+}
+
+.explore-links-container {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 210px 10px;
+  max-height: 514px;
+  max-width: 360px;
+  position: absolute;
+}

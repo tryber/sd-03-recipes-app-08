@@ -1,6 +1,12 @@
 import {
   getDrinksCategoriesList,
   getFoodsCategoriesList,
+  getRandomFood,
+  getRandomDrink,
+  getAllFoodIngredients,
+  getAllDrinkIngredients,
+  getAllFoodAreas,
+  getFoodByArea,
 } from './meals&drinksAPI';
 import { requestDrinksData, requestFoodsData } from './requestData';
 
@@ -71,6 +77,71 @@ export const fetchFoodsCategories = (
     },
     (response) => {
       setCategoriesError(response.message);
+      setLoading(false);
+    },
+  );
+};
+
+export const fetchRandomMeal = (setRandomRecipeId, setRandomRecipeIdError) => {
+  getRandomFood().then(
+    (response) => setRandomRecipeId(response.meals[0].idMeal),
+    (response) => setRandomRecipeIdError(response.message),
+  );
+};
+
+export const fetchRandomDrink = (setRandomRecipeId, setRandomRecipeIdError) => {
+  getRandomDrink().then(
+    (response) => setRandomRecipeId(response.drinks[0].idDrink),
+    (response) => setRandomRecipeIdError(response.message),
+  );
+};
+
+export const fetchFoodIngredients = (
+  setIngredientsList,
+  setIngredientsListError,
+) => {
+  getAllFoodIngredients().then(
+    (response) => setIngredientsList(response.meals),
+    (response) => setIngredientsListError(response.message),
+  );
+};
+
+export const fetchDrinkIngredients = (
+  setIngredientsList,
+  setIngredientsListError,
+) => {
+  getAllDrinkIngredients().then(
+    (response) => setIngredientsList(response.drinks),
+    (response) => setIngredientsListError(response.message),
+  );
+};
+
+export const fetchAllFoodAreas = (setFoodAreas, setFoodAreasError, setLoading) => {
+  getAllFoodAreas().then(
+    (response) => {
+      setFoodAreas(response.meals);
+      setLoading(false);
+    },
+    (response) => {
+      setFoodAreasError(response.message);
+      setLoading(false);
+    },
+  );
+};
+
+export const fetchFoodByArea = (
+  area,
+  setFoodsByArea,
+  setFoodsByAreasError,
+  setLoading,
+) => {
+  getFoodByArea(area).then(
+    (response) => {
+      setFoodsByArea(response.meals);
+      setLoading(false);
+    },
+    (response) => {
+      setFoodsByAreasError(response.message);
       setLoading(false);
     },
   );

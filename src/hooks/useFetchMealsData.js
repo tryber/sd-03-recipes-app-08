@@ -9,9 +9,8 @@ export default function useFetchMealsData() {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState('');
   const [categoriesError, setCategoriesError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState({ filter: '', value: '' });
   const [searchFilters, setSearchFilters] = useState({ filter: '', value: '' });
+  const [loading, setLoading] = useState(false);
   const [categoriesFilter, setCategoriesFilter] = useState('All');
 
   useEffect(() => {
@@ -39,11 +38,9 @@ export default function useFetchMealsData() {
     categoriesError,
     error,
     loading,
-    searchFilters,
-    setSearchFilters,
     categoriesFilter,
     setCategoriesFilter,
-    filters,
-    setFilters,
+    searchFilters,
+    setSearchFilters,
   };
 }

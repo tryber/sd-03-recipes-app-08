@@ -6,7 +6,7 @@ import '../styles/RecipeCard.css';
 const RecipeCard = ({
   thumbnail, name, index, id, path,
 }) => (
-  <Link to={`/${path}/${id}`}>
+  <Link to={`${path}/${id}`}>
     <div data-testid={`${index}-recipe-card`} className="recipe-card">
       <img
         src={thumbnail}
