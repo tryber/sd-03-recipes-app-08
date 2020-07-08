@@ -15,12 +15,12 @@ function dataDealer(choice, initialData) {
   }
   return ({
     id: initialData[0].idDrink,
-    type: 'drink',
+    type: 'bebida',
     area: '',
     category: initialData[0].strCategory,
     alcoholicOrNot: initialData[0].strAlcoholic,
     name: initialData[0].strDrink,
-    image: initialData.strDrinkThumb,
+    image: initialData[0].strDrinkThumb,
     instructions: initialData[0].strInstructions,
     video: '',
     tags: initialData[0].strTags,

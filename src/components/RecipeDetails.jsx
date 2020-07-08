@@ -35,7 +35,7 @@ const buttonClick = (data) => {
     doneDate: today,
     tags: data.tags,
   };
-  const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [];
+  const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [newObj];
   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
 };
 

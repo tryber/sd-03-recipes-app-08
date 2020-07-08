@@ -13,21 +13,22 @@ const handleFavorite = (data, favorite, setFavorite) => {
   if (favorite) {
     const newFavoriteRecipesArr = revisedFavoriteRecipesArr.filter((elem) => elem.id !== data.id);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
-  } else {
-    const dataToFavoriteRecipe = {
-      id: data.id,
-      type: data.type,
-      area: data.area,
-      category: data.category,
-      alcoholicOrNot: data.alcoholicOrNot,
-      name: data.name,
-      image: data.image,
-    };
-    const newFavoriteRecipesArr = (favoriteRecipesArr)
-      ? [...favoriteRecipesArr, dataToFavoriteRecipe]
-      : [dataToFavoriteRecipe];
-    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
+    setFavorite(!favorite);
+    return;
   }
+  const dataToFavoriteRecipe = {
+    id: data.id,
+    type: data.type,
+    area: data.area,
+    category: data.category,
+    alcoholicOrNot: data.alcoholicOrNot,
+    name: data.name,
+    image: data.image,
+  };
+  const newFavoriteRecipesArr = (favoriteRecipesArr)
+    ? [...revisedFavoriteRecipesArr, dataToFavoriteRecipe]
+    : [dataToFavoriteRecipe];
+  localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   setFavorite(!favorite);
 };
 
