@@ -78,7 +78,7 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
+    <main className="login-container">
       <h1 className="login">Login</h1>
       {emailInput(userInfo, setUserInfo, handleChange)}
       {passwordInput(userInfo, handleChange)}

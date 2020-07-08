@@ -17,8 +17,8 @@ const RecipeCard = ({
       <h5 data-testid={`${index}-card-name`} className="recipe-title">
         {name}
       </h5>
-    </Link>
-  </div>
+    </div>
+  </Link>
 );
 
 RecipeCard.propTypes = {
