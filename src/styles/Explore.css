@@ -1,0 +1,58 @@
+.explore-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+  width: 360px;
+}
+
+.explore-food {
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  color: #000000;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 32px;
+  height: 82px;
+  left: -175px;
+  line-height: 37px;
+  position: absolute;
+  top: -110px;
+  width: 327px;
+}
+
+.explore-drinks {
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  color: #000000;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 32px;
+  height: 82px;
+  left: -175px;
+  line-height: 37px;
+  position: absolute;
+  top: 15px;
+  width: 327px;
+}
+
+.explore-links-container {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 210px 10px;
+  max-height: 514px;
+  max-width: 360px;
+  position: absolute;
+}
