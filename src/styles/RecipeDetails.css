@@ -2,52 +2,72 @@
   align-items: center;
   background: white;
   display: flex;
-  flex-flow: column wrap;
-  max-height: 1483px;
-  max-width: 360px;
-  position: absolute;
+  flex-flow: column nowrap;
+  justify-content: center;
+  height: 1483px;
+  width: 360px;
+  position: relative;
 }
 
 .details-conteiner {
-  max-width: 360px;
-  max-height: 758px;
+  width: 360px;
+  height: 758px;
   position: absolute;
+  top: 1px;
 }
 
 .recipe-photo {
-  max-height: 155px;
+  height: 155px;
   position: absolute;
+  top: 2px;
   width: 360px;
 }
 
-.details-header {
-  align-items: flex-start;
-  display: flex;
-  flex-flow: column wrap;
-  margin-bottom: 1000px;
-  max-height: 90px;
-  justify-content: space-between;
-  position: absolute;
-  top: 5px;
-  width: 360px;
-}
-
-.details-header-text {
-  align-items: flex-end;
-  display: flex;
+.recipe-title {
   font-family: Roboto, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 100;
   height: 35px;
   line-height: 35px;
+  margin: 15px 1px;
   position: absolute;
+  top: -20px;
+  width: 182px;
+}
+
+.recipe-categorie {
+  color: #a9a9;
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 100;
+  height: 25px;
+  line-height: 25px;
+  margin: 25px 1px;
+  position: absolute;
+  width: 73px;
+}
+
+.details-header {
+  height: 90px;
+  position: absolute;
+  top: 160px;
+  top: 1px;
+  width: 360px;
+}
+
+.details-header-text {
+  height: 212px;
+  margin: 10px 1px;
+  padding: 10px;
+  position: absolute;
+  top: 160px;
   width: 182px;
 }
 
 .details-header-button {
-  align-items: flex-end;
-  display: flex;
+  position: absolute;
 }
 
 .share-icon {
@@ -59,9 +79,9 @@
 .clipboard-span {
   background-color: white;
   border-radius: 0 15px;
-  margin: 30px -15px;
+  margin: 12px -15px;
   padding: 4px;
-  position: absolute;
+  position: relative;
 }
 
 .favorite-btn {
@@ -71,34 +91,32 @@
 }
 
 .ingredients-conteiner {
-  align-items: flex-end;
-  display: flex;
   background: lavender;
   border-radius: 4px;
-  flex-flow: column wrap;
-  margin: 250px;
-  max-height: 653px;
-  max-width: 360px;
+  height: 453px;
+  width: 360px;
   position: absolute;
+  top: 225px;
 }
 
 .ingredients-title {
   color: black;
-  font-size: 26px;
-  font-style: normal;
-  margin: 10px 10px 30px;
   font-family: Roboto, sans-serif;
+  font-size: 26px;
   font-style: normal;
   font-weight: 100;
   height: 30px;
   line-height: 35px;
+  margin: 25px 10px;
   position: absolute;
   width: 138px;
+  top: -25px;
 }
 
 .ingredients-card {
-  align-items: flex-start;
-  display: flex;
+  max-height: 653px;
+  position: absolute;
+  width: 360px;
 }
 
 .ingredient-name-and-measure {
@@ -106,30 +124,41 @@
   font-size: 21px;
   font-style: normal;
   line-height: 25px;
+  margin: 30px 5px;
+  position: relative;
 }
 
 .instructions-conteiner {
   background: lavender;
   border-radius: 4px;
+  max-height: 363px;
+  position: absolute;
+  top: 755px;
+  width: 360px;
+}
+
+.recipes-suggestion-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  top: 1075px;
 }
 
 .suggestion-container {
-  display: flex;
-  height: 245px;
+  height: 345px;
   overflow-x: scroll;
-  overflow-y: hidden;
-  padding: 0;
-  width: 100%;
+  position: absolute;
+  width: 360px;
 }
 
 .recomendation-card {
   height: 172px;
-  margin: 5px 10px;
-  text-align: center;
+  margin: 10px 15px;
   width: 161px;
 }
 
 .start-recipe-btn {
-  bottom: 0;
-  position: fixed;
+  bottom: 20px;
+  position: absolute;
+  top: 1463px;
 }

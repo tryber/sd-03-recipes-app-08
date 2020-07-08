@@ -6,7 +6,9 @@ import RecipeDetails from '../components/RecipeDetails';
 const MealDetailPage = () => {
   const {
     fetchMealID, choice, setChoice, fetchBasicDrink,
-  } = useContext(RecipeAppContext);
+  } = useContext(
+    RecipeAppContext,
+  );
   const { id } = useParams();
   useEffect(() => {
     setChoice('meal');
@@ -14,11 +16,7 @@ const MealDetailPage = () => {
     fetchBasicDrink();
   }, [choice]);
 
-  return (
-    <div>
-      <RecipeDetails />
-    </div>
-  );
+  return <RecipeDetails />;
 };
 
 export default MealDetailPage;

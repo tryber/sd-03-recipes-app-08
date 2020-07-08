@@ -93,7 +93,7 @@ const renderVideo = (video) => (
 );
 
 const renderDetailsPage = (data, choice, ingredients, finished, started) => (
-  <div className="recipe-details-page">
+  <>
     <div className="details-conteiner">
       <header className="details-header">
         <img
@@ -106,9 +106,9 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
           <h1 data-testid="recipe-title" className="recipe-title">
             {data.name}
           </h1>
-          <span data-testid="recipe-category" className="recipe-category">
+          <h4 data-testid="recipe-category" className="recipe-category">
             {choice === 'meal' ? data.category : data.alcoholicOrNot}
-          </span>
+          </h4>
         </div>
         <div className="details-header-button">
           <Clipboard id={data.id} choice={choice} />
@@ -129,8 +129,8 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
           ))}
         </ul>
       </div>
-      <h2 className="intructions-title">Instructions</h2>
       <div className="instructions-conteiner">
+        <h2 className="intructions-title">Instructions</h2>
         <p className="instructions" data-testid="instructions">
           {data.instructions}
         </p>
@@ -139,7 +139,7 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
     {choice === 'meal' ? renderVideo(data.video) : null}
     <Suggestions />
     {finished ? null : renderLink(data, choice, started)}
-  </div>
+  </>
 );
 
 const checkStarted = (id, choice) => {
@@ -182,7 +182,7 @@ const RecipeDetails = () => {
   const started = checkStarted(dataArr.id, choice);
 
   return (
-    <div>
+    <div className="recipe-details-page">
       {!loading && error && <h4>{error}</h4>}
       {renderDetailsPage(dataArr, choice, ingredientsArr, finished, started)}
     </div>
