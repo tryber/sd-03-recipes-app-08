@@ -15,7 +15,7 @@ function AreasDropdown({ foodAreas, foodAreasError }) {
         value={foodAreaFilter}
         onChange={(event) => setFoodAreaFilter(event.target.value)}
       >
-        <option value="">All</option>
+        <option value="" data-testid="All-option">All</option>
         {foodAreas.map(({ strArea }) => (
           <option value={strArea} key={strArea} data-testid={`${strArea}-option`}>
             {strArea}
