@@ -13,6 +13,6 @@ export default function useBeverageorMealsContext(location) {
     };
   }, [location]);
 
-  if (location.pathname === '/comidas') return mealsData;
+  if (location.pathname.includes('/comidas')) return mealsData;
   return beverageData;
 }

@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
-import { RecipeAppContext } from '../context';
 import { useBeverageOrMealsContext } from '../hooks';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
 import RecipesContainer from '../components/RecipesContainer';
@@ -22,9 +21,8 @@ const uniqueRecipe = (data, location) => {
 const RecipesGrid = () => {
   const location = useLocation();
   const recipes = useBeverageOrMealsContext(location);
-  const { searchFilters, setSearchFilters } = useContext(RecipeAppContext);
 
-  if (recipes.data && recipes.data.length === 1 && searchFilters.value !== '') return uniqueRecipe(recipes.data, location);
+  if (recipes.data && recipes.data.length === 1 && recipes.searchFilters.value !== '') return uniqueRecipe(recipes.data, location);
   return (
     <main>
       <FetchHandlerContainer loading={recipes.loading} error={recipes.error} />
@@ -41,13 +39,13 @@ const RecipesGrid = () => {
               recipes.categoriesFilter,
               event.target.value,
             ),
-            setSearchFilters({ value: '', filter: '' })
+            recipes.setSearchFilters({ value: '', filter: '' })
           ))}
           maximumCategoriesGrid={maximumCategoriesGrid}
           maximumRecipeGrid={maximumRecipeGrid}
           path={location.pathname}
           title={createTitle(location)}
-          searchFilters={setSearchFilters}
+          searchFilters={recipes.setSearchFilters}
         />
       ) : (
         noDataAlert()

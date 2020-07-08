@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { RecipeAppContext } from '../context';
+import { useBeverageOrMealsContext } from '../hooks';
 import '../styles/RecipeCard.css';
 
 const srcSwitch = (path, name) => (path === '/comidas'
@@ -9,7 +9,8 @@ const srcSwitch = (path, name) => (path === '/comidas'
   : `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`);
 
 const IngredientCard = ({ name, index, path }) => {
-  const { setSearchFilters } = useContext(RecipeAppContext);
+  const location = useLocation();
+  const { setSearchFilters } = useBeverageOrMealsContext(location);
   return (
     <Link
       to={`${path}`}
