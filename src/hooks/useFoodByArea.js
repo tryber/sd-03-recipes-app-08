@@ -5,12 +5,7 @@ import {
   fetchAllFoodAreas,
 } from '../services/fetchHandlers';
 
-export default function useFoodByArea(
-  foodAreaFilter,
-  searchFilters,
-  setSearchFilters,
-  setFoodAreaFilter,
-) {
+export default function useFoodByArea(foodAreaFilter, searchFilters) {
   const [data, setData] = useState([]);
   const [error, setError] = useState('');
   const [foodAreas, setFoodAreas] = useState([]);
@@ -43,9 +38,8 @@ export default function useFoodByArea(
       setError('');
       setFoodAreas([]);
       setFoodAreasError('');
-      setFoodAreaFilter('');
     };
-  }, [foodAreaFilter, searchFilters]);
+  }, [searchFilters, foodAreaFilter]);
 
   return {
     data,

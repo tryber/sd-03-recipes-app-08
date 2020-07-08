@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { RecipeAppContext } from '../context';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
 import useFoodByArea from '../hooks/useFoodByArea';
@@ -11,7 +11,13 @@ import searchIcon from '../images/searchIcon.svg';
 import { maximumRecipeGrid } from '../helpers/dataHandlers';
 import '../styles/RecipesPage.css';
 
-const recipesByAreaConteiner = (title, searchFilters, foodAreas, foodAreasError, data) => (
+const recipesByAreaConteiner = (
+  title,
+  searchFilters,
+  foodAreas,
+  foodAreasError,
+  data,
+) => (
   <section>
     <div className="recipes-header">
       <Header
@@ -50,20 +56,35 @@ const title = 'Explorar Origem';
 
 function RecipesByAreaGrid() {
   const {
-    foodAreaFilter, setSearchFilters, searchFilters, setFoodAreaFilter,
+    foodAreaFilter,
+    setSearchFilters,
+    searchFilters,
+    setFoodAreaFilter,
   } = useContext(RecipeAppContext);
   const {
     loading, error, data, foodAreas, foodAreasError,
-  } = useFoodByArea(foodAreaFilter, searchFilters, setSearchFilters, setFoodAreaFilter);
+  } = useFoodByArea(
+    foodAreaFilter,
+    searchFilters,
+  );
+
+  useEffect(() => () => {
+    setFoodAreaFilter('');
+    setSearchFilters(() => ({ ...searchFilters, filter: '', value: '' }));
+  }, []);
 
   return (
     <main className="recipes-page">
       <FetchHandlerContainer loading={loading} error={error} />
-      {!loading && !error && recipesByAreaConteiner(
-        title,
-        setSearchFilters,
-        foodAreas, foodAreasError, data,
-      )}
+      {!loading
+        && !error
+        && recipesByAreaConteiner(
+          title,
+          setSearchFilters,
+          foodAreas,
+          foodAreasError,
+          data,
+        )}
     </main>
   );
 }
