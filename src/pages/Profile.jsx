@@ -6,7 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import '../styles/Profile.css';
 
 const Profile = () => {
-  const userEmail = JSON.parse(localStorage.getItem('user') || '');
+  const userEmail = JSON.parse(localStorage.getItem('user') || '{}');
   return (
     <main className="profile-container">
       <Header iconProfile={profileIcon} title="Perfil" />
