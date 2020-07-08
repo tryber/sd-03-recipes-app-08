@@ -24,13 +24,6 @@ const RecipesGrid = () => {
   const recipes = useBeverageOrMealsContext(location);
   const { searchFilters, setSearchFilters } = useContext(RecipeAppContext);
 
-  useEffect(() => {
-    setSearchFilters(() => ({ ...searchFilters, filter: '', value: '' }));
-    return () => {
-      setSearchFilters(() => ({ ...searchFilters, filter: '', value: '' }));
-    };
-  }, [location]);
-
   if (recipes.data && recipes.data.length === 1 && searchFilters.value !== '') return uniqueRecipe(recipes.data, location);
   return (
     <main>
