@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../styles/RecipeDetails.css';
 
 const SuggestionCard = ({
   thumbnail, name, index, id, path,
@@ -14,6 +15,7 @@ const SuggestionCard = ({
         alt={name}
         data-testid={`${index}-recomendation-img`}
         className="recomendation-image"
+        width="180px"
       />
       <h5 data-testid={`${index}-recomendation-title`} className="recomendation-title">
         {name}

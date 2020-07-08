@@ -7,34 +7,51 @@ import FavoriteButton from './FavoriteButton';
 import Clipboard from './Clipboard';
 import dataDealer from '../helpers/dataDealer';
 import listIngredients from '../helpers/listIngredients';
+import '../styles/RecipeDetails.css';
 
 const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
-const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-let finishedArr = [{ id: 'nothing' }];
+let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+let finishedArr = [{ id: 'nothing', doneDate: '' }];
 if (doneRecipesArr) {
   finishedArr = doneRecipesArr;
 }
 
-let today = new Date();
-const day = String(today.getDate()).padStart(2, '0');
-const month = String(today.getMonth() + 1).padStart(2, '0');
-const year = today.getFullYear();
-today = `${day} / ${month} / ${year}`;
+// let today = new Date();
+// const day = String(today.getDate()).padStart(2, '0');
+// const month = String(today.getMonth() + 1).padStart(2, '0');
+// const year = today.getFullYear();
+// today = `${day} / ${month} / ${year}`;
 
-const buttonClick = (data) => {
+// const buttonClick = (data) => {
+//   const newObj = {
+//     id: data.id,
+//     type: data.type,
+//     area: data.area,
+//     category: data.category,
+//     alcoholicOrNot: data.alcoholicOrNot,
+//     name: data.name,
+//     image: data.image,
+//     doneDate: '',
+//     tags: data.tags,
+//   };
+//   const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [];
+//   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
+// };
+
+const buttonClick = (data, choice, started) => {
+  inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  if (started) localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
   const newObj = {
-    id: data.id,
-    type: data.type,
-    area: data.area,
-    category: data.category,
-    alcoholicOrNot: data.alcoholicOrNot,
-    name: data.name,
-    image: data.image,
-    doneDate: today,
-    tags: data.tags,
+    [data.id]: [],
   };
-  const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [];
-  localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
+  if (choice === 'meal') {
+    const newInProgressRecipes = [...doneRecipesArr.meals, newObj];
+    localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgressRecipes));
+  }
+  if (choice === 'drink') {
+    const newInProgressRecipes = [...doneRecipesArr.cocktails, newObj];
+    localStorage.setItem('inProgressRecipes', JSON.stringify(newInProgressRecipes));
+  }
 };
 
 const renderLink = (data, choice, started) => (
@@ -43,6 +60,8 @@ const renderLink = (data, choice, started) => (
       to={(choice === 'meal')
         ? `/comidas/${data.id}/in-progress`
         : `/bebidas/${data.id}/in-progress`}
+      data-testid="start-recipe-btn"
+      className="start-recipe-btn"
     >
       <button
         type="button"
@@ -64,30 +83,42 @@ const renderVideo = (video) => (
 const renderDetailsPage = (data, choice, ingredients, finished, started) => (
   <div>
     <img data-testid="recipe-photo" src={data.image} alt="recipe" className="recipe-photo" />
-    <h1 data-testid="recipe-title" className="recipe-title">{data.name}</h1>
-    <p data-testid="recipe-category" className="recipe-category">
-      {(choice === 'meal') ? data.category : data.alcoholicOrNot}
-    </p>
-    <Clipboard id={data.id} choice={choice} />
-    <FavoriteButton data={data} />
-    <h2 className="ingredients-title">Ingredients</h2>
-    <ul className="ingredients-card">
-      {ingredients.map((elem, index) => (
-        <li
-          data-testid={`${index}-ingredient-name-and-measure`}
-          key={elem}
-          className="ingredient-name-and-measure"
-        >
-          {elem}
-        </li>
-      ))}
-    </ul>
-    <h2 className="intructions-title">Instructions</h2>
-    <div className="instructions">
-      <p data-testid="instructions">{data.instructions}</p>
+    <div className="details-conteiner">
+      <div className="details-header">
+        <div className="details-header-text">
+          <h1 data-testid="recipe-title" className="recipe-title">{data.name}</h1>
+          <span data-testid="recipe-category" className="recipe-category">
+            {(choice === 'meal') ? data.category : data.alcoholicOrNot}
+          </span>
+        </div>
+        <div className="details-header-button">
+          <Clipboard id={data.id} choice={choice} />
+          <FavoriteButton data={data} />
+        </div>
+      </div>
+      <h2 className="ingredients-title">Ingredients</h2>
+      <div className="ingredients-conteiner">
+        <ul className="ingredients-card">
+          {ingredients.map((elem, index) => (
+            <li
+              data-testid={`${index}-ingredient-name-and-measure`}
+              key={elem}
+              className="ingredient-name-and-measure"
+            >
+              {elem}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <h2 className="intructions-title">Instructions</h2>
+      <div className="instructions-conteiner">
+        <p className="instructions" data-testid="instructions">
+          {data.instructions}
+        </p>
+      </div>
     </div>
-    <Suggestions />
     {(choice === 'meal') ? renderVideo(data.video) : null}
+    <Suggestions />
     {(finished) ? null : renderLink(data, choice, started)}
   </div>
 );

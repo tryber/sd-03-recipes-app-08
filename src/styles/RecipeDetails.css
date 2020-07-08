@@ -1,0 +1,146 @@
+.recipe-photo {
+    width: 100
+}
+
+.details-conteiner {
+  margin: 10px 10px 30px 10px;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.details-header-text {
+  color: black;
+  line-height: 2px;
+  margin: 0;
+}
+
+/* .recipe-category{
+} */
+
+.details-header-button {
+  float: right;
+}
+
+.share-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.clipboard-span {
+  background-color: white;
+  border-radius: 0 15px;
+  margin: 30px -15px;
+  padding: 4px;
+  position: absolute;
+}
+
+.favorite-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.ingredients-title {
+    color: black;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 10px 10px 30px 10px;
+}
+
+.ingredients-conteiner{
+  background: lavender;
+  border-radius: 4px;
+}
+
+/* .ingredients-card {
+    text-align: justify;
+} */
+
+.ingredient-name-and-measure {
+    color: black;
+    display: flex;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 25px;
+}
+
+/* .intructions-title {
+  align-items: flex-end;
+  color: black;
+  display: flex;    
+  font-size: 26px;
+  font-style: normal;
+  font-weight: normal;
+  height: 30px;
+  left: 10px;
+  letter-spacing: 0.03em;
+  line-height: 30px;  
+  top: 508px;
+  width: 147px;
+} */
+
+.instructions-conteiner {
+  background: lavender;
+  border-radius: 4px;
+  /* height: 363px;
+  left: 11px;
+  top: 542px;
+  width: 341px; */
+}
+
+/* .instructions {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  line-height: 19px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+} */
+
+/* .video {
+  align-items: flex-end;
+  color: #000000;
+  display: flex;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.03em;
+  line-height: 30px;
+} */
+
+/* .recomendation-title {
+  align-items: flex-end;
+  color: #000000;
+  display: flex;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: 0.03em;
+  line-height: 30px;    
+} */
+
+.suggestion-container {
+    display: flex;
+    padding: 0;
+    width: 100%;
+    overflow: auto;
+}
+
+.recomendation-card {
+  height: 172px;
+  width: 161px;
+  text-align: center;
+}
+
+.start-recipe-btn{
+  bottom: 0;
+  position: fixed;
+}

@@ -4,13 +4,18 @@ import PropTypes from 'prop-types';
 import { RecipeAppContext } from '../context';
 import BlackHeart from '../images/blackHeartIcon.svg';
 import WhiteHeart from '../images/whiteHeartIcon.svg';
+import '../styles/RecipeDetails.css';
 
 const favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
 
 const handleFavorite = (data, favorite, setFavorite) => {
+  let favoriteArr2 = [{ id: data.id }];
+  if (favoriteRecipesArr) {
+    favoriteArr2 = favoriteRecipesArr;
+  }
   if (favorite) {
-    const newFavoriteRecipesArr = favoriteRecipesArr.filter((elem) => elem.id !== data.id);
+    const newFavoriteRecipesArr = favoriteArr2.filter((elem) => elem.id !== data.id);
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   } else {
     const dataToFavoriteRecipe = {
@@ -22,7 +27,9 @@ const handleFavorite = (data, favorite, setFavorite) => {
       name: data.name,
       image: data.image,
     };
-    const newFavoriteRecipesArr = [...favoriteRecipesArr, dataToFavoriteRecipe];
+    const newFavoriteRecipesArr = (favoriteRecipesArr)
+      ? [...favoriteRecipesArr, dataToFavoriteRecipe]
+      : dataToFavoriteRecipe;
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
   }
   setFavorite(!favorite);
@@ -34,12 +41,12 @@ const renderFavorite = (data, favorite, setFavorite) => {
       <button
         type="button"
         onClick={() => handleFavorite(data, favorite, setFavorite)}
+        className="favorite-btn"
       >
         <img
           alt="black-heart"
           src={BlackHeart}
           data-testid="favorite-btn"
-          className="favorite-btn"
         />
       </button>
     );
@@ -62,8 +69,12 @@ const renderFavorite = (data, favorite, setFavorite) => {
 const FavoriteButton = ({ data }) => {
   const { choice, favorite, setFavorite } = useContext(RecipeAppContext);
   const { id } = useParams();
+  let favoriteArr1 = [{ id: 'nothing' }];
+  if (favoriteRecipesArr) {
+    favoriteArr1 = favoriteRecipesArr;
+  }
   useEffect(() => {
-    setFavorite(favoriteRecipesArr.some((elem) => elem.id === id));
+    setFavorite(favoriteArr1.some((elem) => elem.id === id));
   }, [choice]);
   return (
     <div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { RecipeAppContext } from '../context';
 import SuggestionCard from './SuggestionCard';
+import '../styles/RecipeDetails.css';
 
 const creatingredientsArr = (choice, detailData) => {
   if (choice === 'meal') {
@@ -43,19 +44,21 @@ const Suggestions = () => {
 
   return (
     <div>
-      {finalData.map((elem, index) => (
-        <div>
-          <h2>Recomendações</h2>
-          <SuggestionCard
-            key={elem.id}
-            thumbnail={elem.image}
-            name={elem.name}
-            index={index}
-            id={elem.id}
-            path={path}
-          />
-        </div>
-      ))}
+      <h4 className="recomendation-title">Recomendações</h4>
+      <div className="suggestion-container">
+        {finalData.map((elem, index) => (
+          <div>
+            <SuggestionCard
+              key={elem.id}
+              thumbnail={elem.image}
+              name={elem.name}
+              index={index}
+              id={elem.id}
+              path={path}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

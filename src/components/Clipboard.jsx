@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../images/shareIcon.svg';
+import '../styles/RecipeDetails.css';
 
 const Clipboard = ({ id, choice }) => {
   const [iconUsed, setIconUsed] = useState(false);
@@ -14,7 +15,7 @@ const Clipboard = ({ id, choice }) => {
       const linkDrink = `http://localhost:3000/bebidas/${id}`;
       navigator.clipboard.writeText(linkDrink);
     }
-    setIconUsed('Link copiado!');
+    setIconUsed(true);
   };
 
   return (
@@ -22,9 +23,10 @@ const Clipboard = ({ id, choice }) => {
       <button
         type="button"
         onClick={IconFunction}
+        className="share-icon"
       >
         <img data-testid="share-btn" alt="share-icon" src={Icon} />
-        {iconUsed && <span>Link copiado!</span>}
+        {iconUsed && <span className="clipboard-span">Link copiado!</span>}
       </button>
     </div>
   );

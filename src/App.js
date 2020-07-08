@@ -18,8 +18,8 @@ function App() {
           <Route exact path="/bebidas" component={DrinksPrincipalPage} />
           <Route exact path="/comidas/:id" component={MealDetailPage} />
           <Route exact path="/bebidas/:id" component={DrinkDetailPage} />
-          <Route path="/comidas/:id/in-progress">{}</Route>
-          <Route path="/bebidas/:id/in-progress">{}</Route>
+          <Route path="/comidas/:id/in-progress">{Test}</Route>
+          <Route path="/bebidas/:id/in-progress">{Test}</Route>
           <Route path="/explorar" component={Test} />
           <Route path="/explorar/comidas">{}</Route>
           <Route path="/explorar/bebidas">{}</Route>

@@ -18,7 +18,7 @@ function dataDealer(choice, initialData) {
     type: 'drink',
     area: '',
     category: initialData[0].strCategory,
-    alcoholicOrNot: (initialData[0].strAlcoholic === 'Alcoholic'),
+    alcoholicOrNot: initialData[0].strAlcoholic,
     name: initialData[0].strDrink,
     image: initialData.strDrinkThumb,
     instructions: initialData[0].strInstructions,
