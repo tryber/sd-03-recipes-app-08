@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { RecipeAppContext } from '../context';
 import FetchHandlerContainer from '../components/FetchHandlerContainer';
+import { useBeverageOrMealsContext } from '../hooks';
 import useFoodByArea from '../hooks/useFoodByArea';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -55,22 +57,31 @@ const recipesByAreaConteiner = (
 const title = 'Explorar Origem';
 
 function RecipesByAreaGrid() {
-  const {
-    foodAreaFilter,
-    setSearchFilters,
-    searchFilters,
-    setFoodAreaFilter,
-  } = useContext(RecipeAppContext);
+  const location = useLocation();
+  const { foodAreaFilter, setFoodAreaFilter } = useContext(RecipeAppContext);
+  const recipes = useBeverageOrMealsContext(location);
   const {
     loading, error, data, foodAreas, foodAreasError,
   } = useFoodByArea(
     foodAreaFilter,
-    searchFilters,
+    recipes.searchFilters,
   );
 
-  useEffect(() => () => {
+  useEffect(() => {
     setFoodAreaFilter('');
-    setSearchFilters(() => ({ ...searchFilters, filter: '', value: '' }));
+    recipes.setSearchFilters(() => ({
+      ...recipes.searchFilters,
+      filter: '',
+      value: '',
+    }));
+    return () => {
+      setFoodAreaFilter('');
+      recipes.setSearchFilters(() => ({
+        ...recipes.searchFilters,
+        filter: '',
+        value: '',
+      }));
+    };
   }, []);
 
   return (
@@ -80,7 +91,7 @@ function RecipesByAreaGrid() {
         && !error
         && recipesByAreaConteiner(
           title,
-          setSearchFilters,
+          recipes.setSearchFilters,
           foodAreas,
           foodAreasError,
           data,
