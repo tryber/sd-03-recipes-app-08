@@ -73,6 +73,8 @@ const RecipeAppProvider = ({ children }) => {
     );
   };
 
+
+  const [foodAreaFilter, setFoodAreaFilter] = useState('All');
   const mealsData = useFetchMealsData();
   const beverageData = useFetchDrinkData();
   // const randomDataCall = GetSixRandomDrinkData();
@@ -105,6 +107,8 @@ const RecipeAppProvider = ({ children }) => {
     setBasicDrikData,
     fetchBasicMeal,
     fetchBasicDrink,
+    foodAreaFilter,
+    setFoodAreaFilter,
   };
 
   return (

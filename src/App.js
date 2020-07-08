@@ -1,8 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Explore from './pages/Explore';
 import Login from './pages/Login';
-import DrinksPrincipalPage from './pages/DrinksPrincipalPage';
-import MealsPrincipalPage from './pages/MealsPrincipalPage';
+import Profile from './pages/Profile';
+import RecipesPage from './pages/RecipesPage';
+import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
+import ExploreByIngredients from './pages/ExploreByIngredient';
+import ExploreByArea from './pages/ExploreByArea';
+import NotFound from './pages/NotFound';
 import Test from './pages/Test';
 import './styles/App.css';
 import MealDetailPage from './pages/MealDetailPage';
@@ -14,22 +19,22 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/comidas" component={MealsPrincipalPage} />
-          <Route exact path="/bebidas" component={DrinksPrincipalPage} />
+          <Route exact path="/bebidas" component={RecipesPage} />
+          <Route exact path="/comidas" component={RecipesPage} />
           <Route exact path="/comidas/:id" component={MealDetailPage} />
           <Route exact path="/bebidas/:id" component={DrinkDetailPage} />
-          <Route path="/comidas/:id/in-progress">{Test}</Route>
-          <Route path="/bebidas/:id/in-progress">{Test}</Route>
-          <Route path="/explorar" component={Test} />
-          <Route path="/explorar/comidas">{}</Route>
-          <Route path="/explorar/bebidas">{}</Route>
-          <Route path="/explorar/comidas/ingredientes">{}</Route>
-          <Route path="/explorar/bebidas/ingredientes">{}</Route>
-          <Route path="/explorar/comidas/area">{}</Route>
-          <Route exact path="/perfil">{Test}</Route>
-          <Route path="/receitas-feitas">{}</Route>
-          <Route path="/receitas-favoritas">{}</Route>
-          <Route path="*">{}</Route>
+          <Route path="/comidas/:id/in-progress">{}</Route>
+          <Route path="/bebidas/:id/in-progress">{}</Route>
+          <Route exact path="/explorar" component={Explore} />
+          <Route exact path="/explorar/comidas" component={ExploreMealsOrDrinks} />
+          <Route exact path="/explorar/bebidas" component={ExploreMealsOrDrinks} />
+          <Route path="/explorar/comidas/ingredientes" component={ExploreByIngredients} />
+          <Route path="/explorar/bebidas/ingredientes" component={ExploreByIngredients} />
+          <Route path="/explorar/comidas/area" component={ExploreByArea} />
+          <Route exact path="/perfil" component={Profile} />
+          <Route path="/receitas-feitas">{Test}</Route>
+          <Route path="/receitas-favoritas">{Test}</Route>
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </div>

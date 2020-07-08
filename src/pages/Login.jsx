@@ -83,7 +83,7 @@ function Login() {
       {emailInput(userInfo, setUserInfo, handleChange)}
       {passwordInput(userInfo, handleChange)}
       {enterButton(userInfo, clickToEnter, isDisabled)}
-    </div>
+    </main>
   );
 }
 
