@@ -88,7 +88,7 @@ const renderLink = (data, choice, started) => (
 const renderVideo = (video) => (
   <div data-testid="video" className="video">
     <h2 className="video-title">Video</h2>
-    <ReactPlayer url={video} width={400} height={200} />
+    <ReactPlayer url={video} width={360} height={200} />
   </div>
 );
 
@@ -130,7 +130,7 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
         </ul>
       </div>
       <div className="instructions-conteiner">
-        <h2 className="intructions-title">Instructions</h2>
+        <h2 className="instructions-title">Instructions</h2>
         <p className="instructions" data-testid="instructions">
           {data.instructions}
         </p>
