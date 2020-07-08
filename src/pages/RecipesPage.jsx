@@ -42,14 +42,14 @@ const RecipesGrid = () => {
           categories={recipes.categories}
           categoriesError={recipes.categoriesError}
           data={recipes.data}
-          onClick={(event) => (
+          onClick={(event) => ((
             toogleCategories(
               recipes.setCategoriesFilter,
               recipes.categoriesFilter,
               event.target.value,
             ),
             setSearchFilters({ value: '', filter: '' })
-          )}
+          ))}
           maximumCategoriesGrid={maximumCategoriesGrid}
           maximumRecipeGrid={maximumRecipeGrid}
           path={location.pathname}
