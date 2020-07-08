@@ -39,6 +39,16 @@ if (doneRecipesArr) {
 //   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
 // };
 
+const finalProgress = (data, choice, progress) => {
+  const auxObj = progress;
+  if (choice === 'meal') {
+    auxObj.meals[data.id] = [];
+  } else {
+    auxObj.cocktails[data.id] = [];
+  }
+  return auxObj;
+};
+
 const buttonClick = (data, choice, started) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   const initialProcess = { meals: {}, cocktails: {} };
@@ -51,20 +61,12 @@ const buttonClick = (data, choice, started) => {
   //   [data.id]: [],
   // };
   if (inProgressRecipes) {
-    if (choice === 'meal') {
-      inProgressRecipes.meals[data.id] = [];
-    } else {
-      inProgressRecipes.cocktails[data.id] = [];
-    }
-    localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    const newProgress = finalProgress(data, choice, inProgressRecipes);
+    localStorage.setItem('inProgressRecipes', JSON.stringify(newProgress));
     return;
   }
-  if (choice === 'meal') {
-    initialProcess.meals[data.id] = [];
-  } else {
-    initialProcess.cocktails[data.id] = [];
-  }
-  localStorage.setItem('inProgressRecipes', JSON.stringify(initialProcess));
+  const newProgress = finalProgress(data, choice, initialProcess);
+  localStorage.setItem('inProgressRecipes', JSON.stringify(newProgress));
 };
 
 const renderLink = (data, choice, started) => (
