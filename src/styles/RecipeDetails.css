@@ -1,28 +1,34 @@
 .recipe-details-page {
+  align-items: center;
   background: white;
-  max-width: 360px;
+  display: flex;
+  flex-flow: column wrap;
   max-height: 1483px;
+  max-width: 360px;
   position: absolute;
 }
 
 .details-conteiner {
   max-width: 360px;
   max-height: 758px;
+  position: absolute;
 }
 
 .recipe-photo {
-  height: 155px;
-  position: relative;
+  max-height: 155px;
+  position: absolute;
   width: 360px;
 }
 
 .details-header {
   align-items: flex-start;
   display: flex;
-  flex-flow: row wrap;
-  margin-bottom: 10px;
+  flex-flow: column wrap;
+  margin-bottom: 1000px;
   max-height: 90px;
   justify-content: space-between;
+  position: absolute;
+  top: 5px;
   width: 360px;
 }
 
@@ -65,13 +71,15 @@
 }
 
 .ingredients-conteiner {
-  background: lavender;
-  border-radius: 4px;
-  height: 653px;
-  position: absolute;
-  width: 360px;
   align-items: flex-end;
   display: flex;
+  background: lavender;
+  border-radius: 4px;
+  flex-flow: column wrap;
+  margin: 250px;
+  max-height: 653px;
+  max-width: 360px;
+  position: absolute;
 }
 
 .ingredients-title {
@@ -79,7 +87,6 @@
   font-size: 26px;
   font-style: normal;
   margin: 10px 10px 30px;
-
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 100;
@@ -90,12 +97,12 @@
 }
 
 .ingredients-card {
-  
+  align-items: flex-start;
+  display: flex;
 }
 
 .ingredient-name-and-measure {
   color: black;
-  display: flex;
   font-size: 21px;
   font-style: normal;
   line-height: 25px;
@@ -108,13 +115,16 @@
 
 .suggestion-container {
   display: flex;
-  overflow: auto;
+  height: 245px;
+  overflow-x: scroll;
+  overflow-y: hidden;
   padding: 0;
   width: 100%;
 }
 
 .recomendation-card {
   height: 172px;
+  margin: 5px 10px;
   text-align: center;
   width: 161px;
 }
