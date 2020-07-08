@@ -68,14 +68,14 @@ function RecipesByAreaGrid() {
   );
 
   useEffect(() => {
-    setFoodAreaFilter('');
+    setFoodAreaFilter('All');
     recipes.setSearchFilters(() => ({
       ...recipes.searchFilters,
       filter: '',
       value: '',
     }));
     return () => {
-      setFoodAreaFilter('');
+      setFoodAreaFilter('All');
       recipes.setSearchFilters(() => ({
         ...recipes.searchFilters,
         filter: '',

@@ -22,7 +22,7 @@ export default function useFoodByArea(foodAreaFilter, searchFilters) {
         setError,
       );
     }
-    if (foodAreaFilter) {
+    if (foodAreaFilter !== 'All') {
       return fetchFoodByArea(foodAreaFilter, setData, setError, setLoading);
     }
     return fetchFoodsData('All', '', setData, setLoading, setError);

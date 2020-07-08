@@ -7,7 +7,7 @@ const RecipeAppProvider = ({ children }) => {
   const [mealsToken, setMealsToken] = useState(1);
   const [cocktailsToken, setCocktailsToken] = useState(1);
 
-  const [foodAreaFilter, setFoodAreaFilter] = useState('');
+  const [foodAreaFilter, setFoodAreaFilter] = useState('All');
   const mealsData = useFetchMealsData();
   const beverageData = useFetchDrinkData();
 
