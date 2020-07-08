@@ -79,7 +79,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <h1 className="Login">Login</h1>
+      <h1 className="login">Login</h1>
       {emailInput(userInfo, setUserInfo, handleChange)}
       {passwordInput(userInfo, handleChange)}
       {enterButton(userInfo, clickToEnter, isDisabled)}

@@ -3,10 +3,10 @@
   background: white;
   display: flex;
   flex-flow: column wrap;
-  justify-content: center;
   height: 1483px;
-  width: 360px;
+  justify-content: center;
   position: relative;
+  width: 360px;
 }
 
 .details-conteiner {
@@ -95,8 +95,8 @@
   background: lavender;
   border-radius: 4px;
   height: 350px;
-  overflow-y: scroll ;
   overflow-x: hidden;
+  overflow-y: scroll ;
   position: absolute;
   top: 200px;
   width: 360px;
@@ -136,8 +136,8 @@
   background: lavender;
   border-radius: 4px;
   max-height: 250px;
-  overflow-y: scroll ;
   overflow-x: hidden;
+  overflow-y: scroll ;
   position: absolute;
   top: 568px;
   width: 360px;
