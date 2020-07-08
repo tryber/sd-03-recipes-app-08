@@ -5,6 +5,7 @@ import HeaderSearchBar from '../components/HeaderSearchBar';
 
 describe('Testes do componente HeaderSearchBar', () => {
   beforeEach(cleanup);
+  afterEach(cleanup);
 
   const setFilters = (object, value) => ({ ...object, value });
   const setSearchFilters = (object, value) => ({ ...object, value });

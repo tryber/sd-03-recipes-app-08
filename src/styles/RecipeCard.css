@@ -4,6 +4,9 @@
   box-shadow: 4px 4px 4px 3px rgba(0, 0, 0, 0.25);
   flex-direction: column-reverse;
   height: 172px;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.25);
+  height: 172px;
+  margin: 10px 5px;
   position: relative;
   width: 161px;
 }

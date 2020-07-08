@@ -16,11 +16,13 @@ const Profile = () => {
       <div className="profile-links-container">
         <Link to="/receitas-feitas">
           <button type="button" data-testid="profile-done-btn" className="made-recipes">
+          <button type="button" data-testid="profile-done-btn">
             Receitas Feitas
           </button>
         </Link>
         <Link to="/receitas-favoritas">
           <button type="button" data-testid="profile-favorite-btn" className="favorite-recipes">
+          <button type="button" data-testid="profile-favorite-btn">
             Receitas Favoritas
           </button>
         </Link>

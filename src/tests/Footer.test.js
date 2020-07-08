@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 
 describe('Testes do componente Footer/Menu Inferior do aplicativo', () => {
   beforeEach(cleanup);
+  afterEach(cleanup);
 
   test('O footer/menu inferior apresenta três ícones/links, com seus respectivos ids de teste', () => {
     const { queryAllByRole, queryByTestId } = renderWithRouter(<Footer />);

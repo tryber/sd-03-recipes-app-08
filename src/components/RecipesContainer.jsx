@@ -7,6 +7,7 @@ import CategoriesButtonsGrid from './CategoriesButtonsGrid';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import '../styles/DrinksPrincipalPage.css';
+import '../styles/RecipesPage.css';
 
 function RecipesContainer({
   loading,
@@ -28,6 +29,12 @@ function RecipesContainer({
     && !error && (
       <div className="recipes-page">
         <header className="recipes-header">
+}) {
+  return (
+    !loading
+    && !error && data && (
+      <div className="recipes-page">
+        <div className="recipes-header">
           <Header
             iconProfile={profileIcon}
             iconSearch={searchIcon}
@@ -37,6 +44,8 @@ function RecipesContainer({
             setFilters={setFilters}
           />
         </header>
+          />
+        </div>
         {!loading && categoriesError ? (
           <div className="error-container">
             <h4>{categoriesError}</h4>
@@ -76,6 +85,9 @@ function RecipesContainer({
         <footer className="recipes-footer">
           <Footer />
         </footer>
+        <div className="recipes-footer">
+          <Footer />
+        </div>
       </div>
     )
   );

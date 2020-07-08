@@ -12,6 +12,7 @@
 .search-input {
   align-items: flex-end;
   color: #c5b6b6;
+  color: black;
   display: flex;
   font-family: Roboto, sans-serif;
   font-size: 18px;
@@ -31,6 +32,9 @@
   font-size: 16pt;
   justify-content: space-around;
   max-height: 65px;
+  background: #c4c4c4;
+  bottom: 5px;
+  left: 300px;
   position: absolute;
 }
 

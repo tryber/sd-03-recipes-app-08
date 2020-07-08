@@ -8,6 +8,7 @@ import searchIcon from '../images/searchIcon.svg';
 
 describe('Testes do componente header do aplicativo', () => {
   beforeEach(cleanup);
+  afterEach(cleanup);
 
   const setFilters = (object, value) => ({ ...object, value });
   const setSearchFilters = (object, value) => ({ ...object, value });
