@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { RecipeAppContext } from '../context';
@@ -168,16 +168,10 @@ const RecipeDetails = () => {
   const {
     error,
     loading,
-    setLoading,
     mealDetailData,
     drinkDetailData,
     choice,
   } = useContext(RecipeAppContext);
-  useEffect(() => {
-    setLoading(true);
-  }, [choice]);
-
-  if (mealDetailData.length === 0 && drinkDetailData.length === 0) return <h1>Loading...</h1>;
 
   const dataHelper = choice === 'meal' ? mealDetailData : drinkDetailData;
   const dataArr = dataDealer(choice, dataHelper);
