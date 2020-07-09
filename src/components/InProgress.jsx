@@ -109,10 +109,9 @@ const InProgress = ({ data }) => {
     finished,
   } = useContext(RecipeAppContext);
 
-  const checkIngredients =
-    choice === 'meal'
-      ? listIngredients(mealDetailData)
-      : listIngredients(drinkDetailData);
+  const checkIngredients = choice === 'meal'
+    ? listIngredients(mealDetailData)
+    : listIngredients(drinkDetailData);
 
   return (
     <div className="recipe-details-page">
