@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../styles/RecipeDetails.css';
 import FavoriteButton from './FavoriteButton';
 import Clipboard from './Clipboard';
+import '../styles/RecipeDetails.css';
 
 const InteractiveButtons = ({ data, choice }) => (
   <div className="details-header-button">
