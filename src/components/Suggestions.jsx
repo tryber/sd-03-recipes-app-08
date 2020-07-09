@@ -45,9 +45,8 @@ const Suggestions = () => {
       <h4 className="recomendation-title">Recomendações</h4>
       <div className="suggestion-container">
         {finalData.map((elem, index) => (
-          <div>
+          <div key={elem.id}>
             <SuggestionCard
-              key={elem.id}
               thumbnail={elem.image}
               name={elem.name}
               index={index}

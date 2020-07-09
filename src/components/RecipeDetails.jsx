@@ -77,12 +77,12 @@ const renderLink = (data, choice, started) => (
           ? `/comidas/${data.id}/in-progress`
           : `/bebidas/${data.id}/in-progress`
       }
-      data-testid="start-recipe-btn"
     >
       <button
         type="button"
         onClick={() => buttonClick(data, choice, started)}
         className="start-recipe-btn"
+        data-testid="start-recipe-btn"
       >
         {started ? 'Continuar Receita' : 'Iniciar Receita'}
       </button>
@@ -98,7 +98,7 @@ const renderVideo = (video) => (
 );
 
 const renderDetailsPage = (data, choice, ingredients, finished, started) => (
-  <Fragment>
+  <div className="details-page">
     <div className="details-conteiner">
       <header className="details-header">
         <img
@@ -144,7 +144,7 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
     {choice === 'meal' ? renderVideo(data.video) : null}
     <Suggestions />
     {finished ? null : renderLink(data, choice, started)}
-  </Fragment>
+  </div>
 );
 
 const checkStarted = (id, choice) => {

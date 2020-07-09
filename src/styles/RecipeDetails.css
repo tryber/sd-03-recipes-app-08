@@ -1,12 +1,17 @@
+.details-page {
+  max-height: 1483px;
+  position: absolute;
+  width: 360px;
+}
+
 .recipe-details-page {
   align-items: center;
   background: white;
   display: flex;
   flex-flow: column wrap;
-  height: 1483px;
   justify-content: center;
-  position: relative;
-  width: 360px;
+  position: absolute;
+  top:0 ;
 }
 
 .details-conteiner {
@@ -24,6 +29,7 @@
 }
 
 .recipe-title {
+  color: white;
   font-family: Roboto, sans-serif;
   font-size: 30px;
   font-style: normal;
@@ -37,7 +43,7 @@
 }
 
 .recipe-category {
-  color: black;
+  color: white;
   font-family: Roboto, sans-serif;
   font-size: 22px;
   font-style: normal;
@@ -51,7 +57,6 @@
 .details-header {
   height: 90px;
   position: absolute;
-  top: 160px;
   width: 360px;
 }
 
@@ -93,7 +98,7 @@
 .ingredients-conteiner {
   background: lavender;
   border-radius: 4px;
-  height: 350px;
+  height: 250px;
   overflow-x: hidden;
   overflow-y: scroll;
   position: absolute;
@@ -138,13 +143,13 @@
   overflow-x: hidden;
   overflow-y: scroll;
   position: absolute;
-  top: 568px;
+  top: 468px;
   width: 360px;
 }
 
 .video {
   position: absolute;
-  top: 815px;
+  top: 715px;
 }
 
 .recipes-suggestion-container {
@@ -152,7 +157,7 @@
   display: flex;
   flex-flow: column wrap;
   position: absolute;
-  top: 1095px;
+  top: 995px;
 }
 
 .suggestion-container {
@@ -175,11 +180,9 @@
 }
 
 .start-recipe-btn {
-  bottom: 40px;
+  bottom: 0px;
   height: 60px;
-  margin: 30px -175px;
   padding: 15px;
-  position: absolute;
-  top: 1463px;
+  position: fixed;
   width: 350px;
 }
