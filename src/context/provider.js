@@ -76,7 +76,6 @@ const RecipeAppProvider = ({ children }) => {
   const [foodAreaFilter, setFoodAreaFilter] = useState('All');
   const mealsData = useFetchMealsData();
   const beverageData = useFetchDrinkData();
-  // const randomDataCall = GetSixRandomDrinkData();
 
   const context = {
     mealsToken,
@@ -98,8 +97,6 @@ const RecipeAppProvider = ({ children }) => {
     choice,
     setChoice,
     mealsData,
-    beverageData,
-    // randomDataCall,
     basicMealData,
     setBasicMealData,
     basicDrikData,
