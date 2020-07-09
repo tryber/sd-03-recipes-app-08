@@ -38,6 +38,46 @@ export const getDrinksCategoriesList = async () => {
   return data;
 };
 
+export const getAllFoodIngredients = async () => {
+  const ingredientsList = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  const response = await fetch(ingredientsList);
+  const json = await response.json();
+  const data = await (response.ok
+    ? Promise.resolve(json)
+    : Promise.reject(json));
+  return data;
+};
+
+export const getAllDrinkIngredients = async () => {
+  const ingredientsList = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  const response = await fetch(ingredientsList);
+  const json = await response.json();
+  const data = await (response.ok
+    ? Promise.resolve(json)
+    : Promise.reject(json));
+  return data;
+};
+
+export const getAllFoodAreas = async () => {
+  const areasList = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+  const response = await fetch(areasList);
+  const json = await response.json();
+  const data = await (response.ok
+    ? Promise.resolve(json)
+    : Promise.reject(json));
+  return data;
+};
+
+export const getFoodByArea = async (area) => {
+  const foodByArea = (`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+  const response = await fetch(foodByArea);
+  const json = await response.json();
+  const data = await (response.ok
+    ? Promise.resolve(json)
+    : Promise.reject(json));
+  return data;
+};
+
 export const getFoodByCategory = async (categorie) => {
   const foodsByCategorie = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categorie}`;
   const response = await fetch(foodsByCategorie);

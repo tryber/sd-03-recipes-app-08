@@ -101,8 +101,9 @@ const renderInputList = (choice, id, ingredient, index, marked, setMarked, size,
   checkFinished(id, size, choice, setFinished);
   return (
     <div data-testid={`${index}-ingredient-step`}>
-      <label style={{ textDecoration: (checkTextDecoration(id, choice, index)) }}>
+      <label style={{ textDecoration: (checkTextDecoration(id, choice, index)) }} htmlFor={index}>
         <input
+          id={index}
           type="checkbox"
           checked={checkBoxTest(id, choice, index)}
           onClick={() => inputClicked(choice, id, marked, setMarked, index)}

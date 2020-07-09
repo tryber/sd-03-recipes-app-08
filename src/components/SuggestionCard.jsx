@@ -15,7 +15,6 @@ const SuggestionCard = ({
         alt={name}
         data-testid={`${index}-recomendation-img`}
         className="recomendation-image"
-        width="180px"
       />
       <h5 data-testid={`${index}-recomendation-title`} className="recomendation-title">
         {name}

@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { RecipeAppContext } from '../context';
-import FavoriteButton from './FavoriteButton';
-import Clipboard from './Clipboard';
+import InteractiveButtons from './InteractiveButtons';
 import IngredientsInput from './IngredientsInput';
 import listIngredients from '../helpers/listIngredients';
 
@@ -74,10 +73,7 @@ const renderInProgressPage = (data, choice, finished, ingredients) => (
             {(choice === 'meal') ? data.category : data.alcoholicOrNot}
           </span>
         </div>
-        <div className="details-header-button">
-          <Clipboard id={data.id} choice={choice} />
-          <FavoriteButton data={data} />
-        </div>
+        <InteractiveButtons data={data} choice={choice} />
       </div>
       <h2 className="ingredients-title">Ingredients</h2>
       <div className="ingredients-conteiner">
@@ -96,23 +92,6 @@ const renderInProgressPage = (data, choice, finished, ingredients) => (
   </div>
 );
 
-// const checkFinished = (id, ingredients, choice) => {
-//   inProgressRecipes = JSON.parse(
-//     localStorage.getItem('inProgressRecipes'),
-//   );
-//   if (choice === 'meal' && inProgressRecipes.meals[id]) {
-//     const itemLenght = (
-//       inProgressRecipes.meals[id].length === ingredients.length);
-//     return itemLenght;
-//   }
-//   if (choice === 'drink' && inProgressRecipes.cocktails[id]) {
-//     const itemLenght = (
-//       inProgressRecipes.cocktails[id].length === ingredients.length);
-//     return itemLenght;
-//   }
-//   return false;
-// };
-
 const InProgress = ({ data }) => {
   const {
     error, loading, choice, mealDetailData, drinkDetailData, finished,
@@ -121,7 +100,6 @@ const InProgress = ({ data }) => {
   const checkIngredients = (choice === 'meal')
     ? listIngredients(mealDetailData)
     : listIngredients(drinkDetailData);
-  // const finished = checkFinished(data.id, checkIngredients, choice);
 
   return (
     <div>

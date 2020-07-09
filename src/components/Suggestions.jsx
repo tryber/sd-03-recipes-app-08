@@ -40,16 +40,13 @@ const Suggestions = () => {
   const finalData = data.map((elem) => creatingredientsArr(choice, elem));
   const path = (choice === 'meal') ? 'bebidas' : 'comidas';
 
-  // console.log(finalData);
-
   return (
-    <div>
+    <div className="recipes-suggestion-container">
       <h4 className="recomendation-title">Recomendações</h4>
       <div className="suggestion-container">
         {finalData.map((elem, index) => (
-          <div>
+          <div key={elem.id}>
             <SuggestionCard
-              key={elem.id}
               thumbnail={elem.image}
               name={elem.name}
               index={index}

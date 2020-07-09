@@ -6,22 +6,23 @@ import RecipeDetails from '../components/RecipeDetails';
 const DrinkDetailPage = () => {
   const {
     fetchDrinkID, choice, setChoice, fetchBasicMeal, setLoading, drinkDetailData,
-  } = useContext(RecipeAppContext);
+  } = useContext(
+    RecipeAppContext,
+  );
   const { id } = useParams();
   useEffect(() => {
     setLoading(true);
     setChoice('drink');
     fetchDrinkID(id);
     fetchBasicMeal();
+    return () => {
+      setLoading(true);
+    };
   }, [choice]);
 
-  if (drinkDetailData.length === 0) return <h1>Loading...</h1>;
+  if (!drinkDetailData || drinkDetailData.length === 0) return <h1>Loading...</h1>;
 
-  return (
-    <div>
-      <RecipeDetails />
-    </div>
-  );
+  return <RecipeDetails />;
 };
 
 export default DrinkDetailPage;

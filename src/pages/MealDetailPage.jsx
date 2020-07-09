@@ -5,7 +5,12 @@ import RecipeDetails from '../components/RecipeDetails';
 
 const MealDetailPage = () => {
   const {
-    fetchMealID, choice, setChoice, fetchBasicDrink, setLoading, mealDetailData,
+    fetchMealID,
+    choice,
+    setChoice,
+    fetchBasicDrink,
+    setLoading,
+    mealDetailData,
   } = useContext(RecipeAppContext);
   const { id } = useParams();
   useEffect(() => {
@@ -13,15 +18,14 @@ const MealDetailPage = () => {
     setChoice('meal');
     fetchMealID(id);
     fetchBasicDrink();
+    return () => {
+      setLoading(true);
+    };
   }, [choice]);
 
-  if (mealDetailData.length === 0) return <h1>Loading...</h1>;
+  if (!mealDetailData || mealDetailData.length === 0) return <h1>Loading...</h1>;
 
-  return (
-    <div>
-      <RecipeDetails />
-    </div>
-  );
+  return <RecipeDetails />;
 };
 
 export default MealDetailPage;
