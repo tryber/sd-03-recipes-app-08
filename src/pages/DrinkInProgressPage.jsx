@@ -1,27 +1,29 @@
 import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { RecipeAppContext } from '../context';
-import RecipeDetails from '../components/RecipeDetails';
+import InProgress from '../components/InProgress';
+import dataDealer from '../helpers/dataDealer';
 
-const DrinkDetailPage = () => {
+const DrinkInProgressPage = () => {
   const {
-    fetchDrinkID, choice, setChoice, fetchBasicMeal, setLoading, drinkDetailData,
+    setLoading, fetchDrinkID, choice, setChoice, drinkDetailData,
   } = useContext(RecipeAppContext);
   const { id } = useParams();
   useEffect(() => {
     setLoading(true);
     setChoice('drink');
     fetchDrinkID(id);
-    fetchBasicMeal();
   }, [choice]);
 
   if (drinkDetailData.length === 0) return <h1>Loading...</h1>;
 
+  const dataDrink = dataDealer(choice, drinkDetailData);
+
   return (
     <div>
-      <RecipeDetails />
+      <InProgress data={dataDrink} />
     </div>
   );
 };
 
-export default DrinkDetailPage;
+export default DrinkInProgressPage;

@@ -7,6 +7,8 @@ import Test from './pages/Test';
 import './styles/App.css';
 import MealDetailPage from './pages/MealDetailPage';
 import DrinkDetailPage from './pages/DrinkDetailPage';
+import DrinkInProgressPage from './pages/DrinkInProgressPage';
+import MealInProgressPage from './pages/MealInProgressPage';
 
 function App() {
   return (
@@ -18,8 +20,8 @@ function App() {
           <Route exact path="/bebidas" component={DrinksPrincipalPage} />
           <Route exact path="/comidas/:id" component={MealDetailPage} />
           <Route exact path="/bebidas/:id" component={DrinkDetailPage} />
-          <Route path="/comidas/:id/in-progress">{Test}</Route>
-          <Route path="/bebidas/:id/in-progress">{Test}</Route>
+          <Route path="/comidas/:id/in-progress" component={MealInProgressPage} />
+          <Route path="/bebidas/:id/in-progress" component={DrinkInProgressPage} />
           <Route path="/explorar" component={Test} />
           <Route path="/explorar/comidas">{}</Route>
           <Route path="/explorar/bebidas">{}</Route>

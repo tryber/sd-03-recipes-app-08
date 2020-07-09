@@ -11,7 +11,6 @@ const drinkCall = (randomData, setRandomData, setRandomError, setRandomSuggest) 
     fetchRandomDrinkID(randomData, setRandomData, setRandomError);
     // setArrIndex(randomData);
     // ArrConstructor = [...ArrConstructor, arrIndex];
-    // console.log(randomData);
   }
   setRandomSuggest(randomData);
 };

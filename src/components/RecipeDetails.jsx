@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { RecipeAppContext } from '../context';
@@ -16,6 +16,7 @@ let finishedArr = [{ id: 'nothing', doneDate: '' }];
 if (doneRecipesArr) {
   finishedArr = doneRecipesArr;
 }
+const initialProcess = { meals: {}, cocktails: {} };
 
 // let today = new Date();
 // const day = String(today.getDate()).padStart(2, '0');
@@ -51,7 +52,6 @@ const finalProgress = (data, choice, progress) => {
 
 const buttonClick = (data, choice, started) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  const initialProcess = { meals: {}, cocktails: {} };
   // const key = (choice === 'meal') ? 'meals' : 'cocktails';
   if (started) {
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
@@ -140,10 +140,9 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
 
 const checkStarted = (id, choice) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  let startedArr = { meals: { id: 'nothing' }, cocktails: { id: 'nothing' } };
+  let startedArr = initialProcess;
   if (inProgressRecipes) {
     startedArr = inProgressRecipes;
-    console.log(inProgressRecipes);
   }
   if (choice === 'meal') {
     const test = startedArr.meals[id];
@@ -157,13 +156,8 @@ const checkStarted = (id, choice) => {
 
 const RecipeDetails = () => {
   const {
-    error, loading, setLoading, mealDetailData, drinkDetailData, choice,
+    error, loading, mealDetailData, drinkDetailData, choice,
   } = useContext(RecipeAppContext);
-  useEffect(() => {
-    setLoading(true);
-  }, [choice]);
-
-  if (mealDetailData.length === 0 && drinkDetailData.length === 0) return <h1>Loading...</h1>;
 
   const dataHelper = (choice === 'meal')
     ? mealDetailData
