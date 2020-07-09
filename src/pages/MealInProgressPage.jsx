@@ -15,7 +15,7 @@ const MealInProgressPage = () => {
     fetchMealID(id);
   }, [choice]);
 
-  if (mealDetailData.length === 0) return <h1>Loading...</h1>;
+  if (!mealDetailData || mealDetailData.length === 0) return <h1>Loading...</h1>;
 
   const dataMeal = dataDealer(choice, mealDetailData);
 

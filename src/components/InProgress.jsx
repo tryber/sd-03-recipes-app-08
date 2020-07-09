@@ -37,7 +37,7 @@ const renderDoneLink = (data, finished) => {
   if (!finished) {
     return (
       <div>
-        <button type="button" data-testid="finish-recipe-btn" disabled>
+        <button type="button" data-testid="finish-recipe-btn" disabled className="start-recipe-btn">
           Finalizar Receita
         </button>
       </div>

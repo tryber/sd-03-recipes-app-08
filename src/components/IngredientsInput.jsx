@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { RecipeAppContext } from '../context';
 import '../styles/RecipeDetails.css';
 
-let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes') || '{}');
 
 const addToProgress = (choice, id, index) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
@@ -60,7 +60,7 @@ const initialProgress = (id, choice) => {
 };
 
 const checkBoxTest = (id, choice, index) => {
-  inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  inProgressRecipes = initialProgress(id, choice);
   if (choice === 'meal' && inProgressRecipes.meals[id].some((elem) => elem === index)) {
     return true;
   }
@@ -81,7 +81,7 @@ const checkTextDecoration = (id, choice, index) => {
 };
 
 const checkFinished = (id, size, choice, setFinished) => {
-  inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  inProgressRecipes = initialProgress(id, choice);
   if (choice === 'meal' && inProgressRecipes.meals[id]) {
     const itemLenght = (
       inProgressRecipes.meals[id].length === size);
