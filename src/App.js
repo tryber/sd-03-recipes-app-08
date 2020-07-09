@@ -10,6 +10,8 @@ import ExploreByArea from './pages/ExploreByArea';
 import NotFound from './pages/NotFound';
 import Test from './pages/Test';
 import './styles/App.css';
+import MealDetailPage from './pages/MealDetailPage';
+import DrinkDetailPage from './pages/DrinkDetailPage';
 
 function App() {
   return (
@@ -19,8 +21,8 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/bebidas" component={RecipesPage} />
           <Route exact path="/comidas" component={RecipesPage} />
-          <Route path="/comidas/:id" component={Test} />
-          <Route path="/bebidas/:id" component={Test} />
+          <Route exact path="/comidas/:id" component={MealDetailPage} />
+          <Route exact path="/bebidas/:id" component={DrinkDetailPage} />
           <Route path="/comidas/:id/in-progress">{}</Route>
           <Route path="/bebidas/:id/in-progress">{}</Route>
           <Route exact path="/explorar" component={Explore} />
