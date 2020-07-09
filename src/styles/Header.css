@@ -1,8 +1,8 @@
 .recipes-header {
   align-items: center;
+  background: #c4c4c4;
   border: none;
   display: flex;
-  background: #c4c4c4;
   height: 58px;
   justify-content: space-around;
   left: 0;
