@@ -5,6 +5,7 @@ import { RecipeAppContext } from '../context';
 import InteractiveButtons from './InteractiveButtons';
 import IngredientsInput from './IngredientsInput';
 import listIngredients from '../helpers/listIngredients';
+import '../styles/RecipeDetails.css';
 
 const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
 
@@ -26,7 +27,9 @@ const doneButtonClick = (data) => {
     doneDate: today,
     tags: data.tags,
   };
-  const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [newObj];
+  const newDoneRecipesArr = doneRecipesArr
+    ? [...doneRecipesArr, newObj]
+    : [newObj];
   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
 };
 
@@ -34,11 +37,7 @@ const renderDoneLink = (data, finished) => {
   if (!finished) {
     return (
       <div>
-        <button
-          type="button"
-          data-testid="finish-recipe-btn"
-          disabled
-        >
+        <button type="button" data-testid="finish-recipe-btn" disabled>
           Finalizar Receita
         </button>
       </div>
@@ -46,12 +45,9 @@ const renderDoneLink = (data, finished) => {
   }
   return (
     <div>
-      <Link
-        to="/receitas-feitas"
-        data-testid="finish-recipe-btn"
-        className="start-recipe-btn"
-      >
+      <Link to="/receitas-feitas" data-testid="finish-recipe-btn">
         <button
+          className="start-recipe-btn"
           type="button"
           onClick={() => doneButtonClick(data)}
         >
@@ -63,14 +59,21 @@ const renderDoneLink = (data, finished) => {
 };
 
 const renderInProgressPage = (data, choice, finished, ingredients) => (
-  <div>
-    <img data-testid="recipe-photo" src={data.image} alt="recipe" className="recipe-photo" />
+  <div className="details-page">
+    <img
+      data-testid="recipe-photo"
+      src={data.image}
+      alt="recipe"
+      className="recipe-photo"
+    />
     <div className="details-conteiner">
       <div className="details-header">
         <div className="details-header-text">
-          <h1 data-testid="recipe-title" className="recipe-title">{data.name}</h1>
+          <h1 data-testid="recipe-title" className="recipe-title">
+            {data.name}
+          </h1>
           <span data-testid="recipe-category" className="recipe-category">
-            {(choice === 'meal') ? data.category : data.alcoholicOrNot}
+            {choice === 'meal' ? data.category : data.alcoholicOrNot}
           </span>
         </div>
         <InteractiveButtons data={data} choice={choice} />
@@ -78,10 +81,14 @@ const renderInProgressPage = (data, choice, finished, ingredients) => (
       <h2 className="ingredients-title">Ingredients</h2>
       <div className="ingredients-conteiner">
         {ingredients.map((elem, index) => (
-          <IngredientsInput ingredient={elem} index={index} size={ingredients.length} />
+          <IngredientsInput
+            ingredient={elem}
+            index={index}
+            size={ingredients.length}
+          />
         ))}
       </div>
-      <h2 className="intructions-title">Instructions</h2>
+      <h2 className="instructions-title">Instructions</h2>
       <div className="instructions-conteiner">
         <p className="instructions" data-testid="instructions">
           {data.instructions}
@@ -94,15 +101,21 @@ const renderInProgressPage = (data, choice, finished, ingredients) => (
 
 const InProgress = ({ data }) => {
   const {
-    error, loading, choice, mealDetailData, drinkDetailData, finished,
+    error,
+    loading,
+    choice,
+    mealDetailData,
+    drinkDetailData,
+    finished,
   } = useContext(RecipeAppContext);
 
-  const checkIngredients = (choice === 'meal')
-    ? listIngredients(mealDetailData)
-    : listIngredients(drinkDetailData);
+  const checkIngredients =
+    choice === 'meal'
+      ? listIngredients(mealDetailData)
+      : listIngredients(drinkDetailData);
 
   return (
-    <div>
+    <div className="recipe-details-page">
       {!loading && error && <h4>{error}</h4>}
       {renderInProgressPage(data, choice, finished, checkIngredients)}
     </div>
