@@ -16,3 +16,21 @@
   max-width: 360px;
   position: absolute;
 }
+
+.explore-food {
+  background: #6ce34f;
+  color: black;
+  height: 60px;
+  margin: 20px;
+  position: relative;
+  width: 180px;
+}
+
+.explore-drinks {
+  background: #6ce34f;
+  color: black;
+  height: 60px;
+  margin: 20px;
+  position: relative;
+  width: 180px;
+}
