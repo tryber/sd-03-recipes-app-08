@@ -114,7 +114,6 @@
   font-weight: 100;
   height: 30px;
   line-height: 35px;
-  margin: 25px 10px;
   position: absolute;
   top: -25px;
   width: 138px;
@@ -122,6 +121,7 @@
 
 .ingredients-card {
   list-style: none;
+  margin-left: -16px;
   max-height: 653px;
   position: absolute;
   width: 360px;
@@ -132,7 +132,6 @@
   font-size: 21px;
   font-style: normal;
   line-height: 25px;
-  margin: 30px 5px;
   position: relative;
 }
 
@@ -142,6 +141,7 @@
   max-height: 250px;
   overflow-x: hidden;
   overflow-y: scroll;
+  padding-left: 10px;
   position: absolute;
   top: 468px;
   width: 360px;
@@ -163,7 +163,6 @@
 .suggestion-container {
   display: flex;
   height: 255px;
-  margin: 5px;
   overflow-x: scroll;
   position: relative;
   width: 360px;
