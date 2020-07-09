@@ -1,11 +1,20 @@
 .recipes-header {
+  align-items: center;
+  border: none;
+  display: flex;
   background: #c4c4c4;
   height: 58px;
+  justify-content: space-around;
+  left: 0;
   position: absolute;
+  top: 0;
   width: 360px;
 }
 
 .profile-link {
+  align-items: flex-start;
+  color: black;
+  display: flex;
   height: 30px;
   left: 15px;
   position: absolute;
@@ -14,6 +23,9 @@
 }
 
 .search-link {
+  align-items: flex-start;
+  color: black;
+  display: flex;
   height: 30px;
   left: 317px;
   position: absolute;
