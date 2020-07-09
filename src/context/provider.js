@@ -97,6 +97,7 @@ const RecipeAppProvider = ({ children }) => {
     choice,
     setChoice,
     mealsData,
+    beverageData,
     basicMealData,
     setBasicMealData,
     basicDrikData,
