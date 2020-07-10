@@ -33,30 +33,35 @@ const doneButtonClick = (data) => {
   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
 };
 
-const renderDoneLink = (data, finished) => {
-  if (!finished) {
+const checkDisabled = (finished) => {
+  if (finished) return false;
+  return true;
+};
+
+const checkLink = (finished) => {
+  if (finished) {
     return (
-      <div>
-        <button type="button" data-testid="finish-recipe-btn" disabled className="start-recipe-btn">
-          Finalizar Receita
-        </button>
-      </div>
+      <Link to="/receitas-feitas">
+        Finalizar Receita
+      </Link>
     );
   }
-  return (
-    <div>
-      <Link to="/receitas-feitas" data-testid="finish-recipe-btn">
-        <button
-          className="start-recipe-btn"
-          type="button"
-          onClick={() => doneButtonClick(data)}
-        >
-          Finalizar Receita
-        </button>
-      </Link>
-    </div>
-  );
+  return 'Finalizar Receita';
 };
+
+const renderDoneLink = (data, finished) => (
+  <div>
+    <button
+      className="start-recipe-btn"
+      data-testid="finish-recipe-btn"
+      type="button"
+      disabled={checkDisabled(finished)}
+      onClick={() => doneButtonClick(data)}
+    >
+      {checkLink(finished)}
+    </button>
+  </div>
+);
 
 const renderInProgressPage = (data, choice, finished, ingredients) => (
   <div className="details-page">

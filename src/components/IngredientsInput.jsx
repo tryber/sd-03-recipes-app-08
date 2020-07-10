@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { RecipeAppContext } from '../context';
 import '../styles/RecipeDetails.css';
 
-let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes') || '{}');
+let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
 const addToProgress = (choice, id, index) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  const actualMealIngredientArr = inProgressRecipes.meals[id];
-  const actualDrinkIngredientArr = inProgressRecipes.cocktails[id];
   if (choice === 'meal') {
+    const actualMealIngredientArr = inProgressRecipes.meals[id];
     const ingredientArr = [...actualMealIngredientArr, index];
     inProgressRecipes.meals[id] = ingredientArr;
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     return;
   }
+  const actualDrinkIngredientArr = inProgressRecipes.cocktails[id];
   const ingredientArr = [...actualDrinkIngredientArr, index];
   inProgressRecipes.cocktails[id] = ingredientArr;
   localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
@@ -22,15 +22,15 @@ const addToProgress = (choice, id, index) => {
 
 const excludeFromProgress = (choice, id, index) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  const actualMealIngredientArr = inProgressRecipes.meals[id];
-  const actualDrinkIngredientArr = inProgressRecipes.cocktails[id];
   if (choice === 'meal') {
+    const actualMealIngredientArr = inProgressRecipes.meals[id];
     const finalIngredientArr = actualMealIngredientArr.filter((elem) => elem !== index);
     // console.log(finalIngredientArr);
     inProgressRecipes.meals[id] = finalIngredientArr;
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     return;
   }
+  const actualDrinkIngredientArr = inProgressRecipes.cocktails[id];
   const finalIngredientArr = actualDrinkIngredientArr.filter((elem) => elem !== index);
   inProgressRecipes.cocktails[id] = finalIngredientArr;
   localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
@@ -48,19 +48,8 @@ const inputClicked = (choice, id, marked, setMarked, index) => {
   // console.log(marked);
 };
 
-const initialProgress = (id, choice) => {
-  if (choice === 'meal') {
-    const aux = JSON.parse(localStorage.getItem('inProgressRecipes')) || { meals: { [id]: [] }, cocktails: {} };
-    localStorage.setItem('inProgressRecipes', JSON.stringify(aux));
-    return aux;
-  }
-  const aux = JSON.parse(localStorage.getItem('inProgressRecipes')) || { meals: {}, cocktails: { [id]: [] } };
-  localStorage.setItem('inProgressRecipes', JSON.stringify(aux));
-  return aux;
-};
-
 const checkBoxTest = (id, choice, index) => {
-  inProgressRecipes = initialProgress(id, choice);
+  inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (choice === 'meal' && inProgressRecipes.meals[id].some((elem) => elem === index)) {
     return true;
   }
@@ -71,6 +60,7 @@ const checkBoxTest = (id, choice, index) => {
 };
 
 const checkTextDecoration = (id, choice, index) => {
+  inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (choice === 'meal' && inProgressRecipes.meals[id].some((elem) => elem === index)) {
     return 'line-through';
   }
@@ -81,7 +71,7 @@ const checkTextDecoration = (id, choice, index) => {
 };
 
 const checkFinished = (id, size, choice, setFinished) => {
-  inProgressRecipes = initialProgress(id, choice);
+  inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
   if (choice === 'meal' && inProgressRecipes.meals[id]) {
     const itemLenght = (
       inProgressRecipes.meals[id].length === size);
@@ -120,7 +110,6 @@ const IngredientsInput = ({ ingredient, index, size }) => {
     choice, mealDetailData, drinkDetailData, setFinished,
   } = useContext(RecipeAppContext);
   const id = (choice === 'meal') ? mealDetailData[0].idMeal : drinkDetailData[0].idDrink;
-  inProgressRecipes = initialProgress(id, choice);
   useEffect(() => {
     if (choice === 'meal' && inProgressRecipes.meals[id].some((elem) => elem === ingredient)) {
       setMarked(true);
