@@ -50,10 +50,13 @@ const inputClicked = (choice, id, marked, setMarked, index) => {
 
 const checkBoxTest = (id, choice, index) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (choice === 'meal' && inProgressRecipes.meals[id].some((elem) => elem === index)) {
+  if (choice === 'meal'
+    && inProgressRecipes.meals && inProgressRecipes.meals[id].some((elem) => elem === index)) {
     return true;
   }
-  if (choice === 'drink' && inProgressRecipes.cocktails[id].some((elem) => elem === index)) {
+  if (choice === 'drink'
+    && inProgressRecipes.cocktails
+    && inProgressRecipes.cocktails[id].some((elem) => elem === index)) {
     return true;
   }
   return false;
@@ -61,10 +64,12 @@ const checkBoxTest = (id, choice, index) => {
 
 const checkTextDecoration = (id, choice, index) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (choice === 'meal' && inProgressRecipes.meals[id].some((elem) => elem === index)) {
+  if (choice === 'meal' && inProgressRecipes.cocktails
+    && inProgressRecipes.meals[id].some((elem) => elem === index)) {
     return 'line-through';
   }
-  if (choice === 'drink' && inProgressRecipes.cocktails[id].some((elem) => elem === index)) {
+  if (choice === 'drink' && inProgressRecipes.cocktails
+    && inProgressRecipes.cocktails[id].some((elem) => elem === index)) {
     return 'line-through';
   }
   return '';
@@ -72,13 +77,13 @@ const checkTextDecoration = (id, choice, index) => {
 
 const checkFinished = (id, size, choice, setFinished) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  if (choice === 'meal' && inProgressRecipes.meals[id]) {
+  if (choice === 'meal' && inProgressRecipes.meals && inProgressRecipes.meals[id]) {
     const itemLenght = (
       inProgressRecipes.meals[id].length === size);
     setFinished(itemLenght);
     return;
   }
-  if (choice === 'drink' && inProgressRecipes.cocktails[id]) {
+  if (choice === 'drink' && inProgressRecipes.cocktails && inProgressRecipes.cocktails[id]) {
     const itemLenght = (
       inProgressRecipes.cocktails[id].length === size);
     setFinished(itemLenght);
@@ -111,10 +116,14 @@ const IngredientsInput = ({ ingredient, index, size }) => {
   } = useContext(RecipeAppContext);
   const id = (choice === 'meal') ? mealDetailData[0].idMeal : drinkDetailData[0].idDrink;
   useEffect(() => {
-    if (choice === 'meal' && inProgressRecipes.meals[id].some((elem) => elem === ingredient)) {
+    if (choice === 'meal'
+      && inProgressRecipes.meals
+      && inProgressRecipes.meals[id].some((elem) => elem === ingredient)) {
       setMarked(true);
     }
-    if (choice === 'drink' && inProgressRecipes.cocktails[id].some((elem) => elem === ingredient)) {
+    if (choice === 'drink'
+      && inProgressRecipes.cocktails
+      && inProgressRecipes.cocktails[id].some((elem) => elem === ingredient)) {
       setMarked(true);
     }
   }, [choice]);

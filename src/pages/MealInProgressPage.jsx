@@ -27,7 +27,8 @@ const MealInProgressPage = () => {
     fetchMealID(id);
   }, [choice]);
 
-  if (!mealDetailData || mealDetailData.length === 0) return <h1>Loading...</h1>;
+  if (!mealDetailData || mealDetailData.length === 0
+    || !JSON.parse(localStorage.getItem('inProgressRecipes'))) return <h1>Loading...</h1>;
 
   const dataMeal = dataDealer(choice, mealDetailData);
   inProgressRecipes = initialProgress(dataMeal.id);
