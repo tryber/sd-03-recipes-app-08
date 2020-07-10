@@ -3,41 +3,18 @@ import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import { RecipeAppContext } from '../context';
 import Suggestions from './Suggestions';
-import FavoriteButton from './FavoriteButton';
-import Clipboard from './Clipboard';
+import InteractiveButtons from './InteractiveButtons';
 import dataDealer from '../helpers/dataDealer';
 import listIngredients from '../helpers/listIngredients';
 import '../styles/RecipeDetails.css';
 
 const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
 let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-// console.log(inProgressRecipes);
 let finishedArr = [{ id: 'nothing', doneDate: '' }];
 if (doneRecipesArr) {
   finishedArr = doneRecipesArr;
 }
-
-// let today = new Date();
-// const day = String(today.getDate()).padStart(2, '0');
-// const month = String(today.getMonth() + 1).padStart(2, '0');
-// const year = today.getFullYear();
-// today = `${day} / ${month} / ${year}`;
-
-// const buttonClick = (data) => {
-//   const newObj = {
-//     id: data.id,
-//     type: data.type,
-//     area: data.area,
-//     category: data.category,
-//     alcoholicOrNot: data.alcoholicOrNot,
-//     name: data.name,
-//     image: data.image,
-//     doneDate: today,
-//     tags: data.tags,
-//   };
-//   const newDoneRecipesArr = (doneRecipesArr) ? [...doneRecipesArr, newObj] : [newObj];
-//   localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipesArr));
-// };
+const initialProcess = { meals: {}, cocktails: {} };
 
 const finalProgress = (data, choice, progress) => {
   const auxObj = progress;
@@ -51,15 +28,10 @@ const finalProgress = (data, choice, progress) => {
 
 const buttonClick = (data, choice, started) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  const initialProcess = { meals: {}, cocktails: {} };
-  // const key = (choice === 'meal') ? 'meals' : 'cocktails';
   if (started) {
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     return;
   }
-  // const newObj = {
-  //   [data.id]: [],
-  // };
   if (inProgressRecipes) {
     const newProgress = finalProgress(data, choice, inProgressRecipes);
     localStorage.setItem('inProgressRecipes', JSON.stringify(newProgress));
@@ -115,10 +87,7 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
             {choice === 'meal' ? data.category : data.alcoholicOrNot}
           </h4>
         </div>
-        <div className="details-header-button">
-          <Clipboard id={data.id} choice={choice} />
-          <FavoriteButton data={data} />
-        </div>
+        <InteractiveButtons data={data} choice={choice} />
       </header>
       <div className="ingredients-conteiner">
         <h2 className="ingredients-title">Ingredients</h2>
@@ -149,18 +118,15 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
 
 const checkStarted = (id, choice) => {
   inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-  let startedArr = { meals: { id: 'nothing' }, cocktails: { id: 'nothing' } };
+  let startedArr = initialProcess;
   if (inProgressRecipes) {
     startedArr = inProgressRecipes;
-    console.log(inProgressRecipes);
   }
   if (choice === 'meal') {
     const test = startedArr.meals[id];
-    // some((elem) => elem.meals === id);
     return test;
   }
   const test = startedArr.cocktails[id];
-  // some((elem) => elem.cocktails === id);
   return test;
 };
 

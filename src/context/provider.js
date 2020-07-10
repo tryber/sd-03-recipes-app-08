@@ -20,6 +20,8 @@ const RecipeAppProvider = ({ children }) => {
   const [choice, setChoice] = useState(initialState.choice);
   const [basicMealData, setBasicMealData] = useState([]);
   const [basicDrikData, setBasicDrikData] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+  const [finished, setFinished] = useState(false);
 
   const fetchBasicMeal = () => {
     requestFunctions.getFoodList().then(
@@ -106,6 +108,10 @@ const RecipeAppProvider = ({ children }) => {
     setBasicDrikData,
     fetchBasicMeal,
     fetchBasicDrink,
+    ingredients,
+    setIngredients,
+    finished,
+    setFinished,
     foodAreaFilter,
     setFoodAreaFilter,
   };

@@ -4,14 +4,12 @@ import {
   fetchRandomDrinkID,
 } from '../services/fatchRandom';
 
-
 const drinkCall = (randomData, setRandomData, setRandomError, setRandomSuggest) => {
   // let ArrConstructor = [];
   for (let i = 0; i < 6; i += 1) {
     fetchRandomDrinkID(randomData, setRandomData, setRandomError);
     // setArrIndex(randomData);
     // ArrConstructor = [...ArrConstructor, arrIndex];
-    // console.log(randomData);
   }
   setRandomSuggest(randomData);
 };
