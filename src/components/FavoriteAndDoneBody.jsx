@@ -147,9 +147,7 @@ const FavoriteAndDoneBody = ({ comand }) => {
 
   return (
     <div className="recipe-details-page">
-      <Header iconProfile={profileIcon} title="Receitas Favoritas" />
       {renderDetailsPage(list, setList, comand)}
-      <Footer />
     </div>
   );
 };
