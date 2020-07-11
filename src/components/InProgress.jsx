@@ -38,28 +38,30 @@ const checkDisabled = (finished) => {
   return true;
 };
 
-const checkLink = (finished) => {
-  if (finished) {
-    return (
-      <Link to="/receitas-feitas">
-        Finalizar Receita
-      </Link>
-    );
-  }
-  return 'Finalizar Receita';
-};
+// const checkLink = (finished) => {
+//   if (finished) {
+//     return (
+//       <Link to="/receitas-feitas">
+//         Finalizar Receita
+//       </Link>
+//     );
+//   }
+//   return 'Finalizar Receita';
+// };
 
 const renderDoneLink = (data, finished) => (
   <div>
-    <button
-      className="start-recipe-btn"
-      data-testid="finish-recipe-btn"
-      type="button"
-      disabled={checkDisabled(finished)}
-      onClick={() => doneButtonClick(data)}
-    >
-      {checkLink(finished)}
-    </button>
+    <Link to={(finished) ? "/receitas-feitas" : null}>
+      <button
+        className="start-recipe-btn"
+        data-testid="finish-recipe-btn"
+        type="button"
+        disabled={checkDisabled(finished)}
+        onClick={() => doneButtonClick(data)}
+      >
+        Finalizar Receita
+      </button>
+    </Link>
   </div>
 );
 
