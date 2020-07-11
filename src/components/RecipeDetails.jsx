@@ -106,7 +106,7 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
       <div className="instructions-conteiner">
         <h2 className="instructions-title">Instructions</h2>
         <div data-testid="instructions">
-          <p className="instructions">
+          <p className="instructions" data-testid="instructions">
             {data.instructions}
           </p>
         </div>

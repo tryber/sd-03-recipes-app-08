@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Clipboard from './Clipboard';
 import BlackHeart from '../images/blackHeartIcon.svg';
-import Header from './Header';
-import Footer from './Footer';
-import profileIcon from '../images/profileIcon.svg';
 import '../styles/RecipeDetails.css';
 import { RecipeAppContext } from '../context';
 
