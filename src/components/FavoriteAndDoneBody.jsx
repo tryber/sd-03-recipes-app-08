@@ -65,7 +65,7 @@ const renderTags = (tags, index) => {
     return (
       <div>
         <h4 data-testid={`${index}-${tags[0]}-horizontal-tag`}>{tags[0]}</h4>
-        <h4 data-testid={`${index}-${tags[1]}-horizontal-tag`}>{tags[1]}</h4> 
+        <h4 data-testid={`${index}-${tags[1]}-horizontal-tag`}>{tags[1]}</h4>
       </div>
     );
   }
