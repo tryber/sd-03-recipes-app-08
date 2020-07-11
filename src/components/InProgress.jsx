@@ -51,7 +51,7 @@ const checkDisabled = (finished) => {
 
 const renderDoneLink = (data, finished) => (
   <div>
-    <Link to={(finished) ? "/receitas-feitas" : null}>
+    <Link to={(finished) ? '/receitas-feitas' : null}>
       <button
         className="start-recipe-btn"
         data-testid="finish-recipe-btn"
