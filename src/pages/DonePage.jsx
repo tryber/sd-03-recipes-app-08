@@ -6,16 +6,19 @@ import FavoriteAndDoneBody from '../components/FavoriteAndDoneBody';
 import '../styles/RecipeDetails.css';
 import { RecipeAppContext } from '../context';
 
-const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
+let doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
 
 const FavoritePage = () => {
   const {
     setList,
   } = useContext(RecipeAppContext);
   useEffect(() => {
+    doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
     setList(doneRecipesArr);
   }, []);
-  if (!JSON.parse(localStorage.getItem('doneRecipes'))) return <h1>Loading...</h1>;
+
+  if (!doneRecipesArr) return <h1>Loading...</h1>;
+
   return (
     <div className="recipe-done-page">
       <Header iconProfile={profileIcon} title="Receitas Feitas" />
