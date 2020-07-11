@@ -8,13 +8,14 @@ import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
 import ExploreByIngredients from './pages/ExploreByIngredient';
 import ExploreByArea from './pages/ExploreByArea';
 import NotFound from './pages/NotFound';
-import Test from './pages/Test';
+// import Test from './pages/Test';
 import './styles/App.css';
 import MealDetailPage from './pages/MealDetailPage';
 import DrinkDetailPage from './pages/DrinkDetailPage';
 import DrinkInProgressPage from './pages/DrinkInProgressPage';
 import MealInProgressPage from './pages/MealInProgressPage';
 import FavoritePage from './pages/FavoritePage';
+import DonePage from './pages/DonePage';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
           <Route path="/explorar/bebidas/ingredientes" component={ExploreByIngredients} />
           <Route path="/explorar/comidas/area" component={ExploreByArea} />
           <Route exact path="/perfil" component={Profile} />
-          <Route path="/receitas-feitas">{Test}</Route>
+          <Route path="/receitas-feitas" component={DonePage} />
           <Route path="/receitas-favoritas" component={FavoritePage} />
           <Route component={NotFound} />
         </Switch>
