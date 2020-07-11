@@ -14,6 +14,7 @@ import MealDetailPage from './pages/MealDetailPage';
 import DrinkDetailPage from './pages/DrinkDetailPage';
 import DrinkInProgressPage from './pages/DrinkInProgressPage';
 import MealInProgressPage from './pages/MealInProgressPage';
+import FavoritePage from './pages/FavoritePage';
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
           <Route path="/explorar/comidas/area" component={ExploreByArea} />
           <Route exact path="/perfil" component={Profile} />
           <Route path="/receitas-feitas">{Test}</Route>
-          <Route path="/receitas-favoritas">{Test}</Route>
+          <Route path="/receitas-favoritas" component={FavoritePage} />
           <Route component={NotFound} />
         </Switch>
       </Router>
