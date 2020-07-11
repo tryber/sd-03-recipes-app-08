@@ -50,7 +50,7 @@ const checkDisabled = (finished) => {
 // };
 
 const renderDoneLink = (data, finished) => (
-  <div>
+  <Link to={(finished) ? '/receitas-feitas' : '#'}>
     <button
       className="start-recipe-btn"
       data-testid="finish-recipe-btn"
@@ -58,11 +58,9 @@ const renderDoneLink = (data, finished) => (
       disabled={checkDisabled(finished)}
       onClick={() => doneButtonClick(data)}
     >
-      <Link to={(finished) ? '/receitas-feitas' : '#'}>
-        Finalizar Receita
-      </Link>
+      Finalizar Receita
     </button>
-  </div>
+  </Link>
 );
 
 const renderInProgressPage = (data, choice, finished, ingredients) => (
