@@ -34,8 +34,13 @@ const defineFilter = (text, setList, comand) => {
 
 const removeFavorite = (data, setList) => {
   favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const newFavoriteRecipesArr = favoriteRecipesArr.filter((elem) => elem.name !== data.name);
-  localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipesArr));
+  const newFavoriteRecipesArr = favoriteRecipesArr.filter(
+    (elem) => elem.name !== data.name,
+  );
+  localStorage.setItem(
+    'favoriteRecipes',
+    JSON.stringify(newFavoriteRecipesArr),
+  );
   defineFilter(data.type, setList, 'favorite');
 };
 
@@ -74,10 +79,10 @@ const renderTags = (tags, index) => {
 };
 
 const renderConteinerFavorite = (data, index, setList, comand) => {
-  const choice = (data.type === 'comida') ? 'meal' : 'drink';
+  const choice = data.type === 'comida' ? 'meal' : 'drink';
   console.log(data.tags);
   return (
-    <div className="favorite-conteiner">
+    <div className="favorite-conteiner" key={data.id * Math.random()}>
       <Link to={`${data.type}s/${data.id}`}>
         <img
           data-testid={`${index}-horizontal-image`}
@@ -88,20 +93,28 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
       </Link>
       <div className="details-header-text">
         <Link to={`${data.type}s/${data.id}`}>
-          <h1 data-testid={`${index}-horizontal-name`} className="horizontal-name">
+          <h1
+            data-testid={`${index}-horizontal-name`}
+            className="horizontal-name"
+          >
             {data.name}
           </h1>
         </Link>
-        <h4 data-testid={`${index}-horizontal-top-text`} className="horizontal-top-text">
-          {(data.type === 'comida') ? `${data.area} - ${data.category}` : data.alcoholicOrNot}
+        <h4
+          data-testid={`${index}-horizontal-top-text`}
+          className="horizontal-top-text"
+        >
+          {data.type === 'comida'
+            ? `${data.area} - ${data.category}`
+            : data.alcoholicOrNot}
         </h4>
       </div>
       <div>
         <Clipboard id={data.id} choice={choice} index={index} />
-        {(comand === 'favorite')
+        {comand === 'favorite'
           ? renderExcludeFavorite(data, index, setList)
           : renderFinishData(data, index)}
-        {(data.tags) ? renderTags(data.tags, index) : null}
+        {data.tags ? renderTags(data.tags, index) : null}
       </div>
     </div>
   );
@@ -133,14 +146,12 @@ const renderDetailsPage = (data, setList, comand) => (
     >
       Drinks
     </button>
-    {data.map((elem, index) => (renderConteinerFavorite(elem, index, setList, comand)))}
+    {data.map((elem, index) => renderConteinerFavorite(elem, index, setList, comand))}
   </div>
 );
 
 const FavoriteAndDoneBody = ({ comand }) => {
-  const {
-    list, setList,
-  } = useContext(RecipeAppContext);
+  const { list, setList } = useContext(RecipeAppContext);
 
   return (
     <div className="recipe-details-page">
