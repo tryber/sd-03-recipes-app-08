@@ -101,7 +101,6 @@ const RecipeAppProvider = ({ children }) => {
     setChoice,
     mealsData,
     beverageData,
-    // randomDataCall,
     basicMealData,
     setBasicMealData,
     basicDrikData,

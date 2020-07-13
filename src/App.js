@@ -8,7 +8,6 @@ import ExploreMealsOrDrinks from './pages/ExploreMealsOrDrinks';
 import ExploreByIngredients from './pages/ExploreByIngredient';
 import ExploreByArea from './pages/ExploreByArea';
 import NotFound from './pages/NotFound';
-// import Test from './pages/Test';
 import './styles/App.css';
 import MealDetailPage from './pages/MealDetailPage';
 import DrinkDetailPage from './pages/DrinkDetailPage';

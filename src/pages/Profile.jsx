@@ -15,17 +15,18 @@ const Profile = () => {
       </h2>
       <div className="profile-links-container">
         <Link to="/receitas-feitas">
-          <button type="button" data-testid="profile-done-btn">
+          <button className="made-recipes" type="button" data-testid="profile-done-btn">
             Receitas Feitas
           </button>
         </Link>
         <Link to="/receitas-favoritas">
-          <button type="button" data-testid="profile-favorite-btn">
+          <button className="favorite-recipes" type="button" data-testid="profile-favorite-btn">
             Receitas Favoritas
           </button>
         </Link>
         <Link to="/">
           <button
+            className="exit-button"
             type="button"
             onClick={() => localStorage.clear()}
             data-testid="profile-logout-btn"

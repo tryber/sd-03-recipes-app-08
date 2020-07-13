@@ -11,8 +11,35 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  margin: 210px 10px;
+  margin: 100px 30px;
   max-height: 514px;
   max-width: 360px;
   position: absolute;
+}
+
+.explore-by-ingredient {
+  background: #6ce34f;
+  color: black;
+  height: 50px;
+  margin: 20px;
+  position: relative;
+  width: 180px;
+}
+
+.explore-by-area {
+  background: #6ce34f;
+  color: black;
+  height: 50px;
+  margin: 20px;
+  position: relative;
+  width: 180px;
+}
+
+.explore-surprise {
+  background: #6ce34f;
+  color: black;
+  height: 50px;
+  margin: 20px;
+  position: relative;
+  width: 180px;
 }
