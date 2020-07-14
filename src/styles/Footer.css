@@ -1,6 +1,7 @@
 .recipes-footer {
   align-items: center;
   background-color: #c4c4c4;
+  bottom: 0;
   border: none;
   display: flex;
   height: 58px;
