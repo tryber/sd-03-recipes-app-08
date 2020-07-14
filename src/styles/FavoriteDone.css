@@ -9,7 +9,7 @@
   height: 562px;
   position: absolute;
   width: 360px;
-  top: 68px
+  top: 68px;
 }
 
 .filter-container {
@@ -33,6 +33,8 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  left: 278px;
+  position: absolute;
 }
 
 .data-tag {
@@ -44,10 +46,21 @@
   font-style: normal;
   font-weight: normal;
   height: 18px;
+  left: 170px;
   letter-spacing: 0.01em;
   line-height: 18px;
   position: absolute;
   width: 148px;
+}
+
+.tag-container {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  left: 170px;
+  position: absolute;
+  width: 155px;
+  top: 75px;
 }
 
 .tags {
@@ -62,8 +75,7 @@
   height: 21px;
   letter-spacing: 0.01em;
   line-height: 21px;
-  position: absolute;
-  width: 31px;
+  width: 45px;
 }
 
 .favorite-conteiner {
@@ -88,10 +100,44 @@
   width: 165px;
 }
 
-.favorite-header-text {
-  height: 212px;
+.favorite-done-header-text {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  height: 60px;
   margin: 10px 1px;
-  padding: 10px;
   position: absolute;
-  width: 182px;
+  width: 155px;
+}
+
+.horizontal-name {
+  color: black;
+  font-family: Roboto;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: bold;
+  height: 21px;
+  letter-spacing: 0.01em;
+  line-height: 21px;
+  position: absolute;
+  width: 45px;
+  top: 85px;
+}
+
+.horizontal-top-text {
+  color: #000065;
+  font-family: Roboto;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+  height: 21px;
+  letter-spacing: 0.01em;
+  line-height: 21px;
+  position: absolute;
+  width: 895px;
+  top: 55px;
+}
+
+.share-btn {
+  margin-left: 280px;
 }

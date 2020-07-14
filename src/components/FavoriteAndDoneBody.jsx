@@ -61,15 +61,16 @@ const renderExcludeFavorite = (data, index, setList) => (
 const renderFinishData = (data, index) => (
   <div>
     <h4 data-testid={`${index}-horizontal-done-date`} className="data-tag">
+      Feita em:
       {data.doneDate}
     </h4>
   </div>
 );
 
 const renderTags = (tags, index) => {
-  if (tags[1]) {
+  if (Array.isArray(tags) && tags.length > 1) {
     return (
-      <div>
+      <div className="tag-container">
         <h4 data-testid={`${index}-${tags[0]}-horizontal-tag`} className="tags">
           {tags[0]}
         </h4>
@@ -80,8 +81,8 @@ const renderTags = (tags, index) => {
     );
   }
   return (
-    <div>
-      <h4 className="tags">{tags[0]}</h4>
+    <div className="tag-container">
+      <h4 className="tags">{tags}</h4>
     </div>
   );
 };
@@ -99,7 +100,7 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
           className="favorite-recipe-photo"
         />
       </Link>
-      <div className="favorite-header-text">
+      <div className="favorite-done-header-text">
         <Link to={`${data.type}s/${data.id}`}>
           <h1
             data-testid={`${index}-horizontal-name`}
@@ -118,7 +119,9 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
         </h4>
       </div>
       <div>
-        <Clipboard id={data.id} choice={choice} index={index} />
+        <div className="share-btn">
+          <Clipboard id={data.id} choice={choice} index={index} />
+        </div>
         {comand === 'favorite'
           ? renderExcludeFavorite(data, index, setList)
           : renderFinishData(data, index)}
