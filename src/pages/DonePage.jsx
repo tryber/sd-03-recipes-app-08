@@ -5,7 +5,7 @@ import FavoriteAndDoneBody from '../components/FavoriteAndDoneBody';
 import '../styles/RecipeDetails.css';
 import { RecipeAppContext } from '../context';
 
-let doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes') || '[]');
+const doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes') || '[]');
 
 const FavoritePage = () => {
   const { setList } = useContext(RecipeAppContext);
