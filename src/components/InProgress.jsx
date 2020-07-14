@@ -38,19 +38,19 @@ const checkDisabled = (finished) => {
   return true;
 };
 
-const checkLink = (finished) => {
-  if (finished) {
-    return (
-      <Link to="/receitas-feitas">
-        Finalizar Receita
-      </Link>
-    );
-  }
-  return 'Finalizar Receita';
-};
+// const checkLink = (finished) => {
+//   if (finished) {
+//     return (
+//       <Link to="/receitas-feitas">
+//         Finalizar Receita
+//       </Link>
+//     );
+//   }
+//   return 'Finalizar Receita';
+// };
 
 const renderDoneLink = (data, finished) => (
-  <div>
+  <Link to={(finished) ? '/receitas-feitas' : '#'}>
     <button
       className="start-recipe-btn"
       data-testid="finish-recipe-btn"
@@ -58,9 +58,9 @@ const renderDoneLink = (data, finished) => (
       disabled={checkDisabled(finished)}
       onClick={() => doneButtonClick(data)}
     >
-      {checkLink(finished)}
+      Finalizar Receita
     </button>
-  </div>
+  </Link>
 );
 
 const renderInProgressPage = (data, choice, finished, ingredients) => (
@@ -94,7 +94,7 @@ const renderInProgressPage = (data, choice, finished, ingredients) => (
         ))}
       </div>
       <h2 className="instructions-title">Instructions</h2>
-      <div className="instructions-conteiner">
+      <div className="instructions-conteiner" data-testid="instructions">
         <p className="instructions" data-testid="instructions">
           {data.instructions}
         </p>

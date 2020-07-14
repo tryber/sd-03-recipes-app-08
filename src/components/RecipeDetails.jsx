@@ -105,9 +105,11 @@ const renderDetailsPage = (data, choice, ingredients, finished, started) => (
       </div>
       <div className="instructions-conteiner">
         <h2 className="instructions-title">Instructions</h2>
-        <p className="instructions" data-testid="instructions">
-          {data.instructions}
-        </p>
+        <div data-testid="instructions">
+          <p className="instructions" data-testid="instructions">
+            {data.instructions}
+          </p>
+        </div>
       </div>
     </div>
     {choice === 'meal' ? renderVideo(data.video) : null}
