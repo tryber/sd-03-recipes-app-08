@@ -5,18 +5,13 @@ import FavoriteAndDoneBody from '../components/FavoriteAndDoneBody';
 import '../styles/RecipeDetails.css';
 import { RecipeAppContext } from '../context';
 
-let doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
+let doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes') || '[]');
 
 const FavoritePage = () => {
-  const {
-    setList,
-  } = useContext(RecipeAppContext);
+  const { setList } = useContext(RecipeAppContext);
   useEffect(() => {
-    doneRecipesArr = JSON.parse(localStorage.getItem('doneRecipes'));
     setList(doneRecipesArr);
   }, []);
-
-  if (!doneRecipesArr) return <h1>Loading...</h1>;
 
   return (
     <div className="favorite-done-page">
