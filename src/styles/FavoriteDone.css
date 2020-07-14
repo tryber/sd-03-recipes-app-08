@@ -1,0 +1,97 @@
+.favorite-done-page {
+  align-items: center;
+  height: 640px;
+  width: 360px;
+}
+
+.favorite-done-container {
+  align-items: center;
+  height: 562px;
+  position: absolute;
+  width: 360px;
+  top: 68px
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  height: 55px;
+  width: 360px;
+}
+
+.filter-btn {
+  background: #c4c4c4;
+  border-radius: 4px;
+  height: 45px;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  width: 102px;
+}
+
+.favorite-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.data-tag {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  height: 18px;
+  letter-spacing: 0.01em;
+  line-height: 18px;
+  position: absolute;
+  width: 148px;
+}
+
+.tags {
+  align-items: flex-end;
+  background-color: grey;
+  color: black;
+  display: flex;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  height: 21px;
+  letter-spacing: 0.01em;
+  line-height: 21px;
+  position: absolute;
+  width: 31px;
+}
+
+.favorite-conteiner {
+  align-items: flex-start;
+  background: #ffffff;
+  border: 1px solid #f8eded;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  height: 143px;
+  margin: 15px 15px;
+  position: absolute;
+  width: 330px;
+}
+
+.favorite-recipe-photo {
+  border-radius: 4px 0px 0px 4px;
+  height: 143px;
+  position: absolute;
+  width: 165px;
+}
+
+.favorite-header-text {
+  height: 212px;
+  margin: 10px 1px;
+  padding: 10px;
+  position: absolute;
+  width: 182px;
+}

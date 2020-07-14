@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Clipboard from './Clipboard';
 import BlackHeart from '../images/blackHeartIcon.svg';
-import '../styles/RecipeDetails.css';
+import '../styles/FavoriteDone.css';
 import { RecipeAppContext } from '../context';
 
 let favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -59,21 +59,29 @@ const renderExcludeFavorite = (data, index, setList) => (
 );
 
 const renderFinishData = (data, index) => (
-  <h4 data-testid={`${index}-horizontal-done-date`}>{data.doneDate}</h4>
+  <div>
+    <h4 data-testid={`${index}-horizontal-done-date`} className="data-tag">
+      {data.doneDate}
+    </h4>
+  </div>
 );
 
 const renderTags = (tags, index) => {
   if (tags[1]) {
     return (
       <div>
-        <h4 data-testid={`${index}-${tags[0]}-horizontal-tag`}>{tags[0]}</h4>
-        <h4 data-testid={`${index}-${tags[1]}-horizontal-tag`}>{tags[1]}</h4>
+        <h4 data-testid={`${index}-${tags[0]}-horizontal-tag`} className="tags">
+          {tags[0]}
+        </h4>
+        <h4 data-testid={`${index}-${tags[1]}-horizontal-tag`} className="tags">
+          {tags[1]}
+        </h4>
       </div>
     );
   }
   return (
     <div>
-      <h4>{tags[0]}</h4>
+      <h4 className="tags">{tags[0]}</h4>
     </div>
   );
 };
@@ -88,10 +96,10 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
           data-testid={`${index}-horizontal-image`}
           src={data.image}
           alt="recipe"
-          className="recipe-photo"
+          className="favorite-recipe-photo"
         />
       </Link>
-      <div className="details-header-text">
+      <div className="favorite-header-text">
         <Link to={`${data.type}s/${data.id}`}>
           <h1
             data-testid={`${index}-horizontal-name`}
@@ -121,31 +129,33 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
 };
 
 const renderDetailsPage = (data, setList, comand) => (
-  <div className="favorite-page">
-    <button
-      type="button"
-      data-testid="filter-by-all-btn"
-      className="filter-by-all-btn"
-      onClick={() => defineFilter('', setList, comand)}
-    >
-      All
-    </button>
-    <button
-      type="button"
-      data-testid="filter-by-food-btn"
-      className="filter-by-food-btn"
-      onClick={() => defineFilter('comida', setList, comand)}
-    >
-      Food
-    </button>
-    <button
-      type="button"
-      data-testid="filter-by-drink-btn"
-      className="filter-by-drink-btn"
-      onClick={() => defineFilter('bebida', setList, comand)}
-    >
-      Drinks
-    </button>
+  <div className="favorite-done-container">
+    <div className="filter-container">
+      <button
+        type="button"
+        data-testid="filter-by-all-btn"
+        className="filter-btn"
+        onClick={() => defineFilter('', setList, comand)}
+      >
+        All
+      </button>
+      <button
+        type="button"
+        data-testid="filter-by-food-btn"
+        className="filter-btn"
+        onClick={() => defineFilter('comida', setList, comand)}
+      >
+        Food
+      </button>
+      <button
+        type="button"
+        data-testid="filter-by-drink-btn"
+        className="filter-btn"
+        onClick={() => defineFilter('bebida', setList, comand)}
+      >
+        Drinks
+      </button>
+    </div>
     {data.map((elem, index) => renderConteinerFavorite(elem, index, setList, comand))}
   </div>
 );
@@ -153,11 +163,7 @@ const renderDetailsPage = (data, setList, comand) => (
 const FavoriteAndDoneBody = ({ comand }) => {
   const { list, setList } = useContext(RecipeAppContext);
 
-  return (
-    <div className="recipe-details-page">
-      {renderDetailsPage(list, setList, comand)}
-    </div>
-  );
+  return <Fragment>{renderDetailsPage(list, setList, comand)}</Fragment>;
 };
 
 export default FavoriteAndDoneBody;
