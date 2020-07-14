@@ -11,7 +11,7 @@ const FavoritePage = () => {
   const { setList } = useContext(RecipeAppContext);
   useEffect(() => {
     setList(doneRecipesArr);
-  }, []);
+  }, [setList]);
 
   return (
     <div className="favorite-done-page">
