@@ -41,7 +41,8 @@ const removeFavorite = (data, setList) => {
     'favoriteRecipes',
     JSON.stringify(newFavoriteRecipesArr),
   );
-  defineFilter(data.type, setList, 'favorite');
+  setList(newFavoriteRecipesArr);
+  // defineFilter(data.type, setList, 'favorite');
 };
 
 const renderExcludeFavorite = (data, index, setList) => (
@@ -60,10 +61,10 @@ const renderExcludeFavorite = (data, index, setList) => (
 
 const renderFinishData = (data, index) => (
   <div>
-    <h4 data-testid={`${index}-horizontal-done-date`} className="data-tag">
+    <span data-testid={`${index}-horizontal-done-date`} className="data-tag">
       Feita em:
       {data.doneDate}
-    </h4>
+    </span>
   </div>
 );
 
@@ -71,12 +72,12 @@ const renderTags = (tags, index) => {
   if (Array.isArray(tags) && tags.length > 1) {
     return (
       <div className="tag-container">
-        <h4 data-testid={`${index}-${tags[0]}-horizontal-tag`} className="tags">
+        <span data-testid={`${index}-${tags[0]}-horizontal-tag`} className="tags">
           {tags[0]}
-        </h4>
-        <h4 data-testid={`${index}-${tags[1]}-horizontal-tag`} className="tags">
+        </span>
+        <span data-testid={`${index}-${tags[1]}-horizontal-tag`} className="tags">
           {tags[1]}
-        </h4>
+        </span>
       </div>
     );
   }
@@ -124,8 +125,8 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
           {comand === 'favorite'
             ? renderExcludeFavorite(data, index, setList)
             : renderFinishData(data, index)}
-          {data.tags ? renderTags(data.tags, index) : null}
         </div>
+        {data.tags ? renderTags(data.tags, index) : null}
       </div>
     </div>
   );
