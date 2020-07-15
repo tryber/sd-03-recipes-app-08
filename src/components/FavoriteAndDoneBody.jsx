@@ -100,32 +100,32 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
           className="favorite-recipe-photo"
         />
       </Link>
-      <div className="favorite-done-header-text">
-        <Link to={`${data.type}s/${data.id}`}>
-          <h1
-            data-testid={`${index}-horizontal-name`}
-            className="horizontal-name"
+      <div className="not-photo-part">
+        <div className="favorite-done-header-text">
+          <Link to={`${data.type}s/${data.id}`}>
+            <span
+              data-testid={`${index}-horizontal-name`}
+              className="horizontal-name"
+            >
+              {data.name}
+            </span>
+          </Link>
+          <h4
+            data-testid={`${index}-horizontal-top-text`}
+            className="horizontal-top-text"
           >
-            {data.name}
-          </h1>
-        </Link>
-        <h4
-          data-testid={`${index}-horizontal-top-text`}
-          className="horizontal-top-text"
-        >
-          {data.type === 'comida'
-            ? `${data.area} - ${data.category}`
-            : data.alcoholicOrNot}
-        </h4>
-      </div>
-      <div>
-        <div className="share-btn">
-          <Clipboard id={data.id} choice={choice} index={index} />
+            {data.type === 'comida'
+              ? `${data.area} - ${data.category}`
+              : data.alcoholicOrNot}
+          </h4>
         </div>
-        {comand === 'favorite'
-          ? renderExcludeFavorite(data, index, setList)
-          : renderFinishData(data, index)}
-        {data.tags ? renderTags(data.tags, index) : null}
+        <div className="button-part">
+          <Clipboard id={data.id} choice={choice} index={index} />
+          {comand === 'favorite'
+            ? renderExcludeFavorite(data, index, setList)
+            : renderFinishData(data, index)}
+          {data.tags ? renderTags(data.tags, index) : null}
+        </div>
       </div>
     </div>
   );

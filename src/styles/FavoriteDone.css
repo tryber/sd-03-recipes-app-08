@@ -34,8 +34,6 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  left: 278px;
-  position: absolute;
 }
 
 .data-tag {
@@ -50,8 +48,6 @@
   left: 170px;
   letter-spacing: 0.01em;
   line-height: 18px;
-  position: absolute;
-  top: 20px;
   width: 148px;
 }
 
@@ -87,7 +83,6 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   display: flex;
-  /* flex-flow: row wrap; */
   height: 143px;
   margin: 15px;
   width: 330px;
@@ -96,7 +91,6 @@
 .favorite-recipe-photo {
   border-radius: 4px 0 0 4px;
   height: 143px;
-  position: absolute;
   width: 165px;
 }
 
@@ -119,17 +113,17 @@
   font-style: normal;
   font-weight: 600;
   height: 21px;
-  left: 180px;
   letter-spacing: 0.01em;
   line-height: 21px;
-  position: absolute;
-  top: 50px;
   width: 165px;
 }
 
-.share-btn {
-  margin-left: 280px;
+.button-part {
+  display: flex;
+  justify-content: space-around;
 }
 
-.card-favorite-and-done {
+.not-photo-part {
+  display: flex;
+  flex-direction: column;
 }
