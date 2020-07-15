@@ -50,7 +50,7 @@ const checkDisabled = (finished) => {
 // };
 
 const renderDoneLink = (data, finished) => (
-  <Link to={(finished) ? '/receitas-feitas' : '#'}>
+  <Link to={finished ? '/receitas-feitas' : '#'}>
     <button
       className="start-recipe-btn"
       data-testid="finish-recipe-btn"
@@ -87,6 +87,7 @@ const renderInProgressPage = (data, choice, finished, ingredients) => (
       <div className="ingredients-conteiner">
         {ingredients.map((elem, index) => (
           <IngredientsInput
+            key={elem}
             ingredient={elem}
             index={index}
             size={ingredients.length}

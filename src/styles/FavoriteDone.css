@@ -1,0 +1,109 @@
+.favorite-done-page {
+  align-items: center;
+  height: 640px;
+  width: 360px;
+}
+
+.favorite-done-container {
+  align-items: center;
+  height: 562px;
+  position: absolute;
+  top: 68px;
+  width: 360px;
+}
+
+.filter-container {
+  align-items: center;
+  display: flex;
+  height: 55px;
+  margin-top: 68px;
+  width: 360px;
+}
+
+.filter-btn {
+  background: #c4c4c4;
+  border-radius: 4px;
+  height: 45px;
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  width: 102px;
+}
+
+.favorite-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.data-tag {
+  align-items: flex-end;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 100;
+}
+
+.tag-container {
+  display: flex;
+  height: 25px;
+  width: 155px;
+}
+
+.tags {
+  align-items: flex-end;
+  background-color: grey;
+  color: black;
+  display: flex;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 100;
+  justify-content: space-around;
+}
+
+.favorite-conteiner {
+  background: white;
+  border: 1px solid #f8eded;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  display: flex;
+  height: 143px;
+  margin: 15px;
+  width: 330px;
+}
+
+.favorite-recipe-photo {
+  border-radius: 4px 0 0 4px;
+  height: 143px;
+  width: 165px;
+}
+
+.horizontal-name {
+  color: black;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.horizontal-top-text {
+  color: #000065;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.button-part {
+  display: flex;
+  justify-content: space-around;
+}
+
+.not-photo-part {
+  display: flex;
+  flex-direction: column;
+}

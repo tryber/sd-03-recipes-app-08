@@ -11,7 +11,7 @@ const IconFunction = (id, choice, setIconUsed) => {
     navigator.clipboard.writeText(`${window.location.origin}/bebidas/${id}`);
   }
   setIconUsed(true);
-  setTimeout(() => setIconUsed(false), 2000);
+  // setTimeout(() => setIconUsed(false), 2000);
 };
 
 const Clipboard = ({ id, choice, index }) => {

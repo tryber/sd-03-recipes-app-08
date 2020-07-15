@@ -16,3 +16,43 @@
   max-width: 360px;
   position: absolute;
 }
+
+.explore-food {
+  align-items: center;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: black;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Roboto, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 100;
+  height: 82px;
+  left: -175px;
+  line-height: 37px;
+  position: absolute;
+  top: -110px;
+  width: 327px;
+}
+
+.explore-drinks {
+  align-items: center;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: black;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: Roboto, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 100;
+  height: 82px;
+  left: -175px;
+  line-height: 37px;
+  position: absolute;
+  top: 15px;
+  width: 327px;
+}

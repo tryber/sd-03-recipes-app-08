@@ -10,20 +10,24 @@
   flex-flow: column wrap;
   justify-content: space-between;
   margin-top: 60px;
-  max-width: 360px;
   position: absolute;
+  width: 358px;
 }
 
 .recipes-card-grid {
   align-items: center;
   display: flex;
   flex-flow: row wrap;
+  height: 380px;
   justify-content: center;
   margin: 125px 1px;
-  max-height: 300px;
   max-width: 360px;
   overflow-y: scroll;
   position: absolute;
+}
+
+.recipes-card-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .recipes-footer {

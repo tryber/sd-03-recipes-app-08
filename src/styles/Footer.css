@@ -1,11 +1,20 @@
 .recipes-footer {
-  background: #c4c4c4;
+  align-items: center;
+  background-color: #c4c4c4;
+  border: none;
+  bottom: 0;
+  display: flex;
   height: 58px;
+  justify-content: space-around;
   position: fixed;
   width: 360px;
 }
 
 .drinks-icon {
+  align-items: flex-start;
+  background-color: #c4c4c4;
+  bottom: 10px;
+  cursor: pointer;
   height: 40px;
   left: 16px;
   position: absolute;
@@ -14,6 +23,10 @@
 }
 
 .explore-icon {
+  align-items: flex-start;
+  background-color: #c4c4c4;
+  bottom: 10px;
+  cursor: pointer;
   height: 40px;
   left: 160px;
   position: absolute;
@@ -22,6 +35,9 @@
 }
 
 .food-icon {
+  align-items: flex-end;
+  background-color: #c4c4c4;
+  bottom: 10px;
   height: 40px;
   left: 302px;
   position: absolute;
