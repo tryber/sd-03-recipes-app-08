@@ -15,6 +15,7 @@
 .filter-container {
   align-items: center;
   display: flex;
+  margin-top: 68px;
   height: 55px;
   width: 360px;
 }
@@ -80,17 +81,15 @@
 }
 
 .favorite-conteiner {
-  align-items: flex-start;
   background: white;
   border: 1px solid #f8eded;
   border-radius: 6px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   display: flex;
-  flex-flow: row wrap;
+  /* flex-flow: row wrap; */
   height: 143px;
   margin: 15px;
-  position: absolute;
   width: 330px;
 }
 
@@ -108,11 +107,8 @@
   font-style: normal;
   font-weight: 600;
   height: 21px;
-  left: 180px;
   letter-spacing: 0.01em;
   line-height: 21px;
-  position: absolute;
-  top: 95px;
   width: 45px;
 }
 
@@ -133,4 +129,7 @@
 
 .share-btn {
   margin-left: 280px;
+}
+
+.card-favorite-and-done {
 }

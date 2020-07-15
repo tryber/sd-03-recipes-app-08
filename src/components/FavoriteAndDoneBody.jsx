@@ -132,7 +132,7 @@ const renderConteinerFavorite = (data, index, setList, comand) => {
 };
 
 const renderDetailsPage = (data, setList, comand) => (
-  <div className="favorite-done-container">
+  <div>
     <div className="filter-container">
       <button
         type="button"
@@ -159,7 +159,9 @@ const renderDetailsPage = (data, setList, comand) => (
         Drinks
       </button>
     </div>
-    {data.map((elem, index) => renderConteinerFavorite(elem, index, setList, comand))}
+    <div className="card-favorite-and-done">
+      {data.map((elem, index) => renderConteinerFavorite(elem, index, setList, comand))}
+    </div>  
   </div>
 );
 
