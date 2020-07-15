@@ -162,7 +162,7 @@ const renderDetailsPage = (data, setList, comand) => (
     </div>
     <div className="card-favorite-and-done">
       {data.map((elem, index) => renderConteinerFavorite(elem, index, setList, comand))}
-    </div>  
+    </div>
   </div>
 );
 

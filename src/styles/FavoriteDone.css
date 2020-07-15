@@ -15,8 +15,8 @@
 .filter-container {
   align-items: center;
   display: flex;
-  margin-top: 68px;
   height: 55px;
+  margin-top: 68px;
   width: 360px;
 }
 
