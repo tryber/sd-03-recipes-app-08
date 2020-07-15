@@ -32,10 +32,10 @@ const defineFilter = (text, setList, comand) => {
   filterLocalStore(text, setList, doneList);
 };
 
-const removeFavorite = (data, setList) => {
+const removeFavorite = (name, setList) => {
   favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
   const newFavoriteRecipesArr = favoriteRecipesArr.filter(
-    (elem) => elem.name !== data.name,
+    (elem) => elem.name !== name,
   );
   localStorage.setItem(
     'favoriteRecipes',
@@ -48,7 +48,7 @@ const removeFavorite = (data, setList) => {
 const renderExcludeFavorite = (data, index, setList) => (
   <button
     type="button"
-    onClick={() => removeFavorite(data, setList)}
+    onClick={() => removeFavorite(data.name, setList)}
     className="favorite-btn"
   >
     <img
