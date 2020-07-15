@@ -174,8 +174,6 @@ const FavoriteAndDoneBody = ({ comand }) => {
 
 export default FavoriteAndDoneBody;
 
-// teste
-
 FavoriteAndDoneBody.propTypes = {
   comand: PropTypes.string.isRequired,
 };
