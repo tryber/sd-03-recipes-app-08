@@ -101,7 +101,7 @@ const renderInputList = (choice, id, ingredient, index, marked, setMarked, size,
           id={index}
           type="checkbox"
           checked={checkBoxTest(id, choice, index)}
-          onClick={() => inputClicked(choice, id, marked, setMarked, index)}
+          onChange={() => inputClicked(choice, id, marked, setMarked, index)}
         />
         {ingredient}
       </label>

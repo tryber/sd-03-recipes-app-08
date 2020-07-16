@@ -6,13 +6,14 @@ import FavoriteAndDoneBody from '../components/FavoriteAndDoneBody';
 import '../styles/RecipeDetails.css';
 import { RecipeAppContext } from '../context';
 
-const favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
+let favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
 const FavoritePage = () => {
   const {
     setList,
   } = useContext(RecipeAppContext);
   useEffect(() => {
+    favoriteRecipesArr = JSON.parse(localStorage.getItem('favoriteRecipes'));
     setList(favoriteRecipesArr);
   }, []);
   if (!JSON.parse(localStorage.getItem('favoriteRecipes'))) return <h1>Loading...</h1>;

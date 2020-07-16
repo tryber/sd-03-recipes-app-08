@@ -75,7 +75,6 @@ const renderTags = (tags, index) => {
 
 const renderConteinerFavorite = (data, index, setList, comand) => {
   const choice = (data.type === 'comida') ? 'meal' : 'drink';
-  console.log(data.tags);
   return (
     <div className="favorite-conteiner">
       <Link to={`${data.type}s/${data.id}`}>
