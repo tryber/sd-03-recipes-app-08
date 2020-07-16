@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { RecipeAppContext } from '../context';
 import InProgress from '../components/InProgress';
 import dataDealer from '../helpers/dataDealer';
+import '../styles/RecipeDetails.css';
 
 let inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'))
   || { meals: {}, cocktails: {} };
