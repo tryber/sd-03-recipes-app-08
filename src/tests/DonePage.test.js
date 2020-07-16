@@ -48,6 +48,28 @@ describe('Done recipes component test', () => {
     jest.restoreAllMocks();
   });
 
+  test('Check the favorite buttons and their data-testId', async () => {
+    localStorage.setItem('doneRecipes', JSON.stringify(arrAuxiliar));
+    const { getByTestId, findByTestId } = renderWithRouter(
+      <Provider>
+        <DonePage />
+      </Provider>, { route: '/receitas-feitas' },
+    );
+    await findByTestId('filter-by-all-btn');
+
+    const allButtonRecipe = getByTestId('filter-by-all-btn');
+    expect(allButtonRecipe).toBeInTheDocument();
+    expect(allButtonRecipe).toHaveTextContent('All');
+
+    const foodButtonRecipe = getByTestId('filter-by-food-btn');
+    expect(foodButtonRecipe).toBeInTheDocument();
+    expect(foodButtonRecipe).toHaveTextContent('Food');
+
+    const drinkButtonRecipe = getByTestId('filter-by-drink-btn');
+    expect(drinkButtonRecipe).toBeInTheDocument();
+    expect(drinkButtonRecipe).toHaveTextContent('Drinks');
+  });
+
   test('Check the done photos and their data-testId', async () => {
     localStorage.setItem('doneRecipes', JSON.stringify(arrAuxiliar));
     const { getByTestId, findByTestId } = renderWithRouter(

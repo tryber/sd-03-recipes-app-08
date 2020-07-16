@@ -154,6 +154,22 @@ describe('Detail meal component test', () => {
     jest.restoreAllMocks();
   });
 
+  test('Check the meal instructions and his data-testId', async () => {
+    jest.spyOn(global, 'fetch').mockImplementationOnce(() => callApi(oneDrink));
+    const { getByTestId, findByTestId } = renderWithRouter(
+      <Provider>
+        <DrinkDetailPage />
+      </Provider>, { route: '/bebidas/178319' },
+    );
+    await findByTestId('instructions');
+
+    const categoryRecipe = getByTestId('instructions');
+    expect(categoryRecipe).toBeInTheDocument();
+    expect(categoryRecipe).toHaveTextContent('Shake well in a shaker with ice. Strain in a martini glass.');
+
+    jest.restoreAllMocks();
+  });
+
   test('Check the meal recomendation cards and their data-testId', async () => {
     jest.spyOn(global, 'fetch').mockImplementationOnce(() => callApi(oneDrink));
     jest.spyOn(global, 'fetch').mockImplementationOnce(() => callApi(meals));
