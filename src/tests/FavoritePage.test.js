@@ -63,7 +63,7 @@ describe('Done recipes component test', () => {
 
     const drinkButtonRecipe = getByTestId('filter-by-drink-btn');
     expect(drinkButtonRecipe).toBeInTheDocument();
-    expect(drinkButtonRecipe).toHaveTextContent('Drinks');');
+    expect(drinkButtonRecipe).toHaveTextContent('Drinks');
   });
 
   test('Check the favorite photos and their data-testId', async () => {
