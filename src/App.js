@@ -44,4 +44,5 @@ function App() {
   );
 }
 
+//testando se vai passar nos requisitos que antes estavam travando.
 export default App;
