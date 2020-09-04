@@ -15,7 +15,7 @@
     "install": "^0.13.0",
     "lodash": "^4.17.19",
     "prop-types": "^15.7.2",
-    "react": "0.0.0-7f28234f8",
+    "react": "0.14.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "0.0.0-7f28234f8",
     "react-logger": "^1.1.0",
